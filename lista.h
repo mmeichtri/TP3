@@ -1,0 +1,70 @@
+#ifndef LISTA_H_INCLUDED
+#define LISTA_H_INCLUDED
+
+class Nodo;//indico que existen las clases
+class Personaje;
+class Lista {
+private:
+    // atributos
+    Nodo* primero;
+    Nodo* actual;
+    int cantidad;
+
+public:
+    // constructor
+    // pos: crea una cola vacia
+    Lista();
+
+    // pre: 0 < pos <= cantidad + 1
+    // pos: inserta el Personaje* d en la posicion pos, la 1 es la primera
+    //        ademas incrementa cantidad en 1
+    void alta(Personaje* d, int pos);
+
+
+    // pre: 0 < pos <= cantidad
+    // pos: saca el elemento que esta en pos
+    void baja(int pos);
+
+    /*
+    pre:
+    post: elimina de la lista el nodo
+    */
+    void bajaPorNombre(Lista*, int );
+
+    // pre: 0 < pos <= cantidad
+    // pos: devuelve el elemento que esta en pos
+    Personaje* consulta(int pos);
+
+
+    bool vacia();
+
+    // pos: libera la memoria
+    virtual ~Lista();
+
+    int obtener_cantidad();
+
+    // reinicia el puntero actual a la primera posición (o nulo si la lista es vacía).
+    // PRE:
+    // POS: pone el puntero a la primera posición o apuntando a NULL
+    void reiniciar( );
+
+    // consulta si hay un elemento siguiente (si el actual no apunta a NULL)
+    // PRE:
+    // POS: devuelve true si el actual no apunta a NULL, false de lo contrario
+    bool hay_siguiente( );
+
+    // devuelve el siguiente elemento (el elemento que apunta actual)
+    // PRE: hay_siguiente tiene que haber devuelto true previamente
+    // POS: devuelve el elemento actual y avanza
+    Personaje* siguiente();
+
+
+    // pos: devuelve true si d esta en la lista, false de lo contrario
+    bool esta(Personaje* d);
+
+
+    Nodo* obtener_nodo(int pos);
+};
+
+
+#endif // LISTA_H_INCLUDED
