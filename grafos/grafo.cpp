@@ -1,42 +1,34 @@
-//
-// Created by jose on 29/12/20.
-//
-
 #include "grafo.h"
-
 #include <iostream>
+#include <string>
 using namespace std;
 
 
 
 
-void grafo ::iniciarMatriz(int mat[MAX][MAX]) {
-
+void Grafo::iniciarMatriz(int mat[MAX][MAX]) {
     for(int i = 0; i < MAX; i++){
         for(int j = 0; j < MAX; j++)
             mat[i][j] = 0;
     }
 }
 
-grafo ::grafo() {
-
+Grafo::Grafo(){
     iniciarMatriz(matrizAdyacencia);
 }
 
 
-void grafo ::ingresarVertice(Casillero* dato, int posicion) {
-     arrayVertice[posicion] = dato;
-
+void Grafo::ingresarVertice(Casillero* dato, int posicion){
+     this->arrayVertice[posicion] = dato;
 }
 
-int grafo ::buscarPosicion(int fila, int columna) {
-	
+int Grafo::buscarPosicion(int fila, int columna){
     int posicion = -1;
     bool encontrado = false;
     int cont = 0;
 
     while(cont < MAX && ! encontrado){
-        if(arrayVertice[cont] -> devolverfila() == fila && arrayVertice[cont] -> devolverColumna() == columna ){
+        if(this->arrayVertice[cont] -> devolverfila() == fila && this->arrayVertice[cont] -> devolverColumna() == columna ){
             posicion = cont;
             encontrado = true;
         }
@@ -46,50 +38,44 @@ int grafo ::buscarPosicion(int fila, int columna) {
 }
 
 
-void grafo ::ingresarArista(Casillero* v1, Casillero* v2, int peso) {
-
+void Grafo::ingresarArista(Casillero* v1, Casillero* v2, int peso) {
     int posicionInicial = buscarPosicion(v1 -> devolverfila(),v1 -> devolverColumna());
     int posicionFinal = buscarPosicion(v2 -> devolverfila(),v2 -> devolverColumna());
     matrizAdyacencia[posicionInicial][posicionFinal] = peso;
 }
 
-void grafo ::iniciarBool(bool *array) {
-    for(int i = 0; i< MAX ; i++)
+void Grafo ::iniciarBool(bool *array) {
+    for(int i = 0; i < MAX ; i++)
         array[i] = false;
 }
 
-void grafo :: iniciarArray(int* vec){
+void Grafo::iniciarArray(int* vec){
     for(int i = 0; i < MAX ; i++)
         vec[i] = 0;
 }
 
-void grafo:: iniciarDistancia(int * vecDistancia, int inicial , string personaje){
-
+void Grafo::iniciarDistancia(int *vecDistancia, int inicial , string personaje){
     for(int i = 0; i < MAX; i++){
-
         if(matrizAdyacencia[inicial][i] == 0)
             vecDistancia[i] = 6000;
         else
-            vecDistancia[i] = arrayVertice[i] -> devolverPeso(personaje);
+            vecDistancia[i] = this->arrayVertice[i] -> devolverPeso(personaje);
     }
 }
 
-int grafo ::minimoVectorNoVisto(bool *visto, int *distancia) {
-
+int Grafo::minimoVectorNoVisto(bool *visto, int *distancia) {
     int posicion = 0;
     int menor = 100000;
-    for( int i = 0; i < MAX ; i++){
+    for(int i = 0; i < MAX ; i++){
         if(distancia[i] < menor && visto[i] == false){
             menor = distancia[i];
             posicion = i;
         }
     }
-
     return posicion;
 }
 
-int grafo ::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , int columnaFinal,string personaje) {
-	
+int Grafo::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , int columnaFinal, string personaje){
     int inicial = buscarPosicion(filaInicial,columnaInicial);
     int final = buscarPosicion(filaFinal,columnaFinal);
     int distancia[MAX];
@@ -108,9 +94,8 @@ int grafo ::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , i
 
         for(int w = 0; w < MAX; w++){
            if(matrizAdyacencia[vertice][w] != 0 ){
-
-               if(distancia[w] > distancia[vertice] + arrayVertice[w] -> devolverPeso(personaje))
-                   distancia[w] = distancia[vertice] + arrayVertice[w] -> devolverPeso(personaje);
+               if(distancia[w] > distancia[vertice] + this->arrayVertice[w] -> devolverPeso(personaje))
+                   distancia[w] = distancia[vertice] + this->arrayVertice[w] -> devolverPeso(personaje);
            }
         }
     }
@@ -120,8 +105,8 @@ int grafo ::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , i
 }
 
 
-grafo ::~grafo() {
-	
+Grafo::~Grafo() {
+
     for(int i = 0; i < MAX ; i++)
-        delete arrayVertice[i];
+        delete this->arrayVertice[i];
 }

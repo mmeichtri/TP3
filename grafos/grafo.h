@@ -1,16 +1,13 @@
-//
-// Created by jose on 29/12/20.
-//
-
 #ifndef GRAFO_GRAFO_H
 #define GRAFO_GRAFO_H
 #define MAX 64
 #include "casillero.h"
+#include <string>
 
-class grafo {
+class Grafo {
 private :
 
-    Casillero* arrayVertice[MAX];
+     Casillero* arrayVertice[MAX];
      int  matrizAdyacencia[MAX][MAX];
 
      /* PRE: MATRIZ CREADA CORRECTAMENTE.
@@ -41,13 +38,13 @@ private :
      POST : ITERA DESDE CERO A MAX, SI UN VERTICE NO ES ADYACENTE AL VALOR INICIAL LE COLOCA 6000 ,
      SI SON ADYACENTES LE COLOCA EL VALOR DEL PESO CORRESPONDIENTE AL ELEMENTO DEL PERSONAJE PASADO POR PARAMETRO.
      */
-    void iniciarDistancia(int *vecDistancia , int inicial , string personaje);
+    void iniciarDistancia(int *vecDistancia , int inicial , std::string personaje);
 
 public :
     /*PRE :
      POST: CREA UN GRAFO CON TODOS LOS VALORES DE LA MATRIZ DE ADYACENCIA 0.
      */
-    grafo();
+    Grafo();
 
     /* PRE : PUNTERO A CASILLERO Y VARIABLE INT POSICION VALIDAS.
       POST: ALMACENA UN PUNTERO DE TIPO CASILLERO EN EL VECTOR DE VERTICES EN LA POSICION INDICADA EN PARAMETROS
@@ -70,12 +67,12 @@ public :
      EL VALOR EN EL VECTOR DISTANCIA EN LA POSICION DEL ADYACENTE , LUEGO RETORNA EL VALOR MINIMO EN LA POSICION FINAL
      EN EL VECTOR DISTANCIA.
      */
-   int caminoMinimo( int filaInicial,int columnaInicial, int filaFinal, int columnaFinal,string personaje);
+   int caminoMinimo(int filaInicial, int columnaInicial, int filaFinal, int columnaFinal, std::string personaje);
 
    /*PRE :
      POST: ELIMINA CADA UNO DE LOS PUNTEROS A CASILLERO QUE SE ENCUENTRAN EN EL ARRAY VERTICES.
     */
-    ~grafo();
+    ~Grafo();
 
 };
 
