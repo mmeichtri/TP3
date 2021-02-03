@@ -1,5 +1,6 @@
-#ifndef BST
-#define BST
+#ifndef BST_H
+#define BST_H
+
 #include "bin_tree_node.h"
 #include "queue.h"
 
@@ -20,16 +21,53 @@ public:
 	~Bst();
 	
 	void add(T data);
-	T pop(T data);
+	//Agrega <data> al árbol en caso de que no esté incluido previamente.
+	//POST: agrega un dato nuevo e incrementa el tamaño.
+	//
+	T pop();
+	/*EN CONSTRUCCIÓN*/
+	//necesito crear un get() que devuelva un puntero al dato (o NULL si no existe)
+	//y ahí eliminarlo del árbol, enlazando sus hijos con su padre de alguna forma adecuada.
+	//
+	//
+	T get();
+
 	bool empty();
+	//PRE: el árbol existe.
+	//POST: devuelve true si el arbol está vacío y false si no lo está.
+	//
 	size_t size();
+	//PRE: el árbol existe.
+	//POST: devuelve la cantidad de elementos que almacena.
+	//
 	size_t lvls();
+	//
+	//
 	Queue<T>* preOrder();
+	//POST: devuelve una cola con los elementos del árbol obtenidos
+	//mediante un recorrido de pre-orden.
+	//
 	Queue<T>* inOrder();
+	//POST: devuelve una cola con los elementos del árbol
+	//ordenados de (primero) menor a mayor (último).
+	//
 	Queue<T>* postOrder();
+	//POST: devuelve una cola con los elementos del árbol obtenidos
+	//mediante un recorrido de prost-orden.
+	//
 	void showPreOrder();
+	//POST: imprime los elementos del árbol ordenados según recorrido de pre-orden.
+	//
 	void showInOrder();
+	//POST: imprime los elementos del árbol ordenados de menor a mayor.
+	//
 	void showPostOrder();
+	//POST: imprime los elementos del árbol ordenados según recorrido de post-orden.
+	//
+	T* search(T data);
+	//Busca <data> en el árbol.
+	//POST: devuelve true o false si <data> está o no en el árbol respectivamente.
+	//
 };
 
 
@@ -164,10 +202,22 @@ void Bst <T>::showPostOrder(){
 
 
 template <typename T>
+T* Bst <T>::search(T data){
+	//
+	//Primero chequeo que el árbol no esté vacío.
+	//Si lo está, devuelvo NULL; si no, ejecuto el método de búsqueda
+	//correspondiente a la clase nodo y devuelvo lo que retorne.
+	if (_root == NULL)
+		return NULL;
+	return _root->search(data);
+}
+
+
+template <typename T>
 Bst <T> ::~Bst(){
 	delete _root;
 }
 
 
 
-#endif //BST
+#endif //BST_H
