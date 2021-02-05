@@ -1,34 +1,38 @@
+//
+// Created by jose on 29/12/20.
+//
+
 #include "grafo.h"
+
 #include <iostream>
-#include <string>
 using namespace std;
 
 
+void grafo ::iniciarMatriz(int mat[MAX][MAX]) {
 
-
-void Grafo::iniciarMatriz(int mat[MAX][MAX]) {
-    for(int i = 0; i < MAX; i++){
-        for(int j = 0; j < MAX; j++)
-            mat[i][j] = 0;
+    for(int fila = 0; fila < MAX; fila ++){
+        for(int columna = 0; columna < MAX; columna ++)
+            mat[fila][columna] = 0;
     }
 }
 
-Grafo::Grafo(){
+grafo ::grafo() {
+
     iniciarMatriz(matrizAdyacencia);
 }
 
 
-void Grafo::ingresarVertice(Casillero* dato, int posicion){
-     this->arrayVertice[posicion] = dato;
-}
+void grafo ::ingresarVertice(Casillero* dato, int posicion) {
+     arrayVertice[posicion] = dato;
 
-int Grafo::buscarPosicion(int fila, int columna){
+}
+int grafo ::buscarPosicion(int fila, int columna) {
     int posicion = -1;
     bool encontrado = false;
     int cont = 0;
 
     while(cont < MAX && ! encontrado){
-        if(this->arrayVertice[cont] -> devolverfila() == fila && this->arrayVertice[cont] -> devolverColumna() == columna ){
+        if(arrayVertice[cont] -> devolverfila() == fila && arrayVertice[cont] -> devolverColumna() == columna ){
             posicion = cont;
             encontrado = true;
         }
@@ -38,44 +42,50 @@ int Grafo::buscarPosicion(int fila, int columna){
 }
 
 
-void Grafo::ingresarArista(Casillero* v1, Casillero* v2, int peso) {
+void grafo ::ingresarArista(Casillero* v1, Casillero* v2, int peso) {
+
     int posicionInicial = buscarPosicion(v1 -> devolverfila(),v1 -> devolverColumna());
     int posicionFinal = buscarPosicion(v2 -> devolverfila(),v2 -> devolverColumna());
     matrizAdyacencia[posicionInicial][posicionFinal] = peso;
 }
 
-void Grafo ::iniciarBool(bool *array) {
-    for(int i = 0; i < MAX ; i++)
+void grafo ::iniciarBool(bool *array) {
+    for(int i = 0; i< MAX ; i++)
         array[i] = false;
 }
 
-void Grafo::iniciarArray(int* vec){
+void grafo :: iniciarArray(int* vec){
     for(int i = 0; i < MAX ; i++)
         vec[i] = 0;
 }
 
-void Grafo::iniciarDistancia(int *vecDistancia, int inicial , string personaje){
+void grafo:: iniciarDistancia(int * vecDistancia, int inicial , string personaje){
+
     for(int i = 0; i < MAX; i++){
+
         if(matrizAdyacencia[inicial][i] == 0)
             vecDistancia[i] = 6000;
         else
-            vecDistancia[i] = this->arrayVertice[i] -> devolverPeso(personaje);
+            vecDistancia[i] = arrayVertice[i] -> devolverPeso(personaje);
     }
 }
 
-int Grafo::minimoVectorNoVisto(bool *visto, int *distancia) {
+int grafo ::minimoVectorNoVisto(bool *visto, int *distancia) {
+
     int posicion = 0;
     int menor = 100000;
-    for(int i = 0; i < MAX ; i++){
+    for( int i = 0; i < MAX ; i++){
         if(distancia[i] < menor && visto[i] == false){
             menor = distancia[i];
             posicion = i;
         }
     }
+
     return posicion;
 }
 
-int Grafo::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , int columnaFinal, string personaje){
+int grafo ::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , int columnaFinal,string personaje) {
+
     int inicial = buscarPosicion(filaInicial,columnaInicial);
     int final = buscarPosicion(filaFinal,columnaFinal);
     int distancia[MAX];
@@ -94,19 +104,17 @@ int Grafo::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , in
 
         for(int w = 0; w < MAX; w++){
            if(matrizAdyacencia[vertice][w] != 0 ){
-               if(distancia[w] > distancia[vertice] + this->arrayVertice[w] -> devolverPeso(personaje))
-                   distancia[w] = distancia[vertice] + this->arrayVertice[w] -> devolverPeso(personaje);
+               if(distancia[w] > distancia[vertice] + arrayVertice[w] -> devolverPeso(personaje))
+                   distancia[w] = distancia[vertice] + arrayVertice[w] -> devolverPeso(personaje);
            }
         }
     }
-
-    return distancia[final] ;
-
+    cout << " el valor de ir de " << inicial << " a " << final << " es " << distancia[final] << endl;
+    return distancia[final];
 }
 
 
-Grafo::~Grafo() {
-
+grafo ::~grafo() {
     for(int i = 0; i < MAX ; i++)
-        delete this->arrayVertice[i];
+        delete arrayVertice[i];
 }
