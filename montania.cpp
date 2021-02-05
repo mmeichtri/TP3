@@ -6,16 +6,17 @@ using namespace std;
 Montania::Montania(int fila, int columna ):Casillero(fila, columna ){
 }
 
-void Montania::restarGastoDeEnergia(Personaje* personajeJugador){
-    if(this->personajeJugador->getElemento == "aire"){
-        this->personajeJugador->energia -= 2;
+int Montania::restarGastoDeEnergia(Personaje* personajeJugador){
+    /*if(personajeJugador->getElemento() == "aire"){
+        return 2;
     }
-    if(this->personajeJugador->getElemento == "fuego"){
-        this->personajeJugador->energia--;
+    if(personajeJugador->getElemento() == "fuego"){
+        return 1;;
     }
-    if(this->personajeJugador->getElemento == "agua"){
-        this->personajeJugador->energia--;
-    }
+    if(personajeJugador->getElemento() == "agua"){
+        return 1;;
+    }*/
+    return 0;
 }
 
 Montania::~Montania(){

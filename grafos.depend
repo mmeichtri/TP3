@@ -2,90 +2,118 @@
 1584205420 source:c:\users\1\desktop\pruebastp3\grafos\main.cpp
 	<iostream>
 
-1612051022 source:c:\users\1\desktop\pruebastp3\grafos\casillero.cpp
+1612494421 source:c:\users\1\desktop\pruebastp3\grafos\casillero.cpp
 	"casillero.h"
 	<iostream>
 	<string>
 
-1612494181 c:\users\1\desktop\pruebastp3\grafos\casillero.h
+1612565068 c:\users\1\desktop\pruebastp3\grafos\casillero.h
 	<string.h>
 	"personaje.h"
 
-1612491814 source:c:\users\1\desktop\pruebastp3\grafos\camino.cpp
+1612566652 source:c:\users\1\desktop\pruebastp3\grafos\camino.cpp
 	"camino.h"
 	"personaje.h"
 	<iostream>
 
-1612141702 c:\users\1\desktop\pruebastp3\grafos\personaje.h
+1612568774 c:\users\1\desktop\pruebastp3\grafos\personaje.h
 	<string>
 	"lista.h"
 
 1607297277 c:\users\1\desktop\pruebastp3\grafos\lista.h
 
-1612491742 c:\users\1\desktop\pruebastp3\grafos\camino.h
+1612564041 c:\users\1\desktop\pruebastp3\grafos\camino.h
 	"casillero.h"
 	"personaje.h"
 
-1612142664 source:c:\users\1\desktop\pruebastp3\grafos\grafo.cpp
+1612566795 source:c:\users\1\desktop\pruebastp3\grafos\grafo.cpp
 	"grafo.h"
 	"casillero.h"
+	"personaje.h"
 	<iostream>
 	<string>
 
-1612049871 c:\users\1\desktop\pruebastp3\grafos\grafo.h
+1612566606 c:\users\1\desktop\pruebastp3\grafos\grafo.h
 	"casillero.h"
+	"personaje.h"
 	<string>
 
-1612050927 source:c:\users\1\desktop\pruebastp3\grafos\lago.cpp
+1612566631 source:c:\users\1\desktop\pruebastp3\grafos\lago.cpp
 	"lago.h"
 	"personaje.h"
 	<iostream>
 
-1612051305 c:\users\1\desktop\pruebastp3\grafos\lago.h
+1612564047 c:\users\1\desktop\pruebastp3\grafos\lago.h
 	"casillero.h"
 	"personaje.h"
 
-1612049184 source:c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.cpp
+1612568198 source:c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.cpp
 	"lecturaCsvCasilleros.h"
+	"grafo.h"
 	<iostream>
 	<string>
+	<fstream>
+	<stdlib.h>
+	"lago.h"
+	"montania.h"
+	"precipicio.h"
+	"vacio.h"
+	"camino.h"
+	"volcan.h"
+	"matriz.h"
 
-1612049177 c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.h
+1612567891 c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.h
 	<string>
+	"grafo.h"
+	"casillero.h"
+	"matriz.h"
 
-1612050943 source:c:\users\1\desktop\pruebastp3\grafos\precipicio.cpp
+1612566670 source:c:\users\1\desktop\pruebastp3\grafos\precipicio.cpp
 	"precipicio.h"
 	"personaje.h"
 	<iostream>
 
-1612051313 c:\users\1\desktop\pruebastp3\grafos\precipicio.h
+1612564058 c:\users\1\desktop\pruebastp3\grafos\precipicio.h
 	"casillero.h"
 	"personaje.h"
 
-1612050936 source:c:\users\1\desktop\pruebastp3\grafos\montania.cpp
+1612566662 source:c:\users\1\desktop\pruebastp3\grafos\montania.cpp
 	"montania.h"
 	"personaje.h"
 	<iostream>
 
-1612051310 c:\users\1\desktop\pruebastp3\grafos\montania.h
+1612564055 c:\users\1\desktop\pruebastp3\grafos\montania.h
 	"casillero.h"
 	"personaje.h"
 
-1612050853 source:c:\users\1\desktop\pruebastp3\grafos\vacio.cpp
+1612564274 source:c:\users\1\desktop\pruebastp3\grafos\vacio.cpp
 	"vacio.h"
 	"personaje.h"
 	<iostream>
 
-1612051322 c:\users\1\desktop\pruebastp3\grafos\vacio.h
+1612564062 c:\users\1\desktop\pruebastp3\grafos\vacio.h
 	"casillero.h"
 	"personaje.h"
 
-1612051232 source:c:\users\1\desktop\pruebastp3\grafos\volcan.cpp
+1612566685 source:c:\users\1\desktop\pruebastp3\grafos\volcan.cpp
 	"volcan.h"
 	"personaje.h"
 	<iostream>
 
-1612051328 c:\users\1\desktop\pruebastp3\grafos\volcan.h
+1612564065 c:\users\1\desktop\pruebastp3\grafos\volcan.h
 	"casillero.h"
 	"personaje.h"
+
+1612567268 source:c:\users\1\desktop\pruebastp3\grafos\matriz.cpp
+	"matriz.h"
+
+1612567226 c:\users\1\desktop\pruebastp3\grafos\matriz.h
+	"grafo.h"
+	"casillero.h"
+	"montania.h"
+	"lago.h"
+	"precipicio.h"
+	"camino.h"
+	"vacio.h"
+	"volcan.h"
 

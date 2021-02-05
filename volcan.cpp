@@ -6,16 +6,17 @@ using namespace std;
 Volcan::Volcan(int fila, int columna ):Casillero(fila, columna ){
 }
 
-void Volcan::restarGastoDeEnergia(Personaje* personajeJugador){
-    if(this->personajeJugador->getElemento == "agua"){
-        this->personajeJugador->energia -= 2;
+int Volcan::restarGastoDeEnergia(Personaje* personajeJugador){
+    /*if(personajeJugador->getElemento() == "agua"){
+        return 2;
     }
-    if(this->personajeJugador->getElemento == "tierra"){
-        this->personajeJugador->energia--;
+    if(personajeJugador->getElemento() == "tierra"){
+        return 1;
     }
-    if(this->personajeJugador->getElemento == "aire"){
-        this->personajeJugador->energia--;
-    }
+    if(personajeJugador->getElemento() == "aire"){
+        return 1;
+    }*/
+    return 0;
 }
 
 Volcan::~Volcan(){

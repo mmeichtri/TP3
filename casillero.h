@@ -8,7 +8,7 @@ protected:
     int fila;
     int columna;
     std::string tipo;
-    Personaje* personajeJugador = 0;
+
 public:
 
     /*
@@ -45,7 +45,7 @@ public:
     pre:
     post: segun el tipo de elemento, y tipo de casillero, resta la energia correspondiente
     */
-    virtual void restarGastoDeEnergia(Personaje* ) = 0;
+    virtual int restarGastoDeEnergia(Personaje* ) = 0;
 
     virtual ~Casillero();
 

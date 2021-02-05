@@ -2,6 +2,7 @@
 #define GRAFO_GRAFO_H
 #define MAX 64
 #include "casillero.h"
+#include "personaje.h"
 #include <string>
 
 class Grafo {
@@ -39,7 +40,7 @@ private:
      POST : ITERA DESDE CERO A MAX, SI UN VERTICE NO ES ADYACENTE AL VALOR INICIAL LE COLOCA 6000 ,
      SI SON ADYACENTES LE COLOCA EL VALOR DEL PESO CORRESPONDIENTE AL ELEMENTO DEL PERSONAJE PASADO POR PARAMETRO.
      */
-    void iniciarDistancia(int *vecDistancia , int inicial , std::string personaje);
+    void iniciarDistancia(int *vecDistancia , int inicial , Personaje* personaje);
 
 public :
     /*PRE :
@@ -68,7 +69,7 @@ public :
      EL VALOR EN EL VECTOR DISTANCIA EN LA POSICION DEL ADYACENTE , LUEGO RETORNA EL VALOR MINIMO EN LA POSICION FINAL
      EN EL VECTOR DISTANCIA.
      */
-   int caminoMinimo(int filaInicial, int columnaInicial, int filaFinal, int columnaFinal, std::string personaje);
+   int caminoMinimo(int filaInicial, int columnaInicial, int filaFinal, int columnaFinal, Personaje* personaje);
 
    /*PRE :
      POST: ELIMINA CADA UNO DE LOS PUNTEROS A CASILLERO QUE SE ENCUENTRAN EN EL ARRAY VERTICES.

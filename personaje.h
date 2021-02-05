@@ -26,12 +26,6 @@ public:
 
     /*
     pre:
-    post: devuelve el elemento del personaje
-    */
-    std::string getElemento();
-
-    /*
-    pre:
     post: devuelve el nombre del personaje
     */
     std::string getNombre();
@@ -71,6 +65,12 @@ public:
     Post: devuelve la energia actual del personaje
     */
     virtual int mostrarEnergiaActual() = 0;
+
+    /*
+    pre:
+    post: devuelve el elemento del personaje
+    */
+    virtual std::string getElemento() = 0;
 
     /*
     pre:

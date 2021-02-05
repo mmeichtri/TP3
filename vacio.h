@@ -16,7 +16,7 @@ public:
     pre: si existe un personaje...
     post: valida el elemento del personaje, y resta la energia, segun corresponda
     */
-    void restarGastoDeEnergia(Personaje* );
+    int restarGastoDeEnergia(Personaje* );
 
     ~Vacio();
 };

@@ -1,6 +1,9 @@
 #ifndef LECTURACSVCASILLEROS_H_INCLUDED
 #define LECTURACSVCASILLEROS_H_INCLUDED
 #include <string>
+#include "grafo.h"
+#include "casillero.h"
+#include "matriz.h"
 class LecturaCsvCasilleros{
 public:
 
@@ -14,13 +17,13 @@ public:
     pre:
     post:
     */
-    void lecturaArchivo(std::string );
+    void lecturaArchivo(Matriz* , Grafo* ,std::string );
 
     /*
     pre:
     post:
     */
-    void cargaMatrizAdyacencia();
+    Casillero* crearCasillero(std::string, int, int);
 
 };
 

@@ -1,5 +1,6 @@
 #include "grafo.h"
 #include "casillero.h"
+#include "personaje.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -36,9 +37,9 @@ int Grafo::buscarPosicion(int fila, int columna){
 
 
 void Grafo::ingresarArista(Casillero* v1, Casillero* v2, int peso) {
-    //int posicionInicial = buscarPosicion(v1->getFila ,v1->getColumna());
-    //int posicionFinal = buscarPosicion(v2->getFila(),v2->getColumna());
-    //matrizAdyacencia[posicionInicial][posicionFinal] = peso;
+    /*int posicionInicial = buscarPosicion(v1->getFila ,v1->getColumna());
+    int posicionFinal = buscarPosicion(v2->getFila(),v2->getColumna());
+    matrizAdyacencia[posicionInicial][posicionFinal] = peso;*/
 }
 
 void Grafo ::iniciarBool(bool *array) {
@@ -51,12 +52,12 @@ void Grafo::iniciarArray(int* vec){
         vec[i] = 0;
 }
 
-void Grafo::iniciarDistancia(int *vecDistancia, int inicial , string personaje){
+void Grafo::iniciarDistancia(int *vecDistancia, int inicial , Personaje* personaje){
     for(int i = 0; i < MAX; i++){
         if(matrizAdyacencia[inicial][i] == 0)
             vecDistancia[i] = 6000;
-        //else
-//            vecDistancia[i] = this->arrayVertice[i]->devolverPeso(personaje);
+        else
+            vecDistancia[i] = this->arrayVertice[i]->restarGastoDeEnergia(personaje);
     }
 }
 
@@ -72,7 +73,7 @@ int Grafo::minimoVectorNoVisto(bool *visto, int *distancia) {
     return posicion;
 }
 
-int Grafo::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , int columnaFinal, string personaje){
+int Grafo::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , int columnaFinal, Personaje* personaje){
     int inicial = buscarPosicion(filaInicial,columnaInicial);
     int final = buscarPosicion(filaFinal,columnaFinal);
     int distancia[MAX];
@@ -91,8 +92,8 @@ int Grafo::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , in
 
         for(int w = 0; w < MAX; w++){
            if(matrizAdyacencia[vertice][w] != 0 ){
-//               if(distancia[w] > distancia[vertice] + this->arrayVertice[w]->devolverPeso(personaje))
-//                  distancia[w] = distancia[vertice] + this->arrayVertice[w]->devolverPeso(personaje);
+               if(distancia[w] > distancia[vertice] + this->arrayVertice[w]->restarGastoDeEnergia(personaje))
+                  distancia[w] = distancia[vertice] + this->arrayVertice[w]->restarGastoDeEnergia(personaje);
            }
         }
     }
