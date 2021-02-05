@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Montania::Montania(int fila, int columna, Personaje* personaje):Casillero(fila, columna, personaje){
+Montania::Montania(int fila, int columna ):Casillero(fila, columna ){
 }
 
 void Montania::restarGastoDeEnergia(Personaje* personajeJugador){

@@ -4,10 +4,9 @@
 
 using namespace std;
 
-Casillero::Casillero(int fila, int columna, Personaje* personaje){
+Casillero::Casillero(int fila, int columna){
     this->fila = fila;
     this->columna = columna;
-    this->personajeJugador = 0;
 }
 
 string Casillero::getTipo(){

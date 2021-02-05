@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Volcan::Volcan(int fila, int columna, Personaje* personaje):Casillero(fila, columna, personaje){
+Volcan::Volcan(int fila, int columna ):Casillero(fila, columna ){
 }
 
 void Volcan::restarGastoDeEnergia(Personaje* personajeJugador){

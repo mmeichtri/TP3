@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Precipicio::Precipicio(int fila, int columna, Personaje* personaje):Casillero(fila, columna, personaje){
+Precipicio::Precipicio(int fila, int columna ):Casillero(fila, columna ){
 }
 
 void Precipicio::restarGastoDeEnergia(Personaje* personajeJugador){

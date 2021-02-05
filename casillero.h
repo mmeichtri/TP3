@@ -8,14 +8,14 @@ protected:
     int fila;
     int columna;
     std::string tipo;
-    Personaje* personajeJugador;
+    Personaje* personajeJugador = 0;
 public:
 
     /*
     pre:
     post:
     */
-    Casillero(int, int, Personaje* );
+    Casillero(int, int );
 
     /*
     pre:

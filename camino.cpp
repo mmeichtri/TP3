@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Camino::Camino(int fila, int columna, Personaje* personaje):Casillero(fila, columna, personaje){
+Camino::Camino(int fila, int columna):Casillero(fila, columna ){
 
 }
 

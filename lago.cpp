@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Lago::Lago(int fila, int columna, Personaje* personaje):Casillero(fila, columna, personaje){
+Lago::Lago(int fila, int columna):Casillero(fila, columna ){
 
 }
 

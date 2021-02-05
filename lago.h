@@ -10,7 +10,7 @@ public:
     pre:
     post:
     */
-    Lago(int, int, Personaje* );
+    Lago(int, int );
 
     /*
     pre: si existe un personaje...

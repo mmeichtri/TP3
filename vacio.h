@@ -10,7 +10,7 @@ public:
     pre:
     post:
     */
-    Vacio(int, int, Personaje* );
+    Vacio(int, int );
 
     /*
     pre: si existe un personaje...

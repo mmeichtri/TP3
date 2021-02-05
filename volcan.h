@@ -10,7 +10,7 @@ public:
     pre:
     post:
     */
-    Volcan(int, int, Personaje*);
+    Volcan(int, int );
 
     /*
     pre: si existe un personaje...

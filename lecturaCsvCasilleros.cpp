@@ -37,21 +37,21 @@ void LecturaCsvCasilleros::lecturaArchivo(Grafo* matrizAdyacencia, string csv){
 
 void cargaMatrizAdyacencia(Grafo* matrizAdyacencia, string tipoCasillero, int fila, int columna){
     if(tipoCasillero == "Lago"){
-
+        Casillero* casillero = new Lago();
     }
     if(tipoCasillero == "Precipicio"){
-
+        Casillero* casillero = new Precipicio(fila, columna);
     }
     if(tipoCasillero == "Montania"){
-
+        Casillero* casillero = new Montania(fila, columna);
     }
     if(tipoCasillero == "Volcan"){
-
+        Casillero* casillero = new Volcan(fila, columna);
     }
     if(tipoCasillero == "Camino"){
-
+        Casillero* casillero = new Camino(fila, columna);
     }
     if(tipoCasillero == "Vacio"){
-
+        Casillero* casillero = new Vacio(fila, columna);
     }
 }

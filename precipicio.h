@@ -10,7 +10,7 @@ public:
     pre:
     post:
     */
-    Precipicio(int, int, Personaje* );
+    Precipicio(int, int );
 
     /*
     pre: si existe un personaje...

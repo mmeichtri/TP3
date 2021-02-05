@@ -10,7 +10,7 @@ public:
     pre:
     post:
     */
-    Montania(int, int, Personaje* );
+    Montania(int, int );
 
     /*
     pre: si existe un personaje...

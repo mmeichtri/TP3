@@ -10,7 +10,7 @@ public:
     pre:
     post:
     */
-    Camino(int, int, Personaje* );
+    Camino(int, int );
 
     /*
     pre: si existe un personaje...

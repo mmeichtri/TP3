@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Vacio::Vacio(int fila, int columna, Personaje* personaje):Casillero(fila, columna, personaje){
+Vacio::Vacio(int fila, int columna ):Casillero(fila, columna ){
 
 }
 
