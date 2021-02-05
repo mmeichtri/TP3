@@ -1,0 +1,62 @@
+//
+// Created by jose on 2/2/21.
+//
+
+#include "personaje.h"
+Personaje :: Personaje(string nombre,int escudo,int vida){
+
+    this -> nombre = nombre;
+    this -> escudo = escudo;
+    this -> vida =vida;
+    energia = rand() % (EMAX+1);
+}
+
+void Personaje ::mostrarPersonaje() {
+
+    cout << "NOMBRE:" << nombre << endl;
+    cout << "ELEMENTO: " << elemento() << endl;
+    cout << "ESCUDO : " << escudo << endl;
+    cout << " VIDA : " << vida << endl;
+    cout << "ENERGIA: " << energia << endl;
+}
+
+string Personaje ::obtenerNombre() {
+    return nombre;
+}
+
+int Personaje :: defensaEscudo(int valorDano) {
+
+    if(escudo == 1)
+       valorDano = valorDano - ((valorDano *10) / 100 );
+    else if(escudo == 2)
+        valorDano = valorDano - ((valorDano *20) / 100 );
+    else if(escudo > 2)
+        valorDano = valorDano - ((valorDano *80) / 100 );
+
+    return valorDano;
+}
+
+void Personaje ::cambiarFYC(int fila, int columna) {
+    this -> fila = fila;
+    this -> columna = columna;
+}
+
+int Personaje ::obtenerFila() {
+    return fila;
+}
+int Personaje ::obtenerColumna() {
+    return columna;
+}
+void Personaje ::modificarVida(int vida) {
+    this -> vida = vida;
+}
+
+int Personaje ::obtenerVida() {
+    return vida;
+}
+
+bool Personaje ::comprobarVida() {
+    return vida > 0;
+}
+
+
