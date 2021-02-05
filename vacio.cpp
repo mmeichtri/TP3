@@ -1,0 +1,16 @@
+#include "vacio.h"
+#include "personaje.h"
+#include <iostream>
+using namespace std;
+
+Vacio::Vacio(int fila, int columna, Personaje* personaje):Casillero(fila, columna, personaje){
+
+}
+
+//todos los personajes pierden 15 de energia al estar en un casillero de tipo Vacio
+void Camino::restarGastoDeEnergia(Personaje* personajeJugador){
+    this->personajeJugador->energia -= 15;
+}
+
+Vacio::~Vacio(){
+}

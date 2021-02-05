@@ -1,0 +1,91 @@
+# depslib dependency file v1.0
+1584205420 source:c:\users\1\desktop\pruebastp3\grafos\main.cpp
+	<iostream>
+
+1612051022 source:c:\users\1\desktop\pruebastp3\grafos\casillero.cpp
+	"casillero.h"
+	<iostream>
+	<string>
+
+1612491727 c:\users\1\desktop\pruebastp3\grafos\casillero.h
+	<string.h>
+	"personaje.h"
+
+1612491814 source:c:\users\1\desktop\pruebastp3\grafos\camino.cpp
+	"camino.h"
+	"personaje.h"
+	<iostream>
+
+1612141702 c:\users\1\desktop\pruebastp3\grafos\personaje.h
+	<string>
+	"lista.h"
+
+1607297277 c:\users\1\desktop\pruebastp3\grafos\lista.h
+
+1612491742 c:\users\1\desktop\pruebastp3\grafos\camino.h
+	"casillero.h"
+	"personaje.h"
+
+1612142664 source:c:\users\1\desktop\pruebastp3\grafos\grafo.cpp
+	"grafo.h"
+	"casillero.h"
+	<iostream>
+	<string>
+
+1612049871 c:\users\1\desktop\pruebastp3\grafos\grafo.h
+	"casillero.h"
+	<string>
+
+1612050927 source:c:\users\1\desktop\pruebastp3\grafos\lago.cpp
+	"lago.h"
+	"personaje.h"
+	<iostream>
+
+1612051305 c:\users\1\desktop\pruebastp3\grafos\lago.h
+	"casillero.h"
+	"personaje.h"
+
+1612049184 source:c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.cpp
+	"lecturaCsvCasilleros.h"
+	<iostream>
+	<string>
+
+1612049177 c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.h
+	<string>
+
+1612050943 source:c:\users\1\desktop\pruebastp3\grafos\precipicio.cpp
+	"precipicio.h"
+	"personaje.h"
+	<iostream>
+
+1612051313 c:\users\1\desktop\pruebastp3\grafos\precipicio.h
+	"casillero.h"
+	"personaje.h"
+
+1612050936 source:c:\users\1\desktop\pruebastp3\grafos\montania.cpp
+	"montania.h"
+	"personaje.h"
+	<iostream>
+
+1612051310 c:\users\1\desktop\pruebastp3\grafos\montania.h
+	"casillero.h"
+	"personaje.h"
+
+1612050853 source:c:\users\1\desktop\pruebastp3\grafos\vacio.cpp
+	"vacio.h"
+	"personaje.h"
+	<iostream>
+
+1612051322 c:\users\1\desktop\pruebastp3\grafos\vacio.h
+	"casillero.h"
+	"personaje.h"
+
+1612051232 source:c:\users\1\desktop\pruebastp3\grafos\volcan.cpp
+	"volcan.h"
+	"personaje.h"
+	<iostream>
+
+1612051328 c:\users\1\desktop\pruebastp3\grafos\volcan.h
+	"casillero.h"
+	"personaje.h"
+
