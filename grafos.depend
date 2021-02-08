@@ -1,6 +1,10 @@
 # depslib dependency file v1.0
-1584205420 source:c:\users\1\desktop\pruebastp3\grafos\main.cpp
+1612569025 source:c:\users\1\desktop\pruebastp3\grafos\main.cpp
 	<iostream>
+	"matriz.h"
+	"grafo.h"
+	"lecturaCsvCasilleros.h"
+	"personaje.h"
 
 1612494421 source:c:\users\1\desktop\pruebastp3\grafos\casillero.cpp
 	"casillero.h"
@@ -16,7 +20,7 @@
 	"personaje.h"
 	<iostream>
 
-1612568774 c:\users\1\desktop\pruebastp3\grafos\personaje.h
+1612752684 c:\users\1\desktop\pruebastp3\grafos\personaje.h
 	<string>
 	"lista.h"
 
@@ -47,7 +51,7 @@
 	"casillero.h"
 	"personaje.h"
 
-1612568198 source:c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.cpp
+1612568969 source:c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.cpp
 	"lecturaCsvCasilleros.h"
 	"grafo.h"
 	<iostream>
@@ -62,7 +66,7 @@
 	"volcan.h"
 	"matriz.h"
 
-1612567891 c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.h
+1612568958 c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.h
 	<string>
 	"grafo.h"
 	"casillero.h"
@@ -116,4 +120,38 @@
 	"camino.h"
 	"vacio.h"
 	"volcan.h"
+
+1612752516 source:c:\users\1\desktop\pruebastp3\grafos\aire.cpp
+	"aire.h"
+	"personaje.h"
+	<iostream>
+
+1612565374 c:\users\1\desktop\pruebastp3\grafos\aire.h
+	"personaje.h"
+
+1612752651 source:c:\users\1\desktop\pruebastp3\grafos\agua.cpp
+	"agua.h"
+	<iostream>
+	<string>
+	"personaje.h"
+
+1612752434 c:\users\1\desktop\pruebastp3\grafos\agua.h
+	<string>
+	"personaje.h"
+
+1612752521 source:c:\users\1\desktop\pruebastp3\grafos\fuego.cpp
+	"fuego.h"
+	<iostream>
+	"personaje.h"
+
+1612566969 c:\users\1\desktop\pruebastp3\grafos\fuego.h
+	"personaje.h"
+
+1612752526 source:c:\users\1\desktop\pruebastp3\grafos\tierra.cpp
+	"tierra.h"
+	<iostream>
+	"personaje.h"
+
+1612565389 c:\users\1\desktop\pruebastp3\grafos\tierra.h
+	"personaje.h"
 

@@ -2,6 +2,7 @@
 //#include "interfazUsuario.h"
 #include <iostream>
 #include <string>
+#include "personaje.h"
 using namespace std;
 
 Agua::Agua(string nombre, int escudo, int vida):Personaje(nombre, escudo, vida){

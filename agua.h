@@ -1,6 +1,7 @@
 #ifndef AGUA_H_INCLUDED
 #define AGUA_H_INCLUDED
 #include <string>
+#include "personaje.h"
 class Agua : public Personaje{
 private:
     int cantidadAlimentaciones = 0;
