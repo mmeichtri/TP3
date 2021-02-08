@@ -20,16 +20,16 @@ void Matriz::pasarAdyacencia(Grafo *grafo) {
         for (int columna = 0; columna < RANG; columna ++) {
 
             if (columna - 1 >= 0)
-                graf -> ingresarArista(tablero[fila][columna], tablero[fila][columna - 1], 1);
+                grafo -> ingresarArista(tablero[fila][columna], tablero[fila][columna - 1], 1);
             if (columna + 1 < RANG)
-                graf -> ingresarArista(tablero[fila][columna], tablero[fila][columna+ 1], 1);
+                grafo -> ingresarArista(tablero[fila][columna], tablero[fila][columna+ 1], 1);
             if (fila == 0)
-                graf -> ingresarArista(tablero[fila][columna], tablero[fila + 1][columna], 1);
+                grafo -> ingresarArista(tablero[fila][columna], tablero[fila + 1][columna], 1);
             else if (fila == RANG-1)
-                graf -> ingresarArista(tablero[fila][columna], tablero[fila - 1][columna], 1);
+                grafo -> ingresarArista(tablero[fila][columna], tablero[fila - 1][columna], 1);
             else {
-                graf -> ingresarArista(tablero[fila][columna], tablero[fila - 1][columna], 1);
-                graf -> ingresarArista(tablero[fila][columna], tablero[fila + 1][columna], 1);
+                grafo -> ingresarArista(tablero[fila][columna], tablero[fila - 1][columna], 1);
+                grafo -> ingresarArista(tablero[fila][columna], tablero[fila + 1][columna], 1);
             }
         }
     }
