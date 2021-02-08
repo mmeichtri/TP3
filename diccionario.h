@@ -2,7 +2,6 @@
 #define DICCIONARIO_H
 
 #include "bin_search_tree.h"
-#include "par_diccionario.h"
 #include "personaje.h"
 
 using namespace std;

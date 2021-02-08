@@ -18,7 +18,7 @@ private:
 	BinTreeNode<T> *_prev;
 
 public:
-	BinTreeNode(T data);
+	BinTreeNode(T data, string key);
 	~BinTreeNode();
 	T getData();
 	string getKey();
@@ -47,10 +47,10 @@ BinTreeNode <T>::BinTreeNode(T data, string key){
 
 template <typename T>
 bool BinTreeNode <T>::addBst(T data, string key){
-	if (data == this->_data)
+	if (key == this->_key)
 		return false;
 
-	else if (data < this->_data){
+	else if (key < this->_key){
 		if (_left != NULL)
 			return _left->addBst(data, key);
 		else{
@@ -129,8 +129,10 @@ T* BinTreeNode <T>::search(string key){
 	//Comparo el dato de mi nodo con el dato a buscar
 	//Si coinciden, devuelvo un puntero al dato 
 	//OJO: si el dato ya es de tipo puntero lo que devuelve es un puntero doble
+	if (this->_data == NULL)
+		return NULL;
 	if (this->_key == key)
-		return this->&_data;
+		return &this->_data;
 
 	else if (key < this->_key)
 		//

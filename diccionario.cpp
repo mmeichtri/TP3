@@ -2,19 +2,21 @@
 
 
 Diccionario::Diccionario(){
-	conjunto = NULL;
+	conjunto = new Bst<Personaje*>;
 	tamanio = 0;
 }
 
 
 Personaje* Diccionario::buscar(string nombre){
+	if (conjunto->empty())
+		return NULL;
 	//
 	//Bst::search(...) devuelve un puntero al tipo de dato guardado.
 	//Como en esta implementación el diccionario guarda como valores
-	//PUNTEROS a personaje, al obtener el resultado de searc() es
+	//PUNTEROS a personaje, al obtener el resultado de search() es
 	//necesario desreferenciar el objeto para no devolver un puntero doble.
-	Personaje* hallado = *(conjunto->search(nombre));	//Bst::search()
-	return hallado;
+	Personaje** hallado = conjunto->search(nombre);
+	return hallado == NULL ? NULL : *hallado;
 }
 
 
@@ -28,8 +30,8 @@ void Diccionario::agregar(Personaje *p){
 	// |  por fuera antes de llamar a agregar()
 	// |
 	// V
-	if (!incluye(p->getNombre())) 
-		conjunto->add(p);
+	if (!incluye(p->nombre())) 
+		conjunto->add(p, p->nombre());
 	tamanio++;
 }
 

@@ -1,6 +1,7 @@
 #ifndef BST_H
 #define BST_H
 
+#include <string>
 #include "bin_tree_node.h"
 #include "queue.h"
 
@@ -17,10 +18,10 @@ private:
 
 public:
 	Bst();
-	Bst(T data);
+	Bst(T data, string key);
 	~Bst();
 	
-	void add(T data);
+	void add(T data, string key);
 	//Agrega <data> al árbol en caso de que no esté incluido previamente.
 	//POST: agrega un dato nuevo e incrementa el tamaño.
 	//
@@ -82,8 +83,8 @@ Bst <T>::Bst(){
 
 
 template <typename T>
-Bst <T>::Bst(T data){
-	_root = BinTreeNode<T>(data);
+Bst <T>::Bst(T data, string key){
+	_root = new BinTreeNode<T>(data, key);
 	_size = 1;
 	_levels = 1;
 }
@@ -97,13 +98,13 @@ bool Bst<T> ::empty(){
 
 
 template <typename T>
-void Bst <T>::add(T data){
+void Bst <T>::add(T data, string key){
 	if(empty()){
-		_root = new BinTreeNode<T>(data);
+		_root = new BinTreeNode<T>(data, key);
 		_size = 1;
 		_levels = 1;
 	}
-	else if (_root->addBst(data))
+	else if (_root->addBst(data, key))
 		_size++;
 }
 
@@ -208,7 +209,7 @@ T* Bst <T>::search(string key){
 	//Primero chequeo que el árbol no esté vacío.
 	//Si lo está, devuelvo NULL; si no, ejecuto el método de búsqueda
 	//correspondiente a la clase nodo y devuelvo lo que retorne.
-	if (_root == NULL)
+	if (empty())
 		return NULL;
 	return _root->search(key);
 }
