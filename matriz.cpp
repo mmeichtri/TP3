@@ -5,19 +5,17 @@ Matriz::Matriz() {
 }
 
 void Matriz::iniciarMatriz() {
-
     for(int fila = 0; fila < RANG ; fila++){
         for(int col = 0; col < RANG ; col++)
            tablero[fila][col] = 0;
     }
 }
 
-void Matriz ::setTablero(Casillero *tipoCa, int fila, int columna) {
-    tablero[fila][columna] = tipoCa;
+void Matriz::setTablero(Casillero *tipoCasillero, int fila, int columna) {
+    tablero[fila][columna] = tipoCasillero;
 }
 
-void Matriz::pasarAdyacencia(Grafo *graf) {
-
+void Matriz::pasarAdyacencia(Grafo *grafo) {
     for(int fila = 0; fila  < RANG ; fila ++) {
         for (int columna = 0; columna < RANG; columna ++) {
 
