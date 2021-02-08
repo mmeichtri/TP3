@@ -64,9 +64,10 @@ public:
 	void showPostOrder();
 	//POST: imprime los elementos del árbol ordenados según recorrido de post-orden.
 	//
-	T* search(T data);
-	//Busca <data> en el árbol.
-	//POST: devuelve true o false si <data> está o no en el árbol respectivamente.
+	T* search(string key);
+	//Busca una clave en el árbol y devuelve su valor.
+	//POST: si existe la clave, devuelve un PUNTERO al valor correspondiente.
+	//(OJO: si el tipo de dato a guardar es puntero a algo, devuelve un doble puntero).
 	//
 };
 
@@ -202,14 +203,14 @@ void Bst <T>::showPostOrder(){
 
 
 template <typename T>
-T* Bst <T>::search(T data){
+T* Bst <T>::search(string key){
 	//
 	//Primero chequeo que el árbol no esté vacío.
 	//Si lo está, devuelvo NULL; si no, ejecuto el método de búsqueda
 	//correspondiente a la clase nodo y devuelvo lo que retorne.
 	if (_root == NULL)
 		return NULL;
-	return _root->search(data);
+	return _root->search(key);
 }
 
 

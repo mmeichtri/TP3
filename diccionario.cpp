@@ -1,5 +1,4 @@
 #include "diccionario.h"
-
 Diccionario::Diccionario(){
 	conjunto = NULL;
 	tamanio = 0;
@@ -7,17 +6,13 @@ Diccionario::Diccionario(){
 
 
 Personaje* Diccionario::buscar(string nombre){
-	Par *aux = new Par(nombre);
 	//
-	//primero, Bst::search(string) llama a Bstnodo::search(string)
-	//y ésta última compara el argumento con el objeto guardado en el nodo
-	//OJO: los search() devuelven puntero al dato guardado en el nodo.
-	//Como los nodos guardan PUNTERO A PAR, hay que desreferenciar lo que devuelva search (puntero a puntero a par)
-	//
-	//Una vez hallado el par, se deuelve el valor (puntero a personaje) que guarda.
-	Par* hallado = *(conjunto->search(aux));	//Bst::search()
-	delete aux;
-	return hallado->obtenerValor();
+	//Bst::search(...) devuelve un puntero al tipo de dato guardado.
+	//Como en esta implementación el diccionario guarda como valores
+	//PUNTEROS a personaje, al obtener el resultado de searc() es
+	//necesario desreferenciar el objeto para no devolver un puntero doble.
+	Personaje* hallado = *(conjunto->search(nombre));	//Bst::search()
+	return hallado;
 }
 
 

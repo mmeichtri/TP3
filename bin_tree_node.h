@@ -2,6 +2,8 @@
 #define BINARY_TREE_NODE_H
 
 #include "queue.h"
+#include <string>
+
 
 using namespace std;
 
@@ -10,6 +12,7 @@ template <typename T>
 class BinTreeNode{
 private:
 	T _data;
+	string _key;
 	BinTreeNode<T> *_left;
 	BinTreeNode<T> *_right;
 	BinTreeNode<T> *_prev;
@@ -18,11 +21,12 @@ public:
 	BinTreeNode(T data);
 	~BinTreeNode();
 	T getData();
-	bool addBst(T _data);
+	string getKey();
+	bool addBst(T _data, string key);
 	void preOrder(Queue<T> *&list);
 	void inOrder(Queue<T> *&list);
 	void postOrder(Queue<T> *&list);
-	T* search(T data);
+	T* search(string key);
 	//PRE: el nodo existe.
 	//POST: devuelve un puntero al dato si <data> coincide con el dato del nodo y NULL
 	//si no se puede hallar a izquierda o derecha según la desigualdad.
@@ -32,8 +36,9 @@ public:
 
 
 template <typename T>
-BinTreeNode <T>::BinTreeNode(T data){
+BinTreeNode <T>::BinTreeNode(T data, string key){
 	_data = data;
+	_key = key;
 	_left = NULL;
 	_right = NULL;
 	_prev = NULL;
@@ -41,23 +46,23 @@ BinTreeNode <T>::BinTreeNode(T data){
 
 
 template <typename T>
-bool BinTreeNode <T>::addBst(T data){
+bool BinTreeNode <T>::addBst(T data, string key){
 	if (data == this->_data)
 		return false;
 
 	else if (data < this->_data){
 		if (_left != NULL)
-			return _left->addBst(data);
+			return _left->addBst(data, key);
 		else{
-			_left = new BinTreeNode(data);
+			_left = new BinTreeNode(data, key);
 			_left->_prev = this;
 		}
 	}
 	else {
 		if(_right != NULL)
-			return _right->addBst(data);
+			return _right->addBst(data, key);
 		else{
-			_right = new BinTreeNode(data);
+			_right = new BinTreeNode(data, key);
 			_right->_prev = this;
 		}
 	}
@@ -68,6 +73,12 @@ bool BinTreeNode <T>::addBst(T data){
 template <typename T>
 T BinTreeNode <T>::getData(){
 	return _data;
+}
+
+
+template <typename T>
+string BinTreeNode <T>::getKey(){
+	return _key;
 }
 
 
@@ -113,30 +124,31 @@ void BinTreeNode <T>::postOrder(Queue<T> *&list){
 
 
 template <typename T>
-T* BinTreeNode <T>::search(T data){
+T* BinTreeNode <T>::search(string key){
 	//
 	//Comparo el dato de mi nodo con el dato a buscar
 	//Si coinciden, devuelvo un puntero al dato 
 	//OJO: si el dato ya es de tipo puntero lo que devuelve es un puntero doble
-	if (this->_data == data)
-		return &_data;
+	if (this->_key == key)
+		return this->&_data;
 
-	else if (data < this->_data)
+	else if (key < this->_key)
 		//
 		//En caso de no coincidir y el dato a buscar ser menor,
 		//chequeo que haya un subárbol izquierdo; si no existe devuelvo NULL
 		//si existe, vuelvo a aplicar el algoritmo sobre el subárbol izquierdo
-		return (_left == NULL ? NULL : _left->search(data));
+		return (_left == NULL ? NULL : _left->search(key));
 	else
 		//
 		//mismo que en el caso anterior pero para el árbol derecho
 		//en caso de que el valor a buscar sea mayor que el del nodo
-		return (_right == NULL ? NULL : _right->search(data));
+		return (_right == NULL ? NULL : _right->search(key));
 }
 
 
 template <typename T>
 BinTreeNode <T>::~BinTreeNode(){
+	delete _data;
 	if (_left != NULL) delete _left;
 	if (_right != NULL) delete _right;
 }
