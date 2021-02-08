@@ -33,7 +33,6 @@ void LecturaCsvCasilleros::lecturaArchivo(Matriz* tablero, Grafo* grafo, string 
 
     while(!archivo.eof()){
         if(getline(archivo, aux, ',')){
-            getline(archivo, aux, ',');
             fila = std::stoi(aux);
             getline(archivo, aux, ',');
             columna = std::stoi(aux);

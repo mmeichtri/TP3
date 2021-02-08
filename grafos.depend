@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1612569025 source:c:\users\1\desktop\pruebastp3\grafos\main.cpp
+1612753466 source:c:\users\1\desktop\pruebastp3\grafos\main.cpp
 	<iostream>
 	"matriz.h"
 	"grafo.h"
 	"lecturaCsvCasilleros.h"
 	"personaje.h"
+	"agua.h"
 
 1612494421 source:c:\users\1\desktop\pruebastp3\grafos\casillero.cpp
 	"casillero.h"
@@ -51,7 +52,7 @@
 	"casillero.h"
 	"personaje.h"
 
-1612568969 source:c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.cpp
+1612754062 source:c:\users\1\desktop\pruebastp3\grafos\lecturacsvcasilleros.cpp
 	"lecturaCsvCasilleros.h"
 	"grafo.h"
 	<iostream>
@@ -154,4 +155,9 @@
 
 1612565389 c:\users\1\desktop\pruebastp3\grafos\tierra.h
 	"personaje.h"
+
+1612752914 source:c:\users\1\desktop\pruebastp3\grafos\personaje.cpp
+	"personaje.h"
+	<iostream>
+	<string>
 
