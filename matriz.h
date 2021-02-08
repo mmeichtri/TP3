@@ -24,11 +24,11 @@ public:
 
     //PRE: PUNTERO A CASILLERO VALIDO , VARIABLES INT FILA Y COLUMNA VALIDAS.
     //POST: COLOCA LA VARIABLE DE TIPO CASILLERO* EN LA MATRIZ TABLERO EN LA POSICION DE LA FILA Y COL.
-    void setTablero(Casillero* tipoCa , int fila , int columna);
+    void setTablero(Casillero* ,int  , int );
 
     //PRE: PUNTERO GRAFO VALIDO.
     //POST: LLENA LA MATRIZ DE ADYACENCIA, INDICANDO QUE VERTICES SON ADYACENTES.
-    void pasarAdyacencia(Grafo* graf);
+    void pasarAdyacencia(Grafo* );
 
 };
 
