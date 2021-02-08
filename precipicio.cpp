@@ -7,7 +7,7 @@ Precipicio::Precipicio(int fila, int columna ):Casillero(fila, columna ){
 }
 
 int Precipicio::restarGastoDeEnergia(Personaje* personajeJugador){
-    /*if(personajeJugador->getElemento() == "tierra"){
+    if(personajeJugador->getElemento() == "tierra"){
         return 2;
     }
     if(personajeJugador->getElemento() == "fuego"){
@@ -15,7 +15,7 @@ int Precipicio::restarGastoDeEnergia(Personaje* personajeJugador){
     }
     if(personajeJugador->getElemento() == "agua"){
         return 1;
-    }*/
+    }
     return 0;
 }
 

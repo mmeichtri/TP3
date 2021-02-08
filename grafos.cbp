@@ -32,7 +32,38 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="agua.cpp" />
+		<Unit filename="agua.h" />
+		<Unit filename="aire.cpp" />
+		<Unit filename="aire.h" />
+		<Unit filename="camino.cpp" />
+		<Unit filename="camino.h" />
+		<Unit filename="casillero.cpp" />
+		<Unit filename="casillero.h" />
+		<Unit filename="fuego.cpp" />
+		<Unit filename="fuego.h" />
+		<Unit filename="grafo.cpp" />
+		<Unit filename="grafo.h" />
+		<Unit filename="lago.cpp" />
+		<Unit filename="lago.h" />
+		<Unit filename="lecturaCsvCasilleros.cpp" />
+		<Unit filename="lecturaCsvCasilleros.h" />
+		<Unit filename="lista.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="matriz.cpp" />
+		<Unit filename="matriz.h" />
+		<Unit filename="montania.cpp" />
+		<Unit filename="montania.h" />
+		<Unit filename="personaje.cpp" />
+		<Unit filename="personaje.h" />
+		<Unit filename="precipicio.cpp" />
+		<Unit filename="precipicio.h" />
+		<Unit filename="tierra.cpp" />
+		<Unit filename="tierra.h" />
+		<Unit filename="vacio.cpp" />
+		<Unit filename="vacio.h" />
+		<Unit filename="volcan.cpp" />
+		<Unit filename="volcan.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

@@ -7,7 +7,7 @@ Volcan::Volcan(int fila, int columna ):Casillero(fila, columna ){
 }
 
 int Volcan::restarGastoDeEnergia(Personaje* personajeJugador){
-    /*if(personajeJugador->getElemento() == "agua"){
+    if(personajeJugador->getElemento() == "agua"){
         return 2;
     }
     if(personajeJugador->getElemento() == "tierra"){
@@ -15,7 +15,7 @@ int Volcan::restarGastoDeEnergia(Personaje* personajeJugador){
     }
     if(personajeJugador->getElemento() == "aire"){
         return 1;
-    }*/
+    }
     return 0;
 }
 

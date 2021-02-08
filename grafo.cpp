@@ -30,16 +30,16 @@ int Grafo::buscarPosicion(int fila, int columna){
             posicion = cont;
             encontrado = true;
         }
-        cont ++;
+        cont++;
     }
     return posicion;
 }
 
 
 void Grafo::ingresarArista(Casillero* v1, Casillero* v2, int peso) {
-    /*int posicionInicial = buscarPosicion(v1->getFila ,v1->getColumna());
+    int posicionInicial = buscarPosicion(v1->getFila() ,v1->getColumna());
     int posicionFinal = buscarPosicion(v2->getFila(),v2->getColumna());
-    matrizAdyacencia[posicionInicial][posicionFinal] = peso;*/
+    matrizAdyacencia[posicionInicial][posicionFinal] = peso;
 }
 
 void Grafo ::iniciarBool(bool *array) {

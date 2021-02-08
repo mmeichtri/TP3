@@ -8,7 +8,7 @@ Lago::Lago(int fila, int columna):Casillero(fila, columna ){
 }
 
 int Lago::restarGastoDeEnergia(Personaje* personajeJugador){
-    /*if(personajeJugador->getElemento() == "fuego"){
+    if(personajeJugador->getElemento() == "fuego"){
         return 2;
     }
     if(personajeJugador->getElemento() == "tierra"){
@@ -16,7 +16,7 @@ int Lago::restarGastoDeEnergia(Personaje* personajeJugador){
     }
     if(personajeJugador->getElemento() == "aire"){
         return 1;
-    }*/
+    }
     return 0;
 }
 
