@@ -10,7 +10,7 @@ using namespace std;
 
 class Diccionario{
 private:
-	Bst<Par*> *conjunto;	//arbol de punteros a par (cada nodo tiene un puntero a par)
+	Bst<Personaje*> *conjunto;	//arbol de punteros a par (cada nodo tiene un puntero a par)
 	size_t tamanio;
 
 public:

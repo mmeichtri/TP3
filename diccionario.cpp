@@ -1,4 +1,6 @@
 #include "diccionario.h"
+
+
 Diccionario::Diccionario(){
 	conjunto = NULL;
 	tamanio = 0;
