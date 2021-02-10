@@ -11,6 +11,11 @@ protected:
     int escudo = 0;
     int vida = 0;
     int energia = 0;
+<<<<<<< HEAD
+    int fila = 0;
+    int columna = 0;
+=======
+>>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
 public:
     /*
     pre:
@@ -26,6 +31,21 @@ public:
 
     /*
     pre:
+<<<<<<< HEAD
+    post: devuelve la fila
+    */
+    int getFila();
+
+    /*
+    pre:
+    post: devuelve la columna
+    */
+    int getColumna();
+
+    /*
+    pre:
+=======
+>>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
     post: devuelve el nombre del personaje
     */
     std::string getNombre();
