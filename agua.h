@@ -13,6 +13,33 @@ public:
     Agua(std::string, int, int );
 
     /*
+<<<<<<< HEAD
+    pre: si fila >=0 || fila < 64
+    post: guarda la fila
+    */
+    void setFila(int );
+
+    /*
+    pre: si columna >=0 || columna < 64
+    post: guarda la columna
+    */
+    void setColumna(int );
+
+    /*
+    pre:
+    post: devuelve la fila
+    */
+    int getFila();
+
+    /*
+    pre:
+    post: devuelve la columna
+    */
+    int getColumna();
+
+    /*
+=======
+>>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
     pre: si this->energia < 20 && this->energia + 10 < 20
     post: alimenta el personaje indicado
     */
