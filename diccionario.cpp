@@ -1,11 +1,9 @@
 #include "diccionario.h"
 
-
 Diccionario::Diccionario(){
 	conjunto = new Bst<Personaje*>;
 	tamanio = 0;
 }
-
 
 Personaje* Diccionario::buscar(string nombre){
 	if (conjunto->empty())
@@ -19,11 +17,9 @@ Personaje* Diccionario::buscar(string nombre){
 	return hallado == NULL ? NULL : *hallado;
 }
 
-
 bool Diccionario::incluye(string nombre){
 	return (buscar(nombre) != NULL);
 }
-
 
 void Diccionario::agregar(Personaje *p){
 	//Está línea podría omitirse y ejecutarse
@@ -34,7 +30,6 @@ void Diccionario::agregar(Personaje *p){
 		conjunto->add(p, p->getNombre());
 	tamanio++;
 }
-
 
 Diccionario::~Diccionario(){
 	delete conjunto;

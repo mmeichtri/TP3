@@ -1,27 +1,30 @@
 # depslib dependency file v1.0
-1612753466 source:c:\users\1\desktop\pruebastp3\grafos\main.cpp
+1612825311 source:c:\users\1\desktop\pruebastp3\grafos\main.cpp
 	<iostream>
 	"matriz.h"
 	"grafo.h"
 	"lecturaCsvCasilleros.h"
 	"personaje.h"
 	"agua.h"
+	"tierra.h"
+	"aire.h"
+	"fuego.h"
 
-1612494421 source:c:\users\1\desktop\pruebastp3\grafos\casillero.cpp
+1612986584 source:c:\users\1\desktop\pruebastp3\grafos\casillero.cpp
 	"casillero.h"
 	<iostream>
 	<string>
 
-1612565068 c:\users\1\desktop\pruebastp3\grafos\casillero.h
+1612986399 c:\users\1\desktop\pruebastp3\grafos\casillero.h
 	<string.h>
 	"personaje.h"
 
-1612566652 source:c:\users\1\desktop\pruebastp3\grafos\camino.cpp
+1612823595 source:c:\users\1\desktop\pruebastp3\grafos\camino.cpp
 	"camino.h"
 	"personaje.h"
 	<iostream>
 
-1612752684 c:\users\1\desktop\pruebastp3\grafos\personaje.h
+1612986786 c:\users\1\desktop\pruebastp3\grafos\personaje.h
 	<string>
 	"lista.h"
 
@@ -31,7 +34,7 @@
 	"casillero.h"
 	"personaje.h"
 
-1612566795 source:c:\users\1\desktop\pruebastp3\grafos\grafo.cpp
+1612823063 source:c:\users\1\desktop\pruebastp3\grafos\grafo.cpp
 	"grafo.h"
 	"casillero.h"
 	"personaje.h"
@@ -43,7 +46,7 @@
 	"personaje.h"
 	<string>
 
-1612566631 source:c:\users\1\desktop\pruebastp3\grafos\lago.cpp
+1612823394 source:c:\users\1\desktop\pruebastp3\grafos\lago.cpp
 	"lago.h"
 	"personaje.h"
 	<iostream>
@@ -73,7 +76,7 @@
 	"casillero.h"
 	"matriz.h"
 
-1612566670 source:c:\users\1\desktop\pruebastp3\grafos\precipicio.cpp
+1612823325 source:c:\users\1\desktop\pruebastp3\grafos\precipicio.cpp
 	"precipicio.h"
 	"personaje.h"
 	<iostream>
@@ -82,7 +85,7 @@
 	"casillero.h"
 	"personaje.h"
 
-1612566662 source:c:\users\1\desktop\pruebastp3\grafos\montania.cpp
+1612823389 source:c:\users\1\desktop\pruebastp3\grafos\montania.cpp
 	"montania.h"
 	"personaje.h"
 	<iostream>
@@ -100,7 +103,7 @@
 	"casillero.h"
 	"personaje.h"
 
-1612566685 source:c:\users\1\desktop\pruebastp3\grafos\volcan.cpp
+1612823404 source:c:\users\1\desktop\pruebastp3\grafos\volcan.cpp
 	"volcan.h"
 	"personaje.h"
 	<iostream>
@@ -109,10 +112,10 @@
 	"casillero.h"
 	"personaje.h"
 
-1612567268 source:c:\users\1\desktop\pruebastp3\grafos\matriz.cpp
+1612755552 source:c:\users\1\desktop\pruebastp3\grafos\matriz.cpp
 	"matriz.h"
 
-1612567226 c:\users\1\desktop\pruebastp3\grafos\matriz.h
+1612754759 c:\users\1\desktop\pruebastp3\grafos\matriz.h
 	"grafo.h"
 	"casillero.h"
 	"montania.h"
@@ -122,42 +125,91 @@
 	"vacio.h"
 	"volcan.h"
 
-1612752516 source:c:\users\1\desktop\pruebastp3\grafos\aire.cpp
+1612986733 source:c:\users\1\desktop\pruebastp3\grafos\aire.cpp
 	"aire.h"
 	"personaje.h"
 	<iostream>
 
-1612565374 c:\users\1\desktop\pruebastp3\grafos\aire.h
+1612986635 c:\users\1\desktop\pruebastp3\grafos\aire.h
 	"personaje.h"
 
-1612752651 source:c:\users\1\desktop\pruebastp3\grafos\agua.cpp
+1612986729 source:c:\users\1\desktop\pruebastp3\grafos\agua.cpp
 	"agua.h"
 	<iostream>
 	<string>
 	"personaje.h"
 
-1612752434 c:\users\1\desktop\pruebastp3\grafos\agua.h
+1612986626 c:\users\1\desktop\pruebastp3\grafos\agua.h
 	<string>
 	"personaje.h"
 
-1612752521 source:c:\users\1\desktop\pruebastp3\grafos\fuego.cpp
+1612986739 source:c:\users\1\desktop\pruebastp3\grafos\fuego.cpp
 	"fuego.h"
 	<iostream>
 	"personaje.h"
 
-1612566969 c:\users\1\desktop\pruebastp3\grafos\fuego.h
+1612986640 c:\users\1\desktop\pruebastp3\grafos\fuego.h
 	"personaje.h"
 
-1612752526 source:c:\users\1\desktop\pruebastp3\grafos\tierra.cpp
+1612986724 source:c:\users\1\desktop\pruebastp3\grafos\tierra.cpp
 	"tierra.h"
 	<iostream>
 	"personaje.h"
 
-1612565389 c:\users\1\desktop\pruebastp3\grafos\tierra.h
+1612986647 c:\users\1\desktop\pruebastp3\grafos\tierra.h
 	"personaje.h"
 
-1612752914 source:c:\users\1\desktop\pruebastp3\grafos\personaje.cpp
+1612985128 source:c:\users\1\desktop\pruebastp3\grafos\personaje.cpp
 	"personaje.h"
 	<iostream>
 	<string>
+
+1612833985 source:c:\users\1\desktop\pruebastp3\grafos\diccionario.cpp
+	"diccionario.h"
+
+1612824925 c:\users\1\desktop\pruebastp3\grafos\diccionario.h
+	"bin_search_tree.h"
+	"personaje.h"
+
+1612824785 c:\users\1\desktop\pruebastp3\grafos\bin_search_tree.h
+	<string>
+	"bin_tree_node.h"
+	"queue.h"
+
+1612824861 c:\users\1\desktop\pruebastp3\grafos\bin_tree_node.h
+	"queue.h"
+	<string>
+
+1612825086 c:\users\1\desktop\pruebastp3\grafos\queue.h
+	"node_double.h"
+	<iostream>
+
+1612825055 c:\users\1\desktop\pruebastp3\grafos\node_double.h
+	"node.h"
+
+1612825143 c:\users\1\desktop\pruebastp3\grafos\node.h
+	<cstddef>
+
+1612833992 source:c:\users\1\desktop\pruebastp3\grafos\parser.cpp
+	"parser.h"
+
+1612825253 c:\users\1\desktop\pruebastp3\grafos\parser.h
+	<iostream>
+	<fstream>
+
+1612983131 source:c:\users\1\desktop\pruebastp3\grafos\interfazusuario.cpp
+	"interfazUsuario.h"
+	<iostream>
+
+1612983184 c:\users\1\desktop\pruebastp3\grafos\interfazusuario.h
+
+1612985158 source:c:\users\1\desktop\pruebastp3\grafos\logfile.cpp
+	"logFile.h"
+	"personaje.h"
+	<iostream>
+	<fstream>
+
+1612985180 c:\users\1\desktop\pruebastp3\grafos\logfile.h
+	<string>
+	"personaje.h"
 

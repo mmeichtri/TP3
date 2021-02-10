@@ -11,6 +11,8 @@ protected:
     int escudo = 0;
     int vida = 0;
     int energia = 0;
+    int fila = 0;
+    int columna = 0;
 public:
     /*
     pre:
@@ -23,6 +25,18 @@ public:
     post: crea un nuevo personaje, agregandolo a la lista polimorfica
     */
     void agregarNuevoPersonaje();
+
+    /*
+    pre:
+    post: devuelve la fila
+    */
+    int getFila();
+
+    /*
+    pre:
+    post: devuelve la columna
+    */
+    int getColumna();
 
     /*
     pre:

@@ -10,6 +10,31 @@ public:
     */
     Aire(std::string, int, int );
 
+        /*
+    pre: si fila >=0 || fila < 64
+    post: guarda la fila
+    */
+    void setFila(int );
+
+    /*
+    pre: si columna >=0 || columna < 64
+    post: guarda la columna
+    */
+    void setColumna(int );
+
+        /*
+    pre:
+    post: devuelve la fila
+    */
+    int getFila();
+
+    /*
+    pre:
+    post: devuelve la columna
+    */
+    int getColumna();
+
+
     /*
     pre: si el nombre del personaje, se encuentra en la lista
     post: alimenta el personaje indicado

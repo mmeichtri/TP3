@@ -1,11 +1,29 @@
 #include "tierra.h"
 #include <iostream>
 #include "personaje.h"
+
 using namespace std;
 
 Tierra::Tierra(string nombre, int escudo, int vida):Personaje(nombre, escudo, vida){
     this->energia = rand() % 21;
 }
+
+void Tierra::setFila(int fila){
+    this->fila = fila;
+}
+
+void Tierra::setColumna(int columna){
+    this->columna = columna;
+}
+
+int Tierra::getFila(){
+    return this->fila;
+}
+
+int Tierra::getColumna(){
+    return this->columna;
+}
+
 
 void Tierra::alimentar(string nombre){
     if(this->energia > 20 || this->energia + 8 > 20){

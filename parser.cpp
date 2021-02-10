@@ -1,6 +1,5 @@
 #include "parser.h"
 
-
 ParserElementos::ParserElementos(ifstream &input){
 	string escudo;
 	string vida;
