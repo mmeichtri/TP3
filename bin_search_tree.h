@@ -25,6 +25,9 @@ public:
 	//Agrega <data> al árbol en caso de que no esté incluido previamente.
 	//POST: agrega un dato nuevo e incrementa el tamaño.
 	//
+
+	T* erase(string key);
+
 	T pop();
 	/*EN CONSTRUCCIÓN*/
 	//necesito crear un get() que devuelva un puntero al dato (o NULL si no existe)
@@ -106,6 +109,42 @@ void Bst <T>::add(T data, string key){
 	}
 	else if (_root->addBst(data, key))
 		_size++;
+}
+
+
+template <typename T>
+T* Bst <T>::erase(string key){
+	if(_root == NULL) //case empty dictionary
+		return NULL;
+	BinTreeNode<T> *node = _root->search(key);
+	T *data = new T();
+
+	//found the node with the key
+	*data = node->getData();
+	
+	//case node with no childs
+	if(node->isLeaf())
+		delete node;
+
+	//case node has ONE child
+	else if(node->left() == 0){
+		node->erasingFlip("right");
+		delete node;
+	}
+	else if(node->right() == 0){
+		node->erasingFlip("left");
+		delete node;
+	}
+	//case node has 2 childrens
+	else{
+		BinTreeNode<T>* toReplace = _root->findMin(); //change name of this variable
+		node->setKey(toReplace->getKey());
+		node->setData(toReplace->getData());
+		*data = toReplace->getData();
+		delete toReplace;
+	}
+
+	return data;
 }
 
 
@@ -211,8 +250,14 @@ T* Bst <T>::search(string key){
 	//correspondiente a la clase nodo y devuelvo lo que retorne.
 	if (empty())
 		return NULL;
-	return _root->search(key);
+
+	BinTreeNode<T> *aux = _root->search(key);
+	T *data = new T();
+	if (aux != NULL)
+		*data = aux->getData();
+	return data;
 }
+
 
 
 template <typename T>

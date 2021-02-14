@@ -36,6 +36,12 @@ void Diccionario::agregar(Personaje *p){
 }
 
 
+Personaje* Diccionario::borrarPersonaje(string nombre){
+	Personaje **aBorrar = conjunto->erase(nombre);
+	return aBorrar == NULL ? NULL : *aBorrar;
+}
+
+
 Diccionario::~Diccionario(){
 	delete conjunto;
 }
