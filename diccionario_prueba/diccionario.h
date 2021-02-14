@@ -24,7 +24,7 @@ public:
 	void agregar(Personaje *p);
 	//Agrega personaje al diccionario en caso de que no esté
 	//
-	
+	Personaje* borrarPersonaje(string nombre);
 };
 
 #endif //DICCIONARIO_H

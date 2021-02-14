@@ -61,12 +61,23 @@ bool run_test(Diccionario *dic, string clave){
 }
 
 void test_loop(Diccionario *dic){
+	string clave = "";
+	for (size_t i = 0; i < 10; i++){
+		cout << "ingresá un nombre: ";
+		cin >> clave;
+		cout << endl;
+		run_test(dic, clave);
+	}
+	cout << "eliminar personaje: ";
+	cin >> clave;
+	dic->borrarPersonaje(clave);
+	cout << endl;
 	for (size_t i = 0; i < 10; i++){
 		string clave = "";
 		cout << "ingresá un nombre: ";
 		cin >> clave;
 		cout << endl;
-		run_test(dic, clave);
+		run_test(dic, clave);	
 	}
 }
 
