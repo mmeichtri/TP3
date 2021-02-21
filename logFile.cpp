@@ -15,6 +15,6 @@ void LogFile::crearLog(){
     file.close();
 }
 
-void LogFile::actualizarLog(Personaje* elemento){
-
+void LogFile::actualizarLog(Personaje* personaje){
+    this->file << personaje->getElemento() +","<< personaje->getNombre() +","<< personaje->getEscudo() +","<< pesonaje->getVida() +","<< personaje->mostrarEnergiaActual() +","<< personaje->getFila() +","<< persoanje->getColumna() << endl;
 }
