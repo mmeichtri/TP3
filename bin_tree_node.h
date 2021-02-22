@@ -16,8 +16,6 @@ private:
 	BinTreeNode<T> *_left;
 	BinTreeNode<T> *_right;
 	BinTreeNode<T> *_prev;
-	int _bf;
-
 public:
 	BinTreeNode();
 	BinTreeNode(T data, string key);
@@ -35,7 +33,7 @@ public:
 	//
 	//PRE: the node exists.
 	//POST: returns the data saved in the node.
-	T getData();
+	T* getData();
 	//
 	//PRE: the node exists.
 	//POST: returns the key of the node.
@@ -52,7 +50,7 @@ public:
 	//
 	//PRE: the node exists.
 	//POST: sets <data> as the new value saved in the node
-	void setData(T data);
+	void setData(T data, bool del = false);
 	//
 	//PRE: the node exists.
 	//POST: sets <key> as the new key saved in the node
@@ -90,6 +88,10 @@ public:
 	//("right" or "left") specified by <side> 
 	void erasingFlip(string side);
 	//
+	//PRE: the previous node exists (prev() != NULL).
+	//POST: replaces this by <node> from previous node link.
+	void flipPrev(BinTreeNode<T> *node);
+	//
 	//POST: returns the node who saves the smallest value (according to its key)
 	//found in the left branch or in this node if it is a leaf
 	BinTreeNode<T>* findMin();
@@ -100,14 +102,17 @@ public:
 
 };
 
+
+
+
 template <typename T>
 BinTreeNode <T>::BinTreeNode(){
 	_key = "";
 	_left = NULL;
 	_right = NULL;
 	_prev = NULL;
-	_bf = 0;
 }
+
 
 template <typename T>
 BinTreeNode <T>::BinTreeNode(T data, string key){
@@ -116,7 +121,6 @@ BinTreeNode <T>::BinTreeNode(T data, string key){
 	_left = NULL;
 	_right = NULL;
 	_prev = NULL;
-	_bf = 0;
 }
 
 
@@ -146,8 +150,8 @@ bool BinTreeNode <T>::addBst(T data, string key){
 
 
 template <typename T>
-T BinTreeNode <T>::getData(){
-	return _data;
+T* BinTreeNode <T>::getData(){
+	return &_data;
 }
 
 
@@ -176,7 +180,9 @@ BinTreeNode<T>* BinTreeNode <T>::prev(){
 
 
 template <typename T>
-void BinTreeNode <T>::setData(T data){
+void BinTreeNode <T>::setData(T data, bool del){
+	if (del)
+		delete _data;
 	_data = data;
 }
 
@@ -256,22 +262,27 @@ bool BinTreeNode <T>::isLeaf(){
 
 template <typename T>
 void BinTreeNode <T>::erasingFlip(string side){
-	BinTreeNode<T>* aux = new BinTreeNode<T>;
-	
 	if (side == "right"){
-		aux = this->right();
-		aux->setPrev(this->prev());
-		aux = this->prev();
-		aux->setRight(this->right());
+		this->_right->setPrev(this->_prev);
+		flipPrev(this->_right);
 	}
 	else if (side == "left"){
-		aux = this->left();
-		aux->setPrev(this->prev());
-		aux = this->prev();
-		aux->setLeft(this->left());
+		this->_left->setPrev(this->_prev);
+		flipPrev(this->_left);
 	}
+	this->_left = NULL;
+	this->_right = NULL;
+	this->_prev = NULL;
 }
 
+
+template <typename T>
+void BinTreeNode <T>::flipPrev(BinTreeNode<T> *node){
+	if (_prev->_right == this)
+		this->_prev->setRight(node);
+	else if (_prev->_left == this)
+		this->_prev->setLeft(node);
+}
 
 template <typename T>
 BinTreeNode<T>* BinTreeNode <T>::findMin(){
@@ -291,6 +302,8 @@ BinTreeNode<T>* BinTreeNode <T>::findMax(){
 
 template <typename T>
 BinTreeNode <T>::~BinTreeNode(){
+	if (_left != NULL) delete _left;
+	if (_right != NULL) delete _right;
 	delete _data;
 }
 
