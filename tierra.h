@@ -1,66 +1,82 @@
-#ifndef TIERRA_H_INCLUDED
-#define TIERRA_H_INCLUDED
+//
+// Created by jose on 2/2/21.
+//
+
+#ifndef ATAQUE_TIERRA_H
+#define ATAQUE_TIERRA_H
+
 #include "personaje.h"
 
-class Tierra : public Personaje{
+
+class Tierra : public Personaje {
+private:
+   int escudoInicial;
 public:
-    /*
-    pre:
-    post: crea un objeto del tipo Tierra
-    */
-    Tierra(std::string, int, int );
+    // PRE: NOMBRE VALIDO , VIDA CON VALOR ENTRE 10 Y 100 Y ESCUDO CON VALOR 0 A 2 VALIDOS.
+    // POST: CONSTRUYE UN OBJETO Tierra CON DATOS VALIDOS.
+    Tierra(string nombre,int escudo,int vida);
 
-<<<<<<< HEAD
-        /*
-    pre: si fila >=0 || fila < 64
-    post: guarda la fila
-    */
-    void setFila(int );
+    // PRE:
+    /* POST:  SI verificarEnergia() ES VERDADERO, AUMENTA LA ENERGIA EN 8 PUNTOS
+     * Y LLAMA A imprimirALimentos, SI ES FALSO SE LO INDICA AL USUARIO.*/
+    void alimentarse();
 
-    /*
-    pre: si columna >=0 || columna < 64
-    post: guarda la columna
+   //PRE: vector de personaje* personajeAtacado valido.
+   /*POST: recorre el vector de personajeAtacado y en cada posicion si no es nullptr , llama a danoRango
+   danoAtaque y quitarVida.
     */
-    void setColumna(int );
+   void atacar(Personaje** personajeAtacado);
 
-        /*
-    pre:
-    post: devuelve la fila
-    */
-    int getFila();
+   //PRE:
+   //POST: retorna true si energia >= 6 , false en caso contrario
+    bool energiaAtaque();
 
-    /*
-    pre:
-    post: devuelve la columna
-    */
-    int getColumna();
+    //pre:
+    //post: si el escudo es distinto de la constante EscudoInicial , le resta dos al escudo.
+
+    void modificarPorTurno();
+
+    //PRE:
+    //POST: retorna true si energia >= 5 false en caso contrario.
+    bool energiaDefensa();
+
+    //PRE:
+    //POST: DEVUELVE EL NOMBRE DEL ELEMENTO
+   string getElemento();
 
 
-=======
->>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
-    /*
-    pre: si this->energia < 20 && this->energia + 8 < 20
-    post: alimenta el personaje indicado
-    */
-    void alimentar(std::string );
-
-    /*
-    pre:
-    post: devuelve la energia actual asociado al personaje de tipo Tierra
-    */
-    int mostrarEnergiaActual();
-
-    /*
-    pre:
-    post: retorna el elemento
-    */
-    std::string getElemento();
-
-    /*
-    pre:
-    post: destruye el objeto
-    */
+    //PRE:
+    //POST: DESTRUYE UN OBJETO Tierra
     ~Tierra();
+private:
+    //PRE:
+    //POST: DEVUELVE VERDADERO SI LA ENERGIA + 8 ES MENOR O IGUAL A 20. FALSO SI NO SE CUMPLE LA CONDICION
+    bool  verificarEnergia();
+    // PRE:
+    // POST:IMPRIME NOMBRE ,DE QUE SE ALIMENTO Y EL TOTAL DE ENERGIA DEL PERSONAJE.
+    void imprimirAlimentos();
+
+    //PRE: cuatro valor enteros validos
+    /*POST: si la diferencia de filas es dos , retorna condicionRangoDos, si es cuatro, retorna condicionRangoCuatro
+     sino retorna 10
+    */int danoPorRango(int filaAtacar , int columnaAtacar , int filaAtacado , int columnaAtacado );
+
+    //PRE: valorAtaque y puntero a personaje valido.
+    //POST: Dependiendo del getElemento del personaje, modifica a valorAtaque y lo retorna.
+    int danoAtaque(int valorAtaque , Personaje* personajeAtacar);
+
+    //pre: variable diferenciaCol valida.
+    //post: dependiendo del valor de diferenciaCol retorna un entero.
+    int condicionRangoDos(int diferenciaCol);
+
+    //pre: variable diferenciaCol valida.
+    //post: dependiendo del valor de diferenciaCol retorna un entero.
+    int condicionRangoCuatro(int diferenciaCol);
+
+
+
 };
 
-#endif // TIERRA_H_INCLUDED
+
+
+#endif //ATAQUE_TIERRA_H

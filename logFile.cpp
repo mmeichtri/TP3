@@ -1,3 +1,4 @@
+/*
 #include "logFile.h"
 #include "personaje.h"
 #include <iostream>
@@ -16,3 +17,4 @@ void LogFile::actualizarLog(Personaje* personaje){
     
     file.close();
 }
+*/

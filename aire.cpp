@@ -1,44 +1,60 @@
+//
+// Created by jose on 2/2/21.
+//
+
 #include "aire.h"
-#include "personaje.h"
-#include <iostream>
+Aire :: Aire(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
 
-using namespace std;
-
-Aire::Aire(string nombre, int escudo, int vida):Personaje(nombre, escudo, vida){
-    this->energia = rand() % 21;
 }
 
-<<<<<<< HEAD
-void Aire::setFila(int fila){
-    this->fila = fila;
+string Aire ::getElemento() {
+    string element = "aire";
+    return element;
+}
+void Aire:: alimentarse() {
+    cout << "los personajes de aire no se alimentan "<< endl;
 }
 
-void Aire::setColumna(int columna){
-    this->columna = columna;
+bool Aire ::energiaAtaque() {
+
+    return energia >= 8;
 }
 
-int Aire::getFila(){
-    return this->fila;
+bool Aire ::energiaDefensa() {
+    bool tieneEnergia = energia >= 15;
+    if(tieneEnergia ){
+        restarEnergia(15);
+    }
+    return tieneEnergia;
 }
 
-int Aire::getColumna(){
-    return this->columna;
+void Aire ::modificarPorTurno() {
+    sumarEnergia(5);
+}
+int Aire :: danoAtaque(Personaje *personajeAtacar) {
+
+    if(personajeAtacar -> getElemento() == "tierra")
+        return 20;
+    else if(personajeAtacar -> getElemento() == "fuego")
+        return  10;
+    else
+        return 15;
+
+}
+
+void Aire ::atacar(Personaje** personajeAtacado) {
+
+     restarEnergia(8);
+    for(int i = 0; i < MAXRIVALES ; i++){
+        if(personajeAtacado[i] != nullptr){
+            int dano = danoAtaque(personajeAtacado[i]);
+            quitarVidaPersonaje(personajeAtacado[i],dano);
+        }
+    }
+
 }
 
 
-=======
->>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
-void Aire::alimentar(string nombre){
-    cout << "Los personajes de aire, no se pueden alimentar" << endl;
-}
+Aire ::~Aire() {
 
-int Aire::mostrarEnergiaActual(){
-    return this->energia;
-}
-
-string Aire::getElemento(){
-    return "aire";
-}
-
-Aire::~Aire(){
 }

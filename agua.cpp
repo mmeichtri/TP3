@@ -1,58 +1,90 @@
 #include "agua.h"
-<<<<<<< HEAD
-#include <iostream>
-#include <string>
-#include "personaje.h"
 
-=======
-//#include "interfazUsuario.h"
-#include <iostream>
-#include <string>
-#include "personaje.h"
->>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
-using namespace std;
-
-Agua::Agua(string nombre, int escudo, int vida):Personaje(nombre, escudo, vida){
-    this->energia = rand() % 21;
+Agua :: Agua(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
+    contarComida = 0;
 }
 
-<<<<<<< HEAD
-void Agua::setFila(int fila){
-    this->fila = fila;
+string Agua :: getElemento() {
+
+    string element = "agua";
+    return element;
 }
 
-void Agua::setColumna(int columna){
-    this->columna = columna;
-}
+void Agua :: alimentarse() {
 
-int Agua::getFila(){
-    return this->fila;
-}
-
-int Agua::getColumna(){
-    return this->columna;
-}
-
-
-=======
->>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
-void Agua::alimentar(string nombre){
-    if(this->energia > 20 || this->energia + 10 > 20 || this->cantidadAlimentaciones > 3){
-        throw std::string("No se puede tener energia mayor a 20, ni se puede alimentar mas de 3 veces");
+    if(verificarEnergia()){
+        contarComida++;
+        energia = energia + 10;
+        imprimirAlimentos();
     }
-    else{
-        this->energia += 10;
-        this->cantidadAlimentaciones++;
-    }
+    else
+        cout << "ERROR NO SE PUDO ALIMENTAR AL PERSONAJE" << endl;
 }
 
-int Agua::mostrarEnergiaActual(){
-    return this->energia;
+bool Agua ::verificarEnergia() {
+
+    return ((energia + 10 <= EMAX ) && (contarComida < 3));
+
 }
 
-string Agua::getElemento(){
-    return "agua";
+void Agua :: imprimirAlimentos() {
+
+    cout << "SE ALIMENTO AL PERSONAJE DE AGUA : " << nombre << " CON PLACTON Y RECUPERO 10 PUNTOS DE ENERGIA AHORA TIENE  "<< energia << endl;
 }
 
-Agua::~Agua(){
+bool Agua ::energiaAtaque() {
+    return energia >= 5;
+}
+
+bool Agua ::energiaDefensa() {
+    return energia >= 12;
+}
+
+int Agua ::danoAtaque(Personaje* personajeAtacar) {
+
+    if(personajeAtacar -> getElemento() == "fuego")
+        return 30;
+    else if(personajeAtacar -> getElemento() == "tierra")
+        return 10;
+    else
+        return 20;
+
+}
+
+void Agua :: atacar(Personaje** victima) {
+
+    bool encontrado = false;
+    do{
+        int fila =  vista.leerFilaOColumna(" FILA ");
+        int columna = vista.leerFilaOColumna(" COLUMNA ");
+
+        for(int i = 0; i < MAXRIVALES; i++){
+            if(victima[i] != nullptr){
+                if(victima[i]->obtenerFila() == fila && victima[i]->obtenerColumna() == columna){
+                atacarPersonaje(victima[i]);
+                encontrado = true;
+                  }
+            }
+      noEncontroPersonaje(encontrado);
+
+        }
+    }while(!encontrado);
+}
+
+void Agua ::noEncontroPersonaje(bool personaje) {
+    if(personaje == false)
+        vista.noEncontro("el personaje en esa casilla ");
+}
+
+void Agua ::atacarPersonaje(Personaje *personajeAtacar) {
+    int dano = danoAtaque(personajeAtacar);
+    quitarVidaPersonaje(personajeAtacar , dano);
+}
+
+void Agua ::modificarPorTurno() {
+    return;
+}
+
+Agua::~Agua() {
+
 }

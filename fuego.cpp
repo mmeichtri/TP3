@@ -1,52 +1,90 @@
+//
+// Created by jose on 2/2/21.
+//
+
 #include "fuego.h"
-#include <iostream>
-#include "personaje.h"
-<<<<<<< HEAD
+Fuego :: Fuego(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
 
-=======
->>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
-using namespace std;
-
-Fuego::Fuego(string nombre, int escudo, int vida):Personaje(nombre, escudo, vida){
-    this->energia = rand() % 21;
 }
 
-<<<<<<< HEAD
-void Fuego::setFila(int fila){
-    this->fila = fila;
+string Fuego ::getElemento(){
+
+    string element = "fuego";
+    return element;
+}
+void Fuego :: alimentarse() {
+
+    if(verificarVida()){
+        vida = vida + 5;
+        energia = energia + 10;
+        imprimirAlimentos();
+    }else
+        cout << "ERROR EL PERSONAJE DE FUEGO NO SE PUDO ALIMENTAR ENERGIA O VIDA YA SOM SUFICIENTES " << endl;
+
 }
 
-void Fuego::setColumna(int columna){
-    this->columna = columna;
+bool Fuego::verificarVida() {
+
+    return (vida + 5 <= VMAX && energia + 10 <= EMAX );
 }
 
-int Fuego::getFila(){
-    return this->fila;
+void Fuego :: imprimirAlimentos(){
+
+    cout << "SE ALIMENTO AL PERSONAJE DE FUEGO : " << nombre << " CON MADERA Y RECUPERO 5 PUNTOS DE VIDA y 10 DE ENERGIA ,AHORA TIENE " << vida  << endl;
 }
 
-int Fuego::getColumna(){
-    return this->columna;
+bool Fuego ::energiaAtaque() {
+
+    return energia >= 5;
+
 }
 
-=======
->>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
+bool Fuego :: energiaDefensa() {
 
-void Fuego::alimentar(string nombre){
-    if(this->energia > 20 || this->energia + 15 > 20){
-        throw std::string("No se puede tener energia mayor a 20");
+    bool tieneEnergia = energia >= 10;
+    if(tieneEnergia ){
+        restarEnergia(10);
     }
-    else{
-        this->energia += 15;
-    }
+    return tieneEnergia;
 }
 
-int Fuego::mostrarEnergiaActual(){
-    return this->energia;
+void Fuego::modificarPorTurno() {
+    if(energia == 0)
+        restarVida(5);
 }
 
-string Fuego::getElemento(){
-    return "fuego";
+int Fuego ::danoAtaque(Personaje *personajeAtacar) {
+
+    if(personajeAtacar -> getElemento() == "aire")
+        return 30;
+    else if(personajeAtacar -> getElemento() == "agua")
+       return 10;
+    else
+       return 20;
+
 }
 
-Fuego::~Fuego(){
+bool Fuego ::comprobarFilas(int filaAtaque, int filaAtacar) {
+
+    int diferenciaFilas = filaAtaque - filaAtacar;
+    return (diferenciaFilas <= 1 && diferenciaFilas >= -1);
+}
+
+
+void Fuego :: atacar (Personaje** personajeAtacado) {
+
+    restarEnergia(5);
+
+      for(int i = 0; i < MAXRIVALES ; i++){
+          if(personajeAtacado[i] != nullptr){
+              if(comprobarFilas(fila,personajeAtacado[i]->obtenerFila())){
+              int dano = danoAtaque(personajeAtacado[i]);
+              quitarVidaPersonaje(personajeAtacado[i],dano);
+                }
+          }
+      }
+}
+
+Fuego ::~Fuego() {
+
 }

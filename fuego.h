@@ -1,66 +1,72 @@
-#ifndef FUEGO_H_INCLUDED
-#define FUEGO_H_INCLUDED
+//
+// Created by jose on 2/2/21.
+//
+
+#ifndef ATAQUE_FUEGO_H
+#define ATAQUE_FUEGO_H
+
 #include "personaje.h"
 
-class Fuego : public Personaje{
+class Fuego : public Personaje {
 public:
-    /*
-    pre:
-    post: crea un objeto del tipo Fuego
-    */
-    Fuego(std::string, int, int );
+    //PRE : VALORES VALIDOS PARA NOMBRE,ESCUDO CON VALOR ENTRE 0 A 2 Y VIDA CON VALOR ENTRE 10 A 100.
+    // POST: CONSTRUYE UN OBJETO Fuego.
+    Fuego(string nombre,int escudo,int vida);
 
-<<<<<<< HEAD
-        /*
-    pre: si fila >=0 || fila < 64
-    post: guarda la fila
-    */
-    void setFila(int );
-
-    /*
-    pre: si columna >=0 || columna < 64
-    post: guarda la columna
-    */
-    void setColumna(int );
-
-        /*
-    pre:
-    post: devuelve la fila
-    */
-    int getFila();
-
-    /*
-    pre:
-    post: devuelve la columna
-    */
-    int getColumna();
+    //PRE :
+    /* POST: SI verificarVida ES VERDADERO, INCREMENTA 15 PUNTOS LA VIDA DEL PERSONAJE
+     * Y LLAMA A imprimirPersonaje. SI ES FALSO, SE INDICA AL USUARIO A TRAVES DE UN MENSAJE.*/
+    void alimentarse();
 
 
-=======
->>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
-    /*
-    pre: si this->energia < 20 && this->energia + 15 < 20
-    post: alimenta el personaje indicado
+   //PRE: vector de personaje* valido.
+   /*POST: resta energia al personaje que ataca , recorre el vector de enemigos , si el enemigo es distinto de null .
+    y esta en un rango de una fila o menos , llama a dano ataque y a quitarVidaPersonaje
     */
-    void alimentar(std::string );
+   void atacar(Personaje** personajeAtacado);
 
-    /*
-    pre:
-    post: devuelve la energia actual del personaje asociado al tipo Fuego
-    */
-    int mostrarEnergiaActual();
+   //PRE:
+   //POST: devuelve elemento del personaje
+   string getElemento();
 
-    /*
-    pre:
-    post: retorna el elemento
-    */
-    std::string getElemento();
+   //PRE:
+   //POST: retorna true si energia >= 5 , false en caso contrario.
+    bool energiaAtaque();
 
-    /*
-    pre:
-    post: destruye el objeto
-    */
+    //PRE:
+    //POST: si la energia>= 10 , le quita la energia al personaje y devuelve true , false en caso contrario
+    bool energiaDefensa();
+
+
+
+    //pre:
+    // post: si la energia == 0, le quita 5 puntos de vida al personaje.
+    void modificarPorTurno();
+
+    //PRE :
+    //POST : destruye a un personaje de juego.
     ~Fuego();
+private:
+
+    // PRE :
+    /* POST : DEVUELVE VERDADERO SI LA vida+15 ES MENOR QUE vmax. FALSO EN CASO CONTRARIO.*/
+    bool verificarVida();
+
+    // PRE :
+    // POST : IMPRIME EL NOMBRE DEL PERSONAJE, SU ALIMENTO, Y NUMERO DE PUNTOS DE VIDA QUE AUMENTO.
+    void imprimirAlimentos();
+
+    // PRE: variable filaAtaque y filaAtacar validas.
+    //POST: devuelve true si -1 <= diferencia de filas <= 1 , false en caso contrario
+
+    bool comprobarFilas(int filaAtaque , int filaAtacar);
+
+    // PRE: puntero a personajeAtacar validps
+    //POST: segun el getElemento de personajeAtacar retorna el valor del daño.
+    int danoAtaque(Personaje * personajeAtacar);
+
 };
 
-#endif // FUEGO_H_INCLUDED
+
+
+#endif //ATAQUE_FUEGO_H

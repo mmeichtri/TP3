@@ -1,66 +1,53 @@
-#ifndef AIRE_H_INCLUDED
-#define AIRE_H_INCLUDED
+//
+// Created by jose on 2/2/21.
+//
+
+#ifndef ATAQUE_AIRE_H
+#define ATAQUE_AIRE_H
+
 #include "personaje.h"
 
-class Aire : public Personaje{
+class Aire : public Personaje {
+private:
+
+    //PRE: PUNTERO A PERSONAJE VALIDO
+    //POST: DEPENDIENDO DEL ELEMENTO DEL PERSONAJE A ATACAR, RETORNA CUANTO DANO LE HACE A ESE PERSONAJE.
+    int danoAtaque(Personaje* personajeAtacar);
+
 public:
-    /*
-    pre:
-    post: crea un objeto del tipo Aire
-    */
-    Aire(std::string, int, int );
+    // PRE : NOMBRE , ESCUDO CON VALOR ENTRE 0 A 2 Y VIDA CON VALOR ENTRE 10 A 100, VALIDOS.
+    // POST: CONTRUYE UN OBJETO Aire, QUE HEREDA DE LA CLASE PERSONAJE.
+    Aire(string nombre,int escudo,int vida);
 
-<<<<<<< HEAD
-        /*
-    pre: si fila >=0 || fila < 64
-    post: guarda la fila
-    */
-    void setFila(int );
+    //PRE:
+    //POST: retorna el nombre del elemento
+    string getElemento();
 
-    /*
-    pre: si columna >=0 || columna < 64
-    post: guarda la columna
-    */
-    void setColumna(int );
-
-        /*
-    pre:
-    post: devuelve la fila
-    */
-    int getFila();
-
-    /*
-    pre:
-    post: devuelve la columna
-    */
-    int getColumna();
+    //PRE:
+    //POST: IMPRIME QUE ESTE TIPO DE PERSONAJE NO NECESITAN ALIMENTARSE.
+    void alimentarse();
 
 
-=======
->>>>>>> 1caeb074f25c3c71d5b828b32943dc1b3e57fbf6
-    /*
-    pre: si el nombre del personaje, se encuentra en la lista
-    post: alimenta el personaje indicado
-    */
-    void alimentar(std::string );
+  //PRE: vector a personaje valido.
+  /*POST: le resta 8 de eergia , recorre las posciones de personajeAtacado y si es dintinta de null , llama a
+  danoAtaque y quitarVida.*/
+ void atacar(Personaje** personajeAtacado);
 
-    /*
-    pre:
-    post:devuelve la energia actual del personaje asociado al tipo Aire
-    */
-    int mostrarEnergiaActual();
+  //PRE:
+  //POST: retorna true si energia >= 8 , false en caso contrario.
+    bool energiaAtaque();
 
-    /*
-    pre:
-    post: retorna el elemento
-    */
-    std::string getElemento();
+    //PRE:
+    //POST: si energia >= 15 le quita la energia y retorna true , false en contrario.
+    bool energiaDefensa();
 
-    /*
-    pre:
-    post: destruye el objeto
-    */
+    //pre:
+    //post: le suma 5 de energia.
+    void modificarPorTurno();
+
+    //PRE:
+    //POST : DESTRUYE UN PERSONAJE DE TIPO AIRE.
     ~Aire();
 };
 
-#endif // AIRE_H_INCLUDED
+#endif //ATAQUE_AIRE_H
