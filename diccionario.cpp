@@ -15,7 +15,7 @@ Personaje* Diccionario::buscar(string nombre){
 	//Como en esta implementación el diccionario guarda como valores
 	//PUNTEROS a personaje, al obtener el resultado de search() es
 	//necesario desreferenciar el objeto para no devolver un puntero doble.
-	Personaje** hallado = conjunto->search(nombre);
+	Personaje** hallado = conjunto->erase(nombre);
 //	Personaje *zb = *hallado;
 //	cout << "se encontró al personaje " << zb->nombre() << endl;
 	return hallado == NULL ? NULL : *hallado;
