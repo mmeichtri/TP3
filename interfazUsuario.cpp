@@ -2,7 +2,7 @@
 // Created by jose on 8/2/21.
 //
 
-#include "vInterfazUsuario.h"
+#include "interfazUsuario.h"
 
 int VInterfazUsuario ::leerFilaOColumna(string dato) {
 

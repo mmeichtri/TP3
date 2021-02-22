@@ -39,7 +39,7 @@ private:
      POST : si un vertice es adyacente al inicial pasado por parametro se coloca el valor en vecDistancia
      lo que cuesta al personaje pasar por ese vertice, si no son adyacentes, coloca 6000.
      */
-    void iniciarDistancia(int *vecDistancia , int inicial , string personaje, bool* visto);
+    void iniciarDistancia(int *vecDistancia , int inicial , Personaje* personaje, bool* visto);
 
     //PRE: variable int, vector visto y distancia validos.
     /*POST: inicia el vector padre en -1 y luego busca la posicion del minimo vector no visto y se la asigna
@@ -51,7 +51,7 @@ private:
     /*POST: si el valor en vec distancia en una posicion es mayor que el vector distancia en la posicion
     vertice + lo que cuesta pasar por la posicion misma que tiene el vec distancia , se cambia vecDistancia
      en esa posicion por el valor obtenido y al padre en la posicion se le asigna: vertice.
-    */void condicionCaminoMinimo(int* distancia , int vertice , string personaje);
+    */void condicionCaminoMinimo(int* distancia , int vertice , Personaje* personaje);
 
 public :
     /*PRE :
@@ -74,7 +74,7 @@ public :
     /*PRE: 4 int validos y un string personaje correctamente creado.
      POST: busca y retorna el camino minimo desde la fila y columna inicial , hasta la fila y col final.
      */
-    int caminoMinimo(int filaInicial, int columnaInicial, int filaFinal, int columnaFinal, string personaje);
+    int caminoMinimo(int filaInicial, int columnaInicial, int filaFinal, int columnaFinal, Personaje* personaje);
 
     /* PRE: variable final valida.
      * POST: hasta que padre[final] = -1 va haciendo final = padre[final] y va  imprimiendo

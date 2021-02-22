@@ -1,9 +1,10 @@
 //
-// Created by jose on 2/2/21.
+// Created by jose on 22/2/21.
 //
 
-#ifndef ATAQUE_AIRE_H
-#define ATAQUE_AIRE_H
+#ifndef TP3_AIRE_H
+#define TP3_AIRE_H
+
 
 #include "personaje.h"
 
@@ -28,13 +29,13 @@ public:
     void alimentarse();
 
 
-  //PRE: vector a personaje valido.
-  /*POST: le resta 8 de eergia , recorre las posciones de personajeAtacado y si es dintinta de null , llama a
-  danoAtaque y quitarVida.*/
- void atacar(Personaje** personajeAtacado);
+    //PRE: vector a personaje valido.
+    /*POST: le resta 8 de eergia , recorre las posciones de personajeAtacado y si es dintinta de null , llama a
+    danoAtaque y quitarVida.*/
+    void atacar(Personaje** personajeAtacado);
 
-  //PRE:
-  //POST: retorna true si energia >= 8 , false en caso contrario.
+    //PRE:
+    //POST: retorna true si energia >= 8 , false en caso contrario.
     bool energiaAtaque();
 
     //PRE:
@@ -50,4 +51,5 @@ public:
     ~Aire();
 };
 
-#endif //ATAQUE_AIRE_H
+
+#endif //TP3_AIRE_H

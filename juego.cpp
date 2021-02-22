@@ -1,7 +1,7 @@
 
 #include "juego.h"
 
-Juego :: Juego(grafo* graf) {
+Juego :: Juego(Grafo* graf) {
     this -> graf = graf;
 inicializarJugadores();
 }
@@ -238,7 +238,7 @@ void Juego ::moverse(Personaje *personajeTurno) {
         int fila = vista.leerFilaOColumna("fila");
         int columna = vista.leerFilaOColumna("columna");
         int perdidaCamino = graf->caminoMinimo(personajeTurno->obtenerFila(), personajeTurno->obtenerColumna(), fila,
-                                               columna, personajeTurno->getElemento());
+                                               columna, personajeTurno);
         desicionUsuario = condicionMoverse(personajeTurno,perdidaCamino,fila,columna);
 
     }while(desicionUsuario != SALIR);

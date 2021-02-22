@@ -1,5 +1,5 @@
 //
-// Created by jose on 2/2/21.
+// Created by jose on 22/2/21.
 //
 
 #include "aire.h"
@@ -44,7 +44,7 @@ int Aire :: danoAtaque(Personaje *personajeAtacar) {
 
 void Aire ::atacar(Personaje** personajeAtacado) {
 
-     restarEnergia(8);
+    restarEnergia(8);
     for(int i = 0; i < MAXRIVALES ; i++){
         if(personajeAtacado[i] != nullptr){
             int dano = danoAtaque(personajeAtacado[i]);

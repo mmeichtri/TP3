@@ -61,11 +61,11 @@ void Agua :: atacar(Personaje** victima) {
         for(int i = 0; i < MAXRIVALES; i++){
             if(victima[i] != nullptr){
                 if(victima[i]->obtenerFila() == fila && victima[i]->obtenerColumna() == columna){
-                atacarPersonaje(victima[i]);
-                encontrado = true;
-                  }
+                    atacarPersonaje(victima[i]);
+                    encontrado = true;
+                }
             }
-      noEncontroPersonaje(encontrado);
+            noEncontroPersonaje(encontrado);
 
         }
     }while(!encontrado);

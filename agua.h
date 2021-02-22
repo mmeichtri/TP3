@@ -1,6 +1,10 @@
+//
+// Created by jose on 22/2/21.
+//
 
-#ifndef ATAQUE_AGUA_H
-#define ATAQUE_AGUA_H
+#ifndef TP3_AGUA_H
+#define TP3_AGUA_H
+
 
 #include"personaje.h"
 
@@ -70,4 +74,5 @@ private:
 
 };
 
-#endif //ATAQUE_AGUA_H
+
+#endif //TP3_AGUA_H

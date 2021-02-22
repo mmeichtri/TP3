@@ -1,9 +1,10 @@
 //
-// Created by jose on 2/2/21.
+// Created by jose on 22/2/21.
 //
 
-#ifndef ATAQUE_FUEGO_H
-#define ATAQUE_FUEGO_H
+#ifndef TP3_FUEGO_H
+#define TP3_FUEGO_H
+
 
 #include "personaje.h"
 
@@ -19,18 +20,18 @@ public:
     void alimentarse();
 
 
-   //PRE: vector de personaje* valido.
-   /*POST: resta energia al personaje que ataca , recorre el vector de enemigos , si el enemigo es distinto de null .
-    y esta en un rango de una fila o menos , llama a dano ataque y a quitarVidaPersonaje
-    */
-   void atacar(Personaje** personajeAtacado);
+    //PRE: vector de personaje* valido.
+    /*POST: resta energia al personaje que ataca , recorre el vector de enemigos , si el enemigo es distinto de null .
+     y esta en un rango de una fila o menos , llama a dano ataque y a quitarVidaPersonaje
+     */
+    void atacar(Personaje** personajeAtacado);
 
-   //PRE:
-   //POST: devuelve elemento del personaje
-   string getElemento();
+    //PRE:
+    //POST: devuelve elemento del personaje
+    string getElemento();
 
-   //PRE:
-   //POST: retorna true si energia >= 5 , false en caso contrario.
+    //PRE:
+    //POST: retorna true si energia >= 5 , false en caso contrario.
     bool energiaAtaque();
 
     //PRE:
@@ -69,4 +70,4 @@ private:
 
 
 
-#endif //ATAQUE_FUEGO_H
+#endif //TP3_FUEGO_H

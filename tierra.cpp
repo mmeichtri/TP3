@@ -1,10 +1,6 @@
-//
-// Created by jose on 2/2/21.
-//
-
 #include "tierra.h"
 Tierra :: Tierra(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
- escudoInicial = escudo;
+    escudoInicial = escudo;
 }
 string Tierra ::getElemento() {
     string element = "tierra";
@@ -32,7 +28,7 @@ void Tierra :: imprimirAlimentos(){
 }
 bool Tierra :: energiaAtaque() {
 
-      return energia >= 6;
+    return energia >= 6;
 }
 
 bool Tierra ::energiaDefensa() {
@@ -56,21 +52,21 @@ int Tierra ::danoPorRango(int filaAtacar, int columnaAtacar, int filaAtacado, in
     int diferenciaColumnas = columnaAtacar-columnaAtacado;
 
     if(diferenciaFilas <= 2 && diferenciaFilas >= -2 )
-         return condicionRangoDos(diferenciaColumnas);
+        return condicionRangoDos(diferenciaColumnas);
     else if(diferenciaFilas <= 4 && diferenciaFilas >= -4)
         return condicionRangoCuatro(diferenciaColumnas);
     else
-         return 10;
+        return 10;
 }
 
 int Tierra ::condicionRangoDos(int diferenciaCol) {
 
     if(diferenciaCol <= 2 && diferenciaCol >= -2)
-          return 30;
-      else if(diferenciaCol <= 4 && diferenciaCol >= -4)
-          return 20;
-      else
-          return 10;
+        return 30;
+    else if(diferenciaCol <= 4 && diferenciaCol >= -4)
+        return 20;
+    else
+        return 10;
 }
 
 int Tierra ::condicionRangoCuatro(int diferenciaCol) {

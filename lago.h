@@ -1,7 +1,7 @@
 #ifndef LAGO_H_INCLUDED
 #define LAGO_H_INCLUDED
 #include "casillero.h"
-#include "personaje.h"
+
 class Lago : public Casillero{
 private:
 
