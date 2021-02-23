@@ -25,11 +25,6 @@ private:
   //POST: inicia el vector en todas sus posiciones en false
     void iniciarBool(bool array[]);
 
-   //PRE: fila y columna validas, con un valor entre el rango establecido.
-   /*POST: busca si la fila y columna pasadas por parametros son iguales a algun casillero* en arrayVertice,
-    cuando lo encuentra retorna la posicion
-    */
-   int buscarPosicion(int fila , int columna);
 
    //PRE: vector de entero valido y un valor int valido.
    //POST: inicia cada una de las posiciones del vector con el valor int pasado por parametro.
@@ -63,6 +58,12 @@ public :
       POST: coloca en arrayVertice en la posicion pasada por parametro el valor del casillero*.
       */
     void ingresarVertice(Casillero* dato, int posicion);
+
+    //PRE: fila y columna validas, con un valor entre el rango establecido.
+    /*POST: busca si la fila y columna pasadas por parametros son iguales a algun casillero* en arrayVertice,
+     cuando lo encuentra retorna la posicion
+     */
+    int buscarPosicion(int fila , int columna);
 
     /* PRE : dos punteros a casillero validos y un valor peso valido.
       POST: llama a buscarPosicion() y busca las posiciones de los casilleros pasados por parametro

@@ -95,7 +95,7 @@ int Grafo::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , in
         visto[vertice] = true;
         condicionCaminoMinimo(distancia,vertice,personaje);
     }
-    recorridoMinimo(final);
+
     return distancia[final] ;
 }
 

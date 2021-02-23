@@ -23,5 +23,6 @@ int main() {
     tablero.pasarAdyacencia(&graf);
     Juego iu(&graf);
     iu.jugar();
+
     return 0;
 }

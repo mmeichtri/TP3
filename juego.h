@@ -7,7 +7,6 @@
 
 
 #include "interfazUsuario.h"
-
 #include "agua.h"
 #include "fuego.h"
 #include "aire.h"
@@ -68,6 +67,10 @@ private:
      * pasadas por parametro, en caso contrario llama a la funcion error moverse e indica al usuario.
     */
     int condicionMoverse(Personaje* personajeTurno , int caminoMinimo, int fila , int col);
+
+    //pre: puntero a personaje valido , fila,columna y caminoMinimo validas.
+    //post: muestra el camino que recorrido el personaje, cambia su fila y columna y resta el valor caminoMinimo de energia .
+    void moverPersonaje(Personaje* personajeTurno, int fila , int columna, int caminoMinimo);
 
     //pre:
     //post: recibe una eleccion elegida por el usuario entre 1 y dos y la retorna.

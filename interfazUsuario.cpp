@@ -61,7 +61,7 @@ int VInterfazUsuario :: comprobarOpcion(int rangMinimo , int rangMaximo){
 
     int opcion;
     do{
-        cout << "Ingrese una opcion valida del menu : " << endl;
+        cout << "Ingrese una opcion valida : " << endl;
         cin >> opcion;
     }while( opcion < rangMinimo || opcion > rangMaximo );
    cout << opcion << endl;
@@ -102,8 +102,13 @@ void VInterfazUsuario ::mostrarPersonaje(string nombre, string elemento, int esc
 }
 
 void VInterfazUsuario ::noSeAlimento() {
-    cout << " Error el personaje no tiene energia para alimentarse " << endl;
+    cout << " Error el personaje ya tiene energia suficiente " << endl;
 }
+
 void VInterfazUsuario ::alimentado(string elemento, string comida, int energiaRecuperada) {
     cout << " Se alimento al personaje de " << elemento << " con "<< comida << " y recupero " << energiaRecuperada << " de energia " << endl;
+}
+
+void VInterfazUsuario ::caminoInicialFinal(int filaI, int colI, int filaF, int colF) {
+    cout << " Desde ("<<filaI << " , "<<colI<<") hasta ("<<filaF<<" , "<<colF<<") "<<endl;
 }

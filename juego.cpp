@@ -41,8 +41,8 @@ void Juego::turnosSeleccion() {
 
 void Juego::elegirPersonaje() {
     // falta pre y post condicion
- Personaje* hola = new Fuego("el dodo",0,100);
-  Personaje* hello = new  Tierra("la rock", 2, 100);
+ Personaje* hola = new Fuego("el dodo",0,30);
+  Personaje* hello = new  Tierra("la rock", 2, 20);
    hola->cambiarFYC(1,7);
     hello->cambiarFYC(0,0);
     jugadorUno[0] = hola;
@@ -242,7 +242,6 @@ void Juego ::moverse(Personaje *personajeTurno) {
     do{
         int fila = vista.leerFilaOColumna("fila");
         int columna = vista.leerFilaOColumna("columna");
-        vista.imprimirLinea(" Este es el camino que se quiere recorrer ");
         int caminoMinimo = graf->caminoMinimo(personajeTurno->getFila(), personajeTurno->getColumna(), fila,
                                                columna, personajeTurno);
         vista.saltarLinea();
@@ -268,20 +267,26 @@ int  Juego ::condicionMoverse(Personaje *personajeTurno, int caminoMinimo, int f
 
     int opcionUsuario = SALIR;
 
-     if (personajeTurno->tieneEnergia(caminoMinimo) && casillaVacia(fila,col)){
-            personajeTurno->cambiarFYC(fila, col);
-            personajeTurno->restarEnergia(caminoMinimo);
-            vista.imprimirLinea(" se movio el personaje correctamente ");
-     }
+     if (personajeTurno->tieneEnergia(caminoMinimo) && casillaVacia(fila,col))
+         moverPersonaje(personajeTurno,fila,col,caminoMinimo);
      else if(personajeTurno->tieneEnergia(caminoMinimo) && !casillaVacia(fila,col)){
          vista.imprimirLinea(" Error la casilla donde se quiere mover al personaje esta ocupada ");
          opcionUsuario = errorMoverse();
      }
      else{
-         vista.imprimirLinea(" Error el personaje no tiene energia para atacar ");
+         vista.imprimirLinea(" Error el personaje no tiene energia para moverse");
          opcionUsuario = errorMoverse();
      }
      return opcionUsuario;
+}
+void Juego ::moverPersonaje(Personaje *personajeTurno, int fila, int columna, int caminoMinimo) {
+    int posicionFinal = graf->buscarPosicion(fila,columna);
+    vista.imprimirLinea("el personaje paso por las siguientes casillas ");
+    vista.caminoInicialFinal(personajeTurno->getFila(),personajeTurno->getColumna(),fila,columna);
+    graf->recorridoMinimo(posicionFinal);
+    vista.saltarLinea();
+    personajeTurno->cambiarFYC(fila, columna);
+    personajeTurno->restarEnergia(caminoMinimo);
 }
 
 int Juego::errorMoverse() {

@@ -132,6 +132,7 @@ public:
     //post: retorna el nombre del personaje
     string getNombre();
 
+
     //PRE:
     //POST:
     virtual ~Personaje() {;}
