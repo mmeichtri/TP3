@@ -1,5 +1,5 @@
 //
-// Created by jose on 2/2/21.
+// Created by jose on 22/2/21.
 //
 
 #include "aire.h"
@@ -8,11 +8,10 @@ Aire :: Aire(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
 }
 
 string Aire ::getElemento() {
-    string element = "aire";
-    return element;
+    return "aire";
 }
 void Aire:: alimentarse() {
-    cout << "los personajes de aire no se alimentan "<< endl;
+    vista.imprimirLinea(" los personajes de aire no se alimentan");
 }
 
 bool Aire ::energiaAtaque() {
@@ -44,7 +43,7 @@ int Aire :: danoAtaque(Personaje *personajeAtacar) {
 
 void Aire ::atacar(Personaje** personajeAtacado) {
 
-     restarEnergia(8);
+    restarEnergia(8);
     for(int i = 0; i < MAXRIVALES ; i++){
         if(personajeAtacado[i] != nullptr){
             int dano = danoAtaque(personajeAtacado[i]);

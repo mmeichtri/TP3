@@ -1,16 +1,16 @@
 //
-// Created by jose on 2/2/21.
+// Created by jose on 22/2/21.
 //
 
-#ifndef ATAQUE_TIERRA_H
-#define ATAQUE_TIERRA_H
+#ifndef TP3_TIERRA_H
+#define TP3_TIERRA_H
 
 #include "personaje.h"
 
 
 class Tierra : public Personaje {
 private:
-   int escudoInicial;
+    int escudoInicial;
 public:
     // PRE: NOMBRE VALIDO , VIDA CON VALOR ENTRE 10 Y 100 Y ESCUDO CON VALOR 0 A 2 VALIDOS.
     // POST: CONSTRUYE UN OBJETO Tierra CON DATOS VALIDOS.
@@ -21,14 +21,14 @@ public:
      * Y LLAMA A imprimirALimentos, SI ES FALSO SE LO INDICA AL USUARIO.*/
     void alimentarse();
 
-   //PRE: vector de personaje* personajeAtacado valido.
-   /*POST: recorre el vector de personajeAtacado y en cada posicion si no es nullptr , llama a danoRango
-   danoAtaque y quitarVida.
-    */
-   void atacar(Personaje** personajeAtacado);
+    //PRE: vector de personaje* personajeAtacado valido.
+    /*POST: recorre el vector de personajeAtacado y en cada posicion si no es nullptr , llama a danoRango
+    danoAtaque y quitarVida.
+     */
+    void atacar(Personaje** personajeAtacado);
 
-   //PRE:
-   //POST: retorna true si energia >= 6 , false en caso contrario
+    //PRE:
+    //POST: retorna true si energia >= 6 , false en caso contrario
     bool energiaAtaque();
 
     //pre:
@@ -42,7 +42,7 @@ public:
 
     //PRE:
     //POST: DEVUELVE EL NOMBRE DEL ELEMENTO
-   string getElemento();
+    string getElemento();
 
 
     //PRE:
@@ -78,5 +78,4 @@ private:
 };
 
 
-
-#endif //ATAQUE_TIERRA_H
+#endif //TP3_TIERRA_H

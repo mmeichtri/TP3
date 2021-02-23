@@ -25,7 +25,7 @@ int Grafo::buscarPosicion(int fila, int columna){
     int cont = 0;
 
     while(cont < MAX && !encontrado){
-        if(this->arrayVertice[cont]->devolverfila() == fila && this->arrayVertice[cont]->devolverColumna() == columna ){
+        if(this->arrayVertice[cont]->getFila() == fila && this->arrayVertice[cont]->getColumna() == columna ){
             posicion = cont;
             encontrado = true;
         }
@@ -36,8 +36,8 @@ int Grafo::buscarPosicion(int fila, int columna){
 
 
 void Grafo::ingresarArista(Casillero* casilleroUno, Casillero* casilleroDos, int peso) {
-    int posicionInicial = buscarPosicion(casilleroUno->devolverfila() ,casilleroUno->devolverColumna());
-    int posicionFinal = buscarPosicion(casilleroDos->devolverfila(),casilleroDos->devolverColumna());
+    int posicionInicial = buscarPosicion(casilleroUno->getFila() ,casilleroUno->getColumna());
+    int posicionFinal = buscarPosicion(casilleroDos->getFila(),casilleroDos->getColumna());
     matrizAdyacencia[posicionInicial][posicionFinal] = peso;
 }
 
@@ -51,7 +51,7 @@ void Grafo::iniciarArray(int* vec , int valor){
         vec[i] = valor;
 }
 
-void Grafo::iniciarDistancia(int *vecDistancia, int inicial , string personaje, bool* visto){
+void Grafo::iniciarDistancia(int *vecDistancia, int inicial , Personaje* personaje, bool* visto){
     for(int i = 0; i < MAX; i++){
         if(matrizAdyacencia[inicial][i] == 0)
             vecDistancia[i] = 6000;
@@ -80,7 +80,7 @@ void Grafo:: iniciarPadre(int inicial, bool * visto , int* distancia){
     padre[primerMinimo] = inicial;
 }
 
-int Grafo::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , int columnaFinal, string personaje){
+int Grafo::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , int columnaFinal, Personaje* personaje){
     int inicial = buscarPosicion(filaInicial,columnaInicial);
     int final = buscarPosicion(filaFinal,columnaFinal);
     int distancia[MAX];
@@ -95,12 +95,12 @@ int Grafo::caminoMinimo(int filaInicial, int columnaInicial , int filaFinal , in
         visto[vertice] = true;
         condicionCaminoMinimo(distancia,vertice,personaje);
     }
-    recorridoMinimo(final);
+
     return distancia[final] ;
 }
 
 
-void Grafo::condicionCaminoMinimo(int *distancia , int vertice , string personaje) {
+void Grafo::condicionCaminoMinimo(int *distancia , int vertice , Personaje *personaje) {
 
     for(int w = 0; w < MAX; w++){
         if(matrizAdyacencia[vertice][w] != 0 ){
@@ -119,7 +119,7 @@ void Grafo ::recorridoMinimo( int final) {
     else{
         final = padre[final];
         recorridoMinimo(final);
-        cout << arrayVertice[final]->devolverfila() << " , " << arrayVertice[final]->devolverColumna()<< endl;
+        cout <<" ("<< arrayVertice[final]->getFila() << " , " << arrayVertice[final]->getColumna()<<" )  " ;
        return;
     }
 

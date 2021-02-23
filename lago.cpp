@@ -1,5 +1,5 @@
 #include "lago.h"
-#include "personaje.h"
+
 #include <iostream>
 using namespace std;
 

@@ -1,14 +1,9 @@
-//
-// Created by jose on 2/2/21.
-//
-
 #include "tierra.h"
 Tierra :: Tierra(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
- escudoInicial = escudo;
+    escudoInicial = escudo;
 }
 string Tierra ::getElemento() {
-    string element = "tierra";
-    return element;
+   return "tierra";
 }
 
 void Tierra::alimentarse() {
@@ -17,7 +12,7 @@ void Tierra::alimentarse() {
         energia = energia + 8;
         imprimirAlimentos();
     }else
-        cout << "ERROR EL PERSONAJE YA TIENE ENERGIA SUFICIENTE "<<endl;
+        vista.noSeAlimento();
 }
 
 bool Tierra::verificarEnergia() {
@@ -27,12 +22,12 @@ bool Tierra::verificarEnergia() {
 
 void Tierra :: imprimirAlimentos(){
 
-    cout << "SE ALIMENTO AL PERSONAJE DE TIERRA : "  << nombre << " CON HIERBAS y AUMENTO 8 PUNTOS DE ENERGIA, AHORA SU ENERGIA ES "<< energia << endl;
+  vista.alimentado(getElemento(),"hierbas",8);
 
 }
 bool Tierra :: energiaAtaque() {
 
-      return energia >= 6;
+    return energia >= 6;
 }
 
 bool Tierra ::energiaDefensa() {
@@ -56,21 +51,21 @@ int Tierra ::danoPorRango(int filaAtacar, int columnaAtacar, int filaAtacado, in
     int diferenciaColumnas = columnaAtacar-columnaAtacado;
 
     if(diferenciaFilas <= 2 && diferenciaFilas >= -2 )
-         return condicionRangoDos(diferenciaColumnas);
+        return condicionRangoDos(diferenciaColumnas);
     else if(diferenciaFilas <= 4 && diferenciaFilas >= -4)
         return condicionRangoCuatro(diferenciaColumnas);
     else
-         return 10;
+        return 10;
 }
 
 int Tierra ::condicionRangoDos(int diferenciaCol) {
 
     if(diferenciaCol <= 2 && diferenciaCol >= -2)
-          return 30;
-      else if(diferenciaCol <= 4 && diferenciaCol >= -4)
-          return 20;
-      else
-          return 10;
+        return 30;
+    else if(diferenciaCol <= 4 && diferenciaCol >= -4)
+        return 20;
+    else
+        return 10;
 }
 
 int Tierra ::condicionRangoCuatro(int diferenciaCol) {
@@ -84,7 +79,7 @@ void Tierra :: atacar(Personaje** personajeAtacado ){
 
     for(int i = 0; i < MAXRIVALES ; i++){
         if(personajeAtacado[i] != nullptr){
-            int danoRango = danoPorRango(fila,columna,personajeAtacado[i]->obtenerFila(),personajeAtacado[i]->obtenerColumna());
+            int danoRango = danoPorRango(fila,columna,personajeAtacado[i]->getFila(),personajeAtacado[i]->getColumna());
             int dano = danoAtaque(danoRango,personajeAtacado[i]);
             quitarVidaPersonaje(personajeAtacado[i],dano);
         }

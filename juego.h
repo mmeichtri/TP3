@@ -6,8 +6,7 @@
 #define ATAQUE_JUEGO_H
 
 
-#include "vInterfazUsuario.h"
-#include "personaje.h"
+#include "interfazUsuario.h"
 #include "agua.h"
 #include "fuego.h"
 #include "aire.h"
@@ -22,14 +21,14 @@
 class Juego {
 private:
     VInterfazUsuario vista;
-    grafo* graf;
+    Grafo* graf;
     Personaje* jugadorUno[MAXPERSONAJES];
     Personaje* jugadorDos[MAXPERSONAJES];
 public:
 
     //pre: puntero a grafo valido.
     //post: crea un objeto juego correctamente.
-    Juego(grafo* graf);
+    Juego(Grafo* graf);
 
     //pre:
     //post: coloca los dos vectores atributos de la clase en cada una de sus posiciones en null
@@ -68,6 +67,10 @@ private:
      * pasadas por parametro, en caso contrario llama a la funcion error moverse e indica al usuario.
     */
     int condicionMoverse(Personaje* personajeTurno , int caminoMinimo, int fila , int col);
+
+    //pre: puntero a personaje valido , fila,columna y caminoMinimo validas.
+    //post: muestra el camino que recorrido el personaje, cambia su fila y columna y resta el valor caminoMinimo de energia .
+    void moverPersonaje(Personaje* personajeTurno, int fila , int columna, int caminoMinimo);
 
     //pre:
     //post: recibe una eleccion elegida por el usuario entre 1 y dos y la retorna.

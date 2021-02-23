@@ -2,7 +2,7 @@
 // Created by jose on 8/2/21.
 //
 
-#include "vInterfazUsuario.h"
+#include "interfazUsuario.h"
 
 int VInterfazUsuario ::leerFilaOColumna(string dato) {
 
@@ -61,7 +61,7 @@ int VInterfazUsuario :: comprobarOpcion(int rangMinimo , int rangMaximo){
 
     int opcion;
     do{
-        cout << "Ingrese una opcion valida del menu : " << endl;
+        cout << "Ingrese una opcion valida : " << endl;
         cin >> opcion;
     }while( opcion < rangMinimo || opcion > rangMaximo );
    cout << opcion << endl;
@@ -85,5 +85,30 @@ void VInterfazUsuario :: limpiarPantalla() {
 }
 
 void VInterfazUsuario ::imprimirLinea(string linea) {
-    cout << linea << endl ;
+    cout << linea << endl;
+}
+
+void VInterfazUsuario ::saltarLinea() {
+    cout << endl;
+}
+
+void VInterfazUsuario ::mostrarPersonaje(string nombre, string elemento, int escudo, int energia, int vida, int fila, int col) {
+    cout << "Nombre:" << nombre << endl;
+    cout << "Elemento: " << elemento << endl;
+    cout << "Escudo : " << escudo << endl;
+    cout << " Vida : " << vida << endl;
+    cout << "Energia: " << energia << endl;
+    cout << "Fila: " << fila << " Columna: " << col << endl;
+}
+
+void VInterfazUsuario ::noSeAlimento() {
+    cout << " Error el personaje ya tiene energia suficiente " << endl;
+}
+
+void VInterfazUsuario ::alimentado(string elemento, string comida, int energiaRecuperada) {
+    cout << " Se alimento al personaje de " << elemento << " con "<< comida << " y recupero " << energiaRecuperada << " de energia " << endl;
+}
+
+void VInterfazUsuario ::caminoInicialFinal(int filaI, int colI, int filaF, int colF) {
+    cout << " Desde ("<<filaI << " , "<<colI<<") hasta ("<<filaF<<" , "<<colF<<") "<<endl;
 }

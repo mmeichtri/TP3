@@ -60,6 +60,21 @@ public:
     //POST: SALTA UNA LINEA
     void saltarLinea();
 
+    //pre: atributos del personaje valido
+    //post:Imprime los atributos de los personaje
+    void mostrarPersonaje(string nombre , string elemento , int escudo ,int energia, int vida , int fila , int col );
+
+    //pre:
+    //post: imprime que no se pudo alimentar el personaje.
+    void noSeAlimento();
+
+    //pre:string elemento, comia e int energiaRecuperada validos.
+    //post: imprime que se alimento el personaje.
+    void alimentado(string elemento , string comida , int energiaRecuperada);
+
+    //pre: variables int validas
+    //post: imprime la casilla inicial y final del recorrido
+    void caminoInicialFinal(int filaI , int colI , int filaF , int colF);
 };
 
 

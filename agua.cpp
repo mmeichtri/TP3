@@ -6,30 +6,31 @@ Agua :: Agua(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
 
 string Agua :: getElemento() {
 
-    string element = "agua";
-    return element;
+    return "agua";
 }
 
 void Agua :: alimentarse() {
 
-    if(verificarEnergia()){
+    if(verificarEnergia() && contarComida < 3){
         contarComida++;
         energia = energia + 10;
         imprimirAlimentos();
-    }
+    } else if(contarComida < 3)
+        vista.noSeAlimento();
     else
-        cout << "ERROR NO SE PUDO ALIMENTAR AL PERSONAJE" << endl;
+        vista.imprimirLinea(" Error el personaje no tiene mas oportunidades para alimentarse");
 }
 
 bool Agua ::verificarEnergia() {
 
-    return ((energia + 10 <= EMAX ) && (contarComida < 3));
+    return (energia + 10 <= EMAX );
 
 }
 
 void Agua :: imprimirAlimentos() {
 
-    cout << "SE ALIMENTO AL PERSONAJE DE AGUA : " << nombre << " CON PLACTON Y RECUPERO 10 PUNTOS DE ENERGIA AHORA TIENE  "<< energia << endl;
+         vista.alimentado(getElemento(),"placton",10);
+
 }
 
 bool Agua ::energiaAtaque() {
@@ -60,12 +61,12 @@ void Agua :: atacar(Personaje** victima) {
 
         for(int i = 0; i < MAXRIVALES; i++){
             if(victima[i] != nullptr){
-                if(victima[i]->obtenerFila() == fila && victima[i]->obtenerColumna() == columna){
-                atacarPersonaje(victima[i]);
-                encontrado = true;
-                  }
+                if(victima[i]->getFila() == fila && victima[i]->getColumna() == columna){
+                    atacarPersonaje(victima[i]);
+                    encontrado = true;
+                }
             }
-      noEncontroPersonaje(encontrado);
+            noEncontroPersonaje(encontrado);
 
         }
     }while(!encontrado);

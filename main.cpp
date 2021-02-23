@@ -1,24 +1,28 @@
 #include <iostream>
-#include "matriz.h"
-#include "grafo.h"
-#include "lecturaCsvCasilleros.h"
-#include "personaje.h"
 #include "agua.h"
-#include "tierra.h"
 #include "aire.h"
+#include"personaje.h"
+#include "tierra.h"
 #include "fuego.h"
+#include "juego.h"
+#include "grafo.h"
+#include "matriz.h"
+#include "lecturaCsvCasilleros.h"
 
 using namespace std;
 
-int main()
-{
-    Grafo g;
-    Matriz m;
-    LecturaCsvCasilleros l;
+
+int main() {
+    srand(time(nullptr));
+
+    Matriz tablero;
+    Grafo graf;
     string csv = "mapa.csv";
-    l.lecturaArchivo(&m, &g, csv);
-    m.pasarAdyacencia(&g);
-    Personaje* p = new Tierra("mely", 1, 2);
-    cout << g.caminoMinimo(1, 1, 7, 4, p) << endl;
+    LecturaCsvCasilleros arch;
+    arch.lecturaArchivo(&tablero,&graf,csv);
+    tablero.pasarAdyacencia(&graf);
+    Juego iu(&graf);
+    iu.jugar();
+
     return 0;
 }

@@ -117,6 +117,7 @@ T* Bst <T>::erase(string key){
 	BinTreeNode<T> *node = _root->search(key);
 	if (node == NULL)
 		return NULL;
+
 	T *data = node->getData();
 //	cout << "el nodo hallado contiene al personaje " << (*data)->nombre() << endl;
 	
