@@ -66,11 +66,19 @@ public:
 
     //PRE:
     //POST: devuelve el atributo fila
-    int obtenerFila();
+    int getFila();
 
     //PRE:
     //POST: devuelve el atributo columna
-    int obtenerColumna();
+    int getColumna();
+
+    //PRE:
+    //POST retorna la energia del personaje
+    int getEnergia();
+
+    //PRE:
+    //POST: retorna la vida del personaje
+    int getVida();
 
     //PRE: valor int restar valido
     //POST: le resta al atributo vida el valor restar pasado por parametro
@@ -120,6 +128,8 @@ public:
     //post: a personajeAtacado se le resta la vida , del valor del ataque menos lo defendido por su escudo.
     void quitarVidaPersonaje(Personaje* personaAtacado , int ataque);
 
+    //pre:
+    //post: retorna el nombre del personaje
     string getNombre();
 
     //PRE:

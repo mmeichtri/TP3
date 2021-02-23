@@ -180,8 +180,10 @@ void Juego ::ataque(Personaje* atacante, Personaje** victima) {
 
     if(atacante -> energiaAtaque()){
         atacante->atacar(victima);
-    }else
+    }else{
         vista.imprimirLinea("El personaje no tiene suficiente energia para atacar ");
+    }
+
 }
 
 
@@ -189,8 +191,11 @@ void Juego :: defenderse(Personaje* personajeTurno,Personaje** aliados) {
 
     if (personajeTurno->energiaDefensa())
         condicionDefensa(personajeTurno, aliados);
-    else
+    else{
         vista.imprimirLinea("error el personaje no tiene energia para defenderse");
+        vista.saltarLinea();
+    }
+
 }
 
 void Juego ::condicionDefensa(Personaje *personajeTurno,Personaje** aliados) {
@@ -237,9 +242,11 @@ void Juego ::moverse(Personaje *personajeTurno) {
     do{
         int fila = vista.leerFilaOColumna("fila");
         int columna = vista.leerFilaOColumna("columna");
-        int perdidaCamino = graf->caminoMinimo(personajeTurno->obtenerFila(), personajeTurno->obtenerColumna(), fila,
+        vista.imprimirLinea(" Este es el camino que se quiere recorrer ");
+        int caminoMinimo = graf->caminoMinimo(personajeTurno->getFila(), personajeTurno->getColumna(), fila,
                                                columna, personajeTurno);
-        desicionUsuario = condicionMoverse(personajeTurno,perdidaCamino,fila,columna);
+        vista.saltarLinea();
+        desicionUsuario = condicionMoverse(personajeTurno,caminoMinimo,fila,columna);
 
     }while(desicionUsuario != SALIR);
 }
@@ -248,9 +255,9 @@ bool Juego::casillaVacia( int fila, int columna) {
     bool estaVacia = true;
     int pos = 0;
     while(pos < MAXPERSONAJES && estaVacia){
-        if(jugadorUno[pos]->obtenerFila() == fila && jugadorUno[pos]->obtenerColumna() == columna)
+        if(jugadorUno[pos]->getFila() == fila && jugadorUno[pos]->getColumna() == columna)
             estaVacia = false;
-        if(jugadorDos[pos]->obtenerFila() == fila && jugadorDos[pos]->obtenerColumna() == columna)
+        if(jugadorDos[pos]->getFila() == fila && jugadorDos[pos]->getColumna() == columna)
             estaVacia = false;
         pos++;
     }

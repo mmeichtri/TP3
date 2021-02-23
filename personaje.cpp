@@ -8,13 +8,7 @@ Personaje :: Personaje(string nombre,int escudo,int vida){
 }
 
 void Personaje ::mostrarPersonaje() {
-
-    cout << "NOMBRE:" << nombre << endl;
-    cout << "ELEMENTO: " << getElemento() << endl;
-    cout << "ESCUDO : " << escudo << endl;
-    cout << " VIDA : " << vida << endl;
-    cout << "ENERGIA: " << energia << endl;
-    cout << "FILA: " << fila << " COLUMNA: " << columna << endl;
+    vista.mostrarPersonaje(getNombre(),getElemento(),getEscudo(),getEnergia(),getVida(),getFila(),getColumna());
 }
 
 
@@ -37,12 +31,21 @@ void Personaje ::cambiarFYC(int fila, int columna) {
     this -> columna = columna;
 }
 
-int Personaje ::obtenerFila() {
+int Personaje ::getFila() {
     return fila;
 }
-int Personaje ::obtenerColumna() {
+int Personaje ::getColumna() {
     return columna;
 }
+
+int Personaje ::getVida() {
+    return vida;
+}
+
+int Personaje ::getEnergia() {
+    return energia;
+}
+
 void Personaje ::restarVida(int restar) {
     vida = vida - restar;
 }

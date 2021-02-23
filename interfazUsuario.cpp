@@ -85,5 +85,25 @@ void VInterfazUsuario :: limpiarPantalla() {
 }
 
 void VInterfazUsuario ::imprimirLinea(string linea) {
-    cout << linea << endl ;
+    cout << linea << endl;
+}
+
+void VInterfazUsuario ::saltarLinea() {
+    cout << endl;
+}
+
+void VInterfazUsuario ::mostrarPersonaje(string nombre, string elemento, int escudo, int energia, int vida, int fila, int col) {
+    cout << "Nombre:" << nombre << endl;
+    cout << "Elemento: " << elemento << endl;
+    cout << "Escudo : " << escudo << endl;
+    cout << " Vida : " << vida << endl;
+    cout << "Energia: " << energia << endl;
+    cout << "Fila: " << fila << " Columna: " << col << endl;
+}
+
+void VInterfazUsuario ::noSeAlimento() {
+    cout << " Error el personaje no tiene energia para alimentarse " << endl;
+}
+void VInterfazUsuario ::alimentado(string elemento, string comida, int energiaRecuperada) {
+    cout << " Se alimento al personaje de " << elemento << " con "<< comida << " y recupero " << energiaRecuperada << " de energia " << endl;
 }

@@ -76,7 +76,7 @@ public :
      */
     int caminoMinimo(int filaInicial, int columnaInicial, int filaFinal, int columnaFinal, Personaje* personaje);
 
-    /* PRE: variable final valida.
+    /* PRE: variable final valida
      * POST: hasta que padre[final] = -1 va haciendo final = padre[final] y va  imprimiendo
      la fila y la columna en la posiion final .
      */

@@ -13,7 +13,7 @@ void Tierra::alimentarse() {
         energia = energia + 8;
         imprimirAlimentos();
     }else
-        cout << "ERROR EL PERSONAJE YA TIENE ENERGIA SUFICIENTE "<<endl;
+        vista.noSeAlimento();
 }
 
 bool Tierra::verificarEnergia() {
@@ -23,7 +23,7 @@ bool Tierra::verificarEnergia() {
 
 void Tierra :: imprimirAlimentos(){
 
-    cout << "SE ALIMENTO AL PERSONAJE DE TIERRA : "  << nombre << " CON HIERBAS y AUMENTO 8 PUNTOS DE ENERGIA, AHORA SU ENERGIA ES "<< energia << endl;
+  vista.alimentado(getElemento(),"hierbas",8);
 
 }
 bool Tierra :: energiaAtaque() {
@@ -80,7 +80,7 @@ void Tierra :: atacar(Personaje** personajeAtacado ){
 
     for(int i = 0; i < MAXRIVALES ; i++){
         if(personajeAtacado[i] != nullptr){
-            int danoRango = danoPorRango(fila,columna,personajeAtacado[i]->obtenerFila(),personajeAtacado[i]->obtenerColumna());
+            int danoRango = danoPorRango(fila,columna,personajeAtacado[i]->getFila(),personajeAtacado[i]->getColumna());
             int dano = danoAtaque(danoRango,personajeAtacado[i]);
             quitarVidaPersonaje(personajeAtacado[i],dano);
         }

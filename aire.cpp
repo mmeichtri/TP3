@@ -12,7 +12,7 @@ string Aire ::getElemento() {
     return element;
 }
 void Aire:: alimentarse() {
-    cout << "los personajes de aire no se alimentan "<< endl;
+    vista.imprimirLinea(" los personajes de aire no se alimentan");
 }
 
 bool Aire ::energiaAtaque() {

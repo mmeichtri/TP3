@@ -19,9 +19,9 @@ public:
     Agua(string nombre,int escudo,int vida);
 
     //PRE :
-    /*POST: SI verificarEnergia() DEVUELVE TRUE, INCREMENTA EN UNO contarComida Y EN DIEZ
-     * LA energia DEL PERSONAJE. EN FALSEDAD, LLAMA imprimirAlimentos(),INDICANDO
-     * AL USUARIO QUE NO PUEDE ALIMENTARSE */
+    /*POST: SI verificarEnergia() && contarComida < 3 DEVUELVE TRUE, INCREMENTA EN UNO contarComida Y EN DIEZ
+     * LA energia DEL PERSONAJE. EN FALSEDAD, SI CONTAR COMIDA < 3 INDICA AL USUARIO QUE NO HAY ENERGIA
+     Y SINO INDICA AL USUARIO QUE YA SE ALIMENTO 3 VECES*/
     void alimentarse();
 
     //PRE: vector a puntero de personajes  victim valido
@@ -51,12 +51,12 @@ public:
 
 private:
     //PRE :
-    /*POST :DEVUELVE VERDADERO SI LA energia+10 ES MENOR O IGUAL QUE emax Y EL PERSONAJE SE HA
-     * ALIMENTADO MENOS DE 3 VECES, FALSO AL NO CUMPLIRSE POR LO MENOS UNA DE LAS CONDICIONES*/
+    /*POST :DEVUELVE VERDADERO SI LA energia+10 ES MENOR O IGUAL QUE emax Y
+     * FALSO AL NO CUMPLIRSE LA CONDICION*/
     bool verificarEnergia();
 
     // PRE :
-    /* POST:IMPRIME EL NOMBRE DEL PERSONAJE, DE QUE SE ALIMENTO Y CUANTO SUBIO SU ENERGIA.*/
+    /* POST:SI CANTIDAD ES MENOR A 3 ,IMPRIME EL NOMBRE DEL PERSONAJE, DE QUE SE ALIMENTO Y CUANTO SUBIO SU ENERGIA.*/
     void imprimirAlimentos();
 
     //PRE: puntero a personaje personajeAtacar valido.

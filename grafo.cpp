@@ -119,7 +119,7 @@ void Grafo ::recorridoMinimo( int final) {
     else{
         final = padre[final];
         recorridoMinimo(final);
-        cout << arrayVertice[final]->getFila() << " , " << arrayVertice[final]->getColumna()<< endl;
+        cout <<" ("<< arrayVertice[final]->getFila() << " , " << arrayVertice[final]->getColumna()<<" )  " ;
        return;
     }
 

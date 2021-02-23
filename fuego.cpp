@@ -15,7 +15,7 @@ void Fuego :: alimentarse() {
         energia = energia + 10;
         imprimirAlimentos();
     }else
-        cout << "ERROR EL PERSONAJE DE FUEGO NO SE PUDO ALIMENTAR ENERGIA O VIDA YA SOM SUFICIENTES " << endl;
+       vista.noSeAlimento();
 
 }
 
@@ -25,8 +25,8 @@ bool Fuego::verificarVida() {
 }
 
 void Fuego :: imprimirAlimentos(){
-
-    cout << "SE ALIMENTO AL PERSONAJE DE FUEGO : " << nombre << " CON MADERA Y RECUPERO 5 PUNTOS DE VIDA y 10 DE ENERGIA ,AHORA TIENE " << vida  << endl;
+    vista.alimentado(getElemento(),"madera",10);
+    vista.imprimirLinea(" recupero 5 puntos de vida el personaje ");
 }
 
 bool Fuego ::energiaAtaque() {
@@ -73,7 +73,7 @@ void Fuego :: atacar (Personaje** personajeAtacado) {
 
     for(int i = 0; i < MAXRIVALES ; i++){
         if(personajeAtacado[i] != nullptr){
-            if(comprobarFilas(fila,personajeAtacado[i]->obtenerFila())){
+            if(comprobarFilas(fila,personajeAtacado[i]->getFila())){
                 int dano = danoAtaque(personajeAtacado[i]);
                 quitarVidaPersonaje(personajeAtacado[i],dano);
             }

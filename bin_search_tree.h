@@ -12,212 +12,257 @@ template <typename T>
 
 class Bst{
 private:
-	BinTreeNode<T> *_root;
-	size_t _size;
-	size_t _levels;
+    BinTreeNode<T> *_root;
+    size_t _size;
+    size_t _levels;
 
 public:
-	Bst();
-	Bst(T data, string key);
-	~Bst();
+    Bst();
+    Bst(T data, string key);
+    ~Bst();
 
-	void add(T data, string key);
-	//Agrega <data> al �rbol en caso de que no est� incluido previamente.
-	//POST: agrega un dato nuevo e incrementa el tama�o.
-	//
-	T pop();
-	/*EN CONSTRUCCI�N*/
-	//necesito crear un get() que devuelva un puntero al dato (o NULL si no existe)
-	//y ah� eliminarlo del �rbol, enlazando sus hijos con su padre de alguna forma adecuada.
-	//
-	//
-	T get();
+    void add(T data, string key);
+    //Agrega <data> al árbol en caso de que no esté incluido previamente.
+    //POST: agrega un dato nuevo e incrementa el tamaño.
+    //
 
-	bool empty();
-	//PRE: el �rbol existe.
-	//POST: devuelve true si el arbol est� vac�o y false si no lo est�.
-	//
-	size_t size();
-	//PRE: el �rbol existe.
-	//POST: devuelve la cantidad de elementos que almacena.
-	//
-	size_t lvls();
-	//
-	//
-	Queue<T>* preOrder();
-	//POST: devuelve una cola con los elementos del �rbol obtenidos
-	//mediante un recorrido de pre-orden.
-	//
-	Queue<T>* inOrder();
-	//POST: devuelve una cola con los elementos del �rbol
-	//ordenados de (primero) menor a mayor (�ltimo).
-	//
-	Queue<T>* postOrder();
-	//POST: devuelve una cola con los elementos del �rbol obtenidos
-	//mediante un recorrido de prost-orden.
-	//
-	void showPreOrder();
-	//POST: imprime los elementos del �rbol ordenados seg�n recorrido de pre-orden.
-	//
-	void showInOrder();
-	//POST: imprime los elementos del �rbol ordenados de menor a mayor.
-	//
-	void showPostOrder();
-	//POST: imprime los elementos del �rbol ordenados seg�n recorrido de post-orden.
-	//
-	T* search(string key);
-	//Busca una clave en el �rbol y devuelve su valor.
-	//POST: si existe la clave, devuelve un PUNTERO al valor correspondiente.
-	//(OJO: si el tipo de dato a guardar es puntero a algo, devuelve un doble puntero).
-	//
+    T* erase(string key);
+
+    T pop();
+    /*EN CONSTRUCCIÓN*/
+    //necesito crear un get() que devuelva un puntero al dato (o NULL si no existe)
+    //y ahí eliminarlo del árbol, enlazando sus hijos con su padre de alguna forma adecuada.
+    //
+    //
+    T get();
+
+    bool empty();
+    //PRE: el árbol existe.
+    //POST: devuelve true si el arbol está vacío y false si no lo está.
+    //
+    size_t size();
+    //PRE: el árbol existe.
+    //POST: devuelve la cantidad de elementos que almacena.
+    //
+    size_t lvls();
+    //
+    //
+    Queue<T>* preOrder();
+    //POST: devuelve una cola con los elementos del árbol obtenidos
+    //mediante un recorrido de pre-orden.
+    //
+    Queue<T>* inOrder();
+    //POST: devuelve una cola con los elementos del árbol
+    //ordenados de (primero) menor a mayor (último).
+    //
+    Queue<T>* postOrder();
+    //POST: devuelve una cola con los elementos del árbol obtenidos
+    //mediante un recorrido de prost-orden.
+    //
+    void showPreOrder();
+    //POST: imprime los elementos del árbol ordenados según recorrido de pre-orden.
+    //
+    void showInOrder();
+    //POST: imprime los elementos del árbol ordenados de menor a mayor.
+    //
+    void showPostOrder();
+    //POST: imprime los elementos del árbol ordenados según recorrido de post-orden.
+    //
+    T* search(string key);
+    //Busca una clave en el árbol y devuelve su valor.
+    //POST: si existe la clave, devuelve un PUNTERO al valor correspondiente.
+    //(OJO: si el tipo de dato a guardar es puntero a algo, devuelve un doble puntero).
+    //
 };
 
 
 
 template <typename T>
 Bst <T>::Bst(){
-	_root = NULL;
-	_size = 0;
-	_levels = 0;
+    _root = NULL;
+    _size = 0;
+    _levels = 0;
 }
 
 
 template <typename T>
 Bst <T>::Bst(T data, string key){
-	_root = new BinTreeNode<T>(data, key);
-	_size = 1;
-	_levels = 1;
+    _root = new BinTreeNode<T>(data, key);
+    _size = 1;
+    _levels = 1;
 }
 
 
 
 template <typename T>
 bool Bst<T> ::empty(){
-	return _size == 0 || _root == NULL;
+    return _size == 0 || _root == NULL;
 }
 
 
 template <typename T>
 void Bst <T>::add(T data, string key){
-	if(empty()){
-		_root = new BinTreeNode<T>(data, key);
-		_size = 1;
-		_levels = 1;
-	}
-	else if (_root->addBst(data, key))
-		_size++;
+    if(empty()){
+        _root = new BinTreeNode<T>(data, key);
+        _size = 1;
+        _levels = 1;
+    }
+    else if (_root->addBst(data, key))
+        _size++;
+}
+
+
+template <typename T>
+T* Bst <T>::erase(string key){
+    if(_root == NULL) //case empty dictionary
+        return NULL;
+    BinTreeNode<T> *node = _root->search(key);
+    T *data = new T();
+
+    //found the node with the key
+    *data = node->getData();
+
+    //case node with no childs
+    if(node->isLeaf())
+        delete node;
+
+        //case node has ONE child
+    else if(node->left() == 0){
+        node->erasingFlip("right");
+        delete node;
+    }
+    else if(node->right() == 0){
+        node->erasingFlip("left");
+        delete node;
+    }
+        //case node has 2 childrens
+    else{
+        BinTreeNode<T>* toReplace = _root->findMin(); //change name of this variable
+        node->setKey(toReplace->getKey());
+        node->setData(toReplace->getData());
+        *data = toReplace->getData();
+        delete toReplace;
+    }
+
+    return data;
 }
 
 
 template <typename T>
 size_t Bst <T>::size(){
-	return _size;
+    return _size;
 }
 
 
 template <typename T>
 size_t Bst <T>::lvls(){
-	return _levels;
+    return _levels;
 }
 
 
 template <typename T>
 Queue<T>* Bst <T>::preOrder(){
-	if (empty())
-		return NULL;
+    if (empty())
+        return NULL;
 
-	Queue<T> *preList = new Queue<T>;
-	_root->preOrder(preList);
+    Queue<T> *preList = new Queue<T>;
+    _root->preOrder(preList);
 
-	return preList;
+    return preList;
 }
 
 
 template <typename T>
 Queue<T>* Bst <T>::inOrder(){
-	if (empty())
-		return NULL;
+    if (empty())
+        return NULL;
 
-	Queue<T> *inList = new Queue<T>;
-	_root->inOrder(inList);
+    Queue<T> *inList = new Queue<T>;
+    _root->inOrder(inList);
 
-	return inList;
+    return inList;
 }
 
 template <typename T>
 Queue<T>* Bst <T>::postOrder(){
-	if (empty())
-		return NULL;
+    if (empty())
+        return NULL;
 
-	Queue<T> *posList = new Queue<T>;
-	_root->postOrder(posList);
+    Queue<T> *posList = new Queue<T>;
+    _root->postOrder(posList);
 
-	return posList;
+    return posList;
 }
 
 
 template <typename T>
 void Bst <T>::showPreOrder(){
-	Queue<T> * list = this->preOrder();
-	if (list == NULL){
-		cout << "The tree is empty." << endl;
-	}
-	else{
-		cout << "Elements in the tree in pre-order scanning:\n < ";
-		for (size_t i = 0; i < this->_size; i++)
-			cout << list->dequeue() << (i != this->_size - 1 ? ", " : " >");
-		cout << endl;
-		delete list;
-	}
+    Queue<T> * list = this->preOrder();
+    if (list == NULL){
+        cout << "The tree is empty." << endl;
+    }
+    else{
+        cout << "Elements in the tree in pre-order scanning:\n < ";
+        for (size_t i = 0; i < this->_size; i++)
+            cout << list->dequeue() << (i != this->_size - 1 ? ", " : " >");
+        cout << endl;
+        delete list;
+    }
 }
 
 
 template <typename T>
 void Bst <T>::showInOrder(){
-	Queue<T> * list = this->inOrder();
-	if (list == NULL){
-		cout << "The tree is empty." << endl;
-	}
-	else{
-		cout << "Elements in the tree in order scanning:\n < ";
-		for (size_t i = 0; i < this->_size; i++)
-			cout << list->dequeue() << (i != this->_size - 1 ? ", " : " >");
-		cout << endl;
-		delete list;
-	}
+    Queue<T> * list = this->inOrder();
+    if (list == NULL){
+        cout << "The tree is empty." << endl;
+    }
+    else{
+        cout << "Elements in the tree in order scanning:\n < ";
+        for (size_t i = 0; i < this->_size; i++)
+            cout << list->dequeue() << (i != this->_size - 1 ? ", " : " >");
+        cout << endl;
+        delete list;
+    }
 }
 
 template <typename T>
 void Bst <T>::showPostOrder(){
-	Queue<T> * list = this->postOrder();
-	if (list == NULL){
-		cout << "The tree is empty." << endl;
-	}
-	else{
-		cout << "Elements in the tree in post-order scanning:\n < ";
-		for (size_t i = 0; i < this->_size; i++)
-			cout << list->dequeue() << (i != this->_size - 1 ? ", " : " >");
-		cout << endl;
-		delete list;
-	}
+    Queue<T> * list = this->postOrder();
+    if (list == NULL){
+        cout << "The tree is empty." << endl;
+    }
+    else{
+        cout << "Elements in the tree in post-order scanning:\n < ";
+        for (size_t i = 0; i < this->_size; i++)
+            cout << list->dequeue() << (i != this->_size - 1 ? ", " : " >");
+        cout << endl;
+        delete list;
+    }
 }
 
 
 template <typename T>
 T* Bst <T>::search(string key){
-	//
-	//Primero chequeo que el �rbol no est� vac�o.
-	//Si lo est�, devuelvo NULL; si no, ejecuto el m�todo de b�squeda
-	//correspondiente a la clase nodo y devuelvo lo que retorne.
-	if (empty())
-		return NULL;
-	return _root->search(key);
+    //
+    //Primero chequeo que el árbol no esté vacío.
+    //Si lo está, devuelvo NULL; si no, ejecuto el método de búsqueda
+    //correspondiente a la clase nodo y devuelvo lo que retorne.
+    if (empty())
+        return NULL;
+
+    BinTreeNode<T> *aux = _root->search(key);
+    T *data = new T();
+    if (aux != NULL)
+        *data = aux->getData();
+    return data;
 }
+
 
 
 template <typename T>
 Bst <T> ::~Bst(){
-	delete _root;
+    delete _root;
 }
 
 
