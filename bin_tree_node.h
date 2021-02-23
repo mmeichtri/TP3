@@ -18,7 +18,10 @@ private:
 	BinTreeNode<T> *_prev;
 public:
 	BinTreeNode();
+	// DEFAULT CONSTRUCTOR
+	//
 	BinTreeNode(T data, string key);
+	//CONSTRUCTOR
 	~BinTreeNode();
 	//
 	//Creates a new node with the key-value pair specified as parameters and

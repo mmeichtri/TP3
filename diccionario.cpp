@@ -12,10 +12,12 @@ Personaje* Diccionario::buscar(string nombre){
 		return NULL;
 	//
 	//Bst::search(...) devuelve un puntero al tipo de dato guardado.
-	//Como en esta implementación el diccionario guarda como valores
+	//Como en esta implementaciÃ³n el diccionario guarda como valores
 	//PUNTEROS a personaje, al obtener el resultado de search() es
 	//necesario desreferenciar el objeto para no devolver un puntero doble.
 	Personaje** hallado = conjunto->search(nombre);
+//	Personaje *zb = *hallado;
+//	cout << "se encontrÃ³ al personaje " << zb->nombre() << endl;
 	return hallado == NULL ? NULL : *hallado;
 }
 
@@ -26,13 +28,20 @@ bool Diccionario::incluye(string nombre){
 
 
 void Diccionario::agregar(Personaje *p){
-	//Está línea podría omitirse y ejecutarse
+	//EstÃ¡ lÃ­nea podrÃ­a omitirse y ejecutarse
 	// |  por fuera antes de llamar a agregar()
 	// |
 	// V
-	if (!incluye(p->getNombre()))
+	if (!incluye(p->getNombre())) 
 		conjunto->add(p, p->getNombre());
 	tamanio++;
+}
+
+
+Personaje* Diccionario::borrarPersonaje(string nombre){
+	Personaje **aBorrar = conjunto->erase(nombre);
+	tamanio--;
+	return aBorrar == NULL ? NULL : *aBorrar;
 }
 
 

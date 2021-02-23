@@ -9,22 +9,28 @@ using namespace std;
 
 class Diccionario{
 private:
-	Bst<Personaje*> *conjunto;	//arbol de punteros a par (cada nodo tiene un puntero a par)
+	Bst<Personaje*> *conjunto;
 	size_t tamanio;
 
 public:
 	Diccionario();
+	//CONSTRUCTOR
+	//
 	~Diccionario();
+	//DESTRUCTOR
+	//
 	Personaje* buscar(string nombre);
-	//Busca por nombre (clave) y, si encuentra, devuelve puntero al personaje
+	//POST: devuelve puntero al personaje buscado por <nombre>. Si no lo encuentra devuelve NULL.
 	//
 	bool incluye(string nombre);
-	//Consulta si el personaje est· en el diccionario
+	//POST: devuelve true si el personaje est√° en el diccionario y false en caso contrario
 	//
 	void agregar(Personaje *p);
-	//Agrega personaje al diccionario en caso de que no estÈ
+	//POST: Agrega al personaje apuntado por <p> al diccionario en caso de que no est√© ya incluido.
 	//
-
+	Personaje* borrarPersonaje(string nombre);
+	//POST: Elimina a un personaje del diccionario si su clave coincide con <nombre> y devuelve un
+	//puntero al objetivo. 
 };
 
 #endif //DICCIONARIO_H
