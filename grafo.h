@@ -65,7 +65,7 @@ public :
      */
     int buscarPosicion(int fila , int columna);
 
-    /* PRE : dos punteros a casillero validos y un valor peso valido.
+    /* PRE : los dos casilleros pasados por parametro tienen que estar en arrayVertice , valor int peso valido.
       POST: llama a buscarPosicion() y busca las posiciones de los casilleros pasados por parametro
       en arrayVertice una vez obtenidos, lo coloca en la matriz de adyacencia en la pos
       fila: casilleroUno , columna:  casilleroDos , con el valor peso.

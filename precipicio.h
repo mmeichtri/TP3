@@ -13,9 +13,9 @@ public:
     Precipicio(int, int );
 
     /*
-    pre: si existe un personaje...
-    post: valida el elemento del personaje, y resta la energia, segun corresponda
-    */
+   pre: si existe un personaje...
+   post: valida el elemento del personaje, y retorna lo que cuesta pasar por esa casilla , segun corresponda
+   */
     int restarGastoDeEnergia(Personaje* );
 
     ~Precipicio();

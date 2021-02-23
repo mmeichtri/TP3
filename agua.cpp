@@ -6,8 +6,7 @@ Agua :: Agua(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
 
 string Agua :: getElemento() {
 
-    string element = "agua";
-    return element;
+    return "agua";
 }
 
 void Agua :: alimentarse() {

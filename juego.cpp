@@ -200,7 +200,6 @@ void Juego :: defenderse(Personaje* personajeTurno,Personaje** aliados) {
 
 void Juego ::condicionDefensa(Personaje *personajeTurno,Personaje** aliados) {
 
-    // va aca o va en metodo especifico de cada clase?
     if(personajeTurno->getElemento() == "agua")
         defensaAgua(personajeTurno,aliados);
     else if(personajeTurno->getElemento() == "aire")
@@ -244,7 +243,6 @@ void Juego ::moverse(Personaje *personajeTurno) {
         int columna = vista.leerFilaOColumna("columna");
         int caminoMinimo = graf->caminoMinimo(personajeTurno->getFila(), personajeTurno->getColumna(), fila,
                                                columna, personajeTurno);
-        vista.saltarLinea();
         desicionUsuario = condicionMoverse(personajeTurno,caminoMinimo,fila,columna);
 
     }while(desicionUsuario != SALIR);
@@ -279,6 +277,7 @@ int  Juego ::condicionMoverse(Personaje *personajeTurno, int caminoMinimo, int f
      }
      return opcionUsuario;
 }
+
 void Juego ::moverPersonaje(Personaje *personajeTurno, int fila, int columna, int caminoMinimo) {
     int posicionFinal = graf->buscarPosicion(fila,columna);
     vista.imprimirLinea("el personaje paso por las siguientes casillas ");

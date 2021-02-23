@@ -3,8 +3,7 @@ Tierra :: Tierra(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vi
     escudoInicial = escudo;
 }
 string Tierra ::getElemento() {
-    string element = "tierra";
-    return element;
+   return "tierra";
 }
 
 void Tierra::alimentarse() {

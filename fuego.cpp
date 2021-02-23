@@ -5,8 +5,7 @@ Fuego :: Fuego(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida
 
 string Fuego ::getElemento(){
 
-    string element = "fuego";
-    return element;
+    return "fuego";
 }
 void Fuego :: alimentarse() {
 

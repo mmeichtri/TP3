@@ -8,8 +8,7 @@ Aire :: Aire(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
 }
 
 string Aire ::getElemento() {
-    string element = "aire";
-    return element;
+    return "aire";
 }
 void Aire:: alimentarse() {
     vista.imprimirLinea(" los personajes de aire no se alimentan");
