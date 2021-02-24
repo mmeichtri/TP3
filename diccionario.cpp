@@ -45,6 +45,11 @@ Personaje* Diccionario::borrarPersonaje(string nombre){
 }
 
 
+void Diccionario::mostrar(){
+	conjunto->showInOrder();
+}
+
+
 Diccionario::~Diccionario(){
 	delete conjunto;
 }

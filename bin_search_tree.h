@@ -210,7 +210,7 @@ void Bst <T>::showPreOrder(){
 		cout << "The tree is empty." << endl;
 	}
 	else{
-		cout << "Elements in the tree in pre-order scanning:\n < ";
+		cout << "Elements in pre-order scanning:\n < ";
 		for (size_t i = 0; i < this->_size; i++)
 			cout << list->dequeue()->nombre() << (i != this->_size - 1 ? ", " : " >");
 		cout << endl;
@@ -226,7 +226,7 @@ void Bst <T>::showInOrder(){
 		cout << "The tree is empty." << endl;
 	}
 	else{
-		cout << "Elements in the tree in order scanning:\n < ";
+		cout << "Elements in order scanning:\n < ";
 		for (size_t i = 0; i < this->_size; i++)
 			cout << list->dequeue() << (i != this->_size - 1 ? ", " : " >");
 		cout << endl;
@@ -241,7 +241,7 @@ void Bst <T>::showPostOrder(){
 		cout << "The tree is empty." << endl;
 	}
 	else{
-		cout << "Elements in the tree in post-order scanning:\n < ";
+		cout << "Elements in post-order scanning:\n < ";
 		for (size_t i = 0; i < this->_size; i++)
 			cout << list->dequeue() << (i != this->_size - 1 ? ", " : " >");
 		cout << endl;

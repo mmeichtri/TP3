@@ -31,6 +31,10 @@ public:
 	Personaje* borrarPersonaje(string nombre);
 	//POST: Elimina a un personaje del diccionario si su clave coincide con <nombre> y devuelve un
 	//puntero al objetivo. 
+	//
+	void mostrar();
+	//POST: Imprime una lista con los nombres de los personajes ordenados alfabéticamente
+	//
 };
 
 #endif //DICCIONARIO_H
