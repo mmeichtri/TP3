@@ -18,10 +18,7 @@ private:
 	BinTreeNode<T> *_prev;
 public:
 	BinTreeNode();
-	// DEFAULT CONSTRUCTOR
-	//
 	BinTreeNode(T data, string key);
-	//CONSTRUCTOR
 	~BinTreeNode();
 	//
 	//Creates a new node with the key-value pair specified as parameters and
@@ -53,7 +50,7 @@ public:
 	//
 	//PRE: the node exists.
 	//POST: sets <data> as the new value saved in the node
-	void setData(T data, bool del = false);
+	void setData(T data);
 	//
 	//PRE: the node exists.
 	//POST: sets <key> as the new key saved in the node
@@ -183,9 +180,7 @@ BinTreeNode<T>* BinTreeNode <T>::prev(){
 
 
 template <typename T>
-void BinTreeNode <T>::setData(T data, bool del){
-	if (del)
-		delete _data;
+void BinTreeNode <T>::setData(T data){
 	_data = data;
 }
 
@@ -268,10 +263,12 @@ void BinTreeNode <T>::erasingFlip(string side){
 	if (side == "right"){
 		this->_right->setPrev(this->_prev);
 		flipPrev(this->_right);
+		cout << "ahora el nodo derecho de " << (*_prev->getData())->nombre() << " es " << (*_prev->_right->getData())->nombre() << endl;
 	}
 	else if (side == "left"){
 		this->_left->setPrev(this->_prev);
 		flipPrev(this->_left);
+		cout << "ahora el nodo izquierdo de " << (*_prev->getData())->nombre() << " es " << (*_prev->_left->getData())->nombre() << endl;
 	}
 	this->_left = NULL;
 	this->_right = NULL;
@@ -305,9 +302,16 @@ BinTreeNode<T>* BinTreeNode <T>::findMax(){
 
 template <typename T>
 BinTreeNode <T>::~BinTreeNode(){
-	if (_left != NULL) delete _left;
-	if (_right != NULL) delete _right;
-	delete _data;
+	if (_left != NULL) {
+		cout << "borrando nodo izquierdo a " << (*this->getData())->nombre() << endl;
+		delete _left;
+	}
+	if (_right != NULL) {
+		cout << "borrando nodo derecho a " << (*this->getData())->nombre() << endl;
+		delete _right;
+	}
+	if (_data != NULL)
+		delete _data;
 }
 
 

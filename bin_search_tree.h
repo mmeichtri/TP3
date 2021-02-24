@@ -17,20 +17,15 @@ private:
 	size_t _levels;
 
 public:
-	Bst();/
-	//DEFAUT CONSTRUCTOR
-	//
+	Bst();
 	Bst(T data, string key);
-	//CONSTURCTOR
-	//
 	~Bst();
-	//DESTRUCTOR
-	//
+	
 	void add(T data, string key);
 	//Agrega <data> al árbol en caso de que no esté incluido previamente.
 	//POST: agrega un dato nuevo e incrementa el tamaño.
 	//
-	T* erase(string key);
+	void erase(string key, T &data);
 	//POST: deletes and returns the value saved in the node according to the key. 
 	//If key doesn't match any key in the tree, it returns NULL.
 	//POST: borra y devuelve el dato guardado según la clave <key>. En caso de 
@@ -43,6 +38,9 @@ public:
 	size_t size();
 	//PRE: el árbol existe.
 	//POST: devuelve la cantidad de elementos que almacena.
+	//
+	size_t lvls();
+	//
 	//
 	Queue<T>* preOrder();
 	//POST: devuelve una cola con los elementos del árbol obtenidos
@@ -110,17 +108,18 @@ void Bst <T>::add(T data, string key){
 
 
 template <typename T>
-T* Bst <T>::erase(string key){
+void Bst <T>::erase(string key, T &data){
 	if(_root == NULL) 
-		return NULL;
+		return;
 
 	BinTreeNode<T> *node = _root->search(key);
 	if (node == NULL)
-		return NULL;
+		return;
 
-	T *data = node->getData();
-//	cout << "el nodo hallado contiene al personaje " << (*data)->nombre() << endl;
-	
+	T *aux = node->getData();
+	data = *aux;
+	node->setData(NULL);
+
 	//case node with no childs
 	if(node->isLeaf()){
 		node->flipPrev(NULL);
@@ -146,12 +145,11 @@ T* Bst <T>::erase(string key){
 		leaf->flipPrev(NULL);
 //		cout << "la hoja que va a reemplazarlo es " << (*leaf->getData())->nombre() << endl;
 		node->setKey(leaf->getKey());
-		node->setData(*leaf->getData(), true);
+		node->setData(*leaf->getData());
 		leaf->setData(NULL);
 		delete leaf;
 	}
 	_size--;
-	return data;
 }
 
 
@@ -210,7 +208,7 @@ void Bst <T>::showPreOrder(){
 		cout << "The tree is empty." << endl;
 	}
 	else{
-		cout << "Elements in pre-order scanning:\n < ";
+		cout << "Elements in the tree in pre-order scanning:\n < ";
 		for (size_t i = 0; i < this->_size; i++)
 			cout << list->dequeue()->nombre() << (i != this->_size - 1 ? ", " : " >");
 		cout << endl;
@@ -226,7 +224,7 @@ void Bst <T>::showInOrder(){
 		cout << "The tree is empty." << endl;
 	}
 	else{
-		cout << "Elements in order scanning:\n < ";
+		cout << "Elements in the tree in order scanning:\n < ";
 		for (size_t i = 0; i < this->_size; i++)
 			cout << list->dequeue() << (i != this->_size - 1 ? ", " : " >");
 		cout << endl;
@@ -241,7 +239,7 @@ void Bst <T>::showPostOrder(){
 		cout << "The tree is empty." << endl;
 	}
 	else{
-		cout << "Elements in post-order scanning:\n < ";
+		cout << "Elements in the tree in post-order scanning:\n < ";
 		for (size_t i = 0; i < this->_size; i++)
 			cout << list->dequeue() << (i != this->_size - 1 ? ", " : " >");
 		cout << endl;
@@ -275,10 +273,3 @@ Bst <T> ::~Bst(){
 
 
 #endif //BST_H
-/*
-				m
-		i 				r
-	b 		k 		o 		z
-  a						  t
-
-*/
