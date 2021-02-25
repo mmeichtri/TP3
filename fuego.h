@@ -66,6 +66,10 @@ private:
     //POST: segun el getElemento de personajeAtacar retorna el valor del daño.
     int danoAtaque(Personaje * personajeAtacar);
 
+    //pre:
+    //post: si no tiene vida le cambia la fila y la columna al personaje de fuego.
+    void eliminarDelJuego();
+
 };
 
 

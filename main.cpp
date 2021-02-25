@@ -1,28 +1,26 @@
 #include <iostream>
-#include "agua.h"
-#include "aire.h"
-#include"personaje.h"
-#include "tierra.h"
-#include "fuego.h"
-#include "juego.h"
+#include "menuPrincipal.h"
 #include "grafo.h"
 #include "matriz.h"
+#include "diccionario.h"
 #include "lecturaCsvCasilleros.h"
 
 using namespace std;
-
+void iniciarTablero(Grafo* grafo , Matriz* matriz){
+    string csv = "mapa.csv";
+    LecturaCsvCasilleros archivo;
+    archivo.lecturaArchivo(matriz,grafo,csv);
+    matriz->pasarAdyacencia(grafo);
+}
 
 int main() {
     srand(time(nullptr));
-
+    Diccionario diccionario;
+    Grafo grafo;
     Matriz tablero;
-    Grafo graf;
-    string csv = "mapa.csv";
-    LecturaCsvCasilleros arch;
-    arch.lecturaArchivo(&tablero,&graf,csv);
-    tablero.pasarAdyacencia(&graf);
-    Juego iu(&graf);
-    iu.jugar();
+    iniciarTablero(&grafo,&tablero);
+    MenuPrincipal menuPrincipal(&diccionario);
+    menuPrincipal.menu(&grafo,&tablero);
 
     return 0;
 }

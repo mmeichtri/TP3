@@ -12,7 +12,9 @@
 #include "aire.h"
 #include "tierra.h"
 #include "stdlib.h"
+#include "diccionario.h"
 #include "grafo.h"
+#include "matriz.h"
 #define MAXPERSONAJES 1
 #define SALIR 2
 #define PRIMERO 1
@@ -22,27 +24,33 @@ class Juego {
 private:
     VInterfazUsuario vista;
     Grafo* graf;
+    Matriz* matriz;
+    Diccionario*  diccionario;
     Personaje* jugadorUno[MAXPERSONAJES];
     Personaje* jugadorDos[MAXPERSONAJES];
 public:
 
-    //pre: puntero a grafo valido.
+    //pre: puntero a grafo valido y puntero a matri valido.
     //post: crea un objeto juego correctamente.
-    Juego(Grafo* graf);
+    Juego(Grafo* graf, Matriz* matriz, Diccionario* diccionario);
 
-    //pre:
-    //post: coloca los dos vectores atributos de la clase en cada una de sus posiciones en null
-    void inicializarJugadores();
-
-  //pre:
-  //post:
-    void jugar();
+   //pre:
+   //post:
+   void iniciarJuego();
 
     //PRE:
     //POST: si existe algun personaje en los vectores jugadorUno y jugadorDos, los elimina,¡.
     ~Juego();
 
 private:
+
+    //pre:
+    //post:
+    void jugar();
+
+    //pre:
+    //post: coloca los dos vectores atributos de la clase en cada una de sus posiciones en null
+    void inicializarJugadores();
 
  //pre: puntero a personaje y vector de punteros a personaje validos.
  //post: si el personajeTurno tiene energia ataca , sino lo indica por pantalla al usuario.
@@ -99,11 +107,11 @@ private:
    //PRE: vector de personaje* jugador y posicion valida.
    /*POST: segun lo que elija el usuario, se mostraran los personajes o se elegira uno.
    */
-   void menuElegirPersonaje(Personaje** jugador, int posicion);
+   void menuElegirPersonaje(Personaje** jugador , int posicion);
 
    //PRE:
    //POST:
-   void elegirPersonaje();
+   void elegirPersonaje(Personaje** seleccionJugador , int posicion);
 
  //pre:
  //post:
@@ -143,9 +151,17 @@ private:
    //POST: pide una fila y columna hasta que el usuario ingrese alguna que no este ocupada y mueve el personaje a esa fila y col.
    void defensaAire(Personaje* personajeTurno);
 
-   //pre: vector a punteroPersonaje equipoPersonaje , puntero personajeTurno , y posicion validas.
-   //post: si el personaje no tiene vida, lo elimina y coloca al vector del personaje pasado por paramtro en null
-  void vidaPersonaje(Personaje* personajeTurno, int posicion , Personaje** equipoPersonaje);
+   //pre: vector de punteros a personaje validos.
+   //post: recorre 3 posiciones ,si el personaje no tiene vida, lo elimina y coloca al vector del personaje en null
+  void vidaPersonaje( Personaje** equipoEnturno);
+
+  //pre:
+  //post: si el personaje existe, muestra un personaje especifico
+  void mostrarPersonajeEspecifico();
+
+  //pre:
+  //post:muestra los nombres de los personajes
+  void mostrarPersonajes();
 
 
 };

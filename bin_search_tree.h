@@ -17,7 +17,7 @@ private:
 	size_t _levels;
 
 public:
-	Bst();/
+	Bst();
 	//DEFAUT CONSTRUCTOR
 	//
 	Bst(T data, string key);
@@ -70,6 +70,7 @@ public:
 	//POST: si existe la clave, devuelve un PUNTERO al valor correspondiente.
 	//(OJO: si el tipo de dato a guardar es puntero a algo, devuelve un doble puntero).
 	//
+    size_t lvls();
 };
 
 

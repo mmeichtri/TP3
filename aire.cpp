@@ -45,7 +45,7 @@ void Aire ::atacar(Personaje** personajeAtacado) {
 
     restarEnergia(8);
     for(int i = 0; i < MAXRIVALES ; i++){
-        if(personajeAtacado[i] != nullptr){
+        if(personajeAtacado[i]->tieneVida()){
             int dano = danoAtaque(personajeAtacado[i]);
             quitarVidaPersonaje(personajeAtacado[i],dano);
         }
