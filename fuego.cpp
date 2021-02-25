@@ -46,6 +46,11 @@ bool Fuego :: energiaDefensa() {
 void Fuego::modificarPorTurno() {
     if(energia == 0)
         restarVida(5);
+    eliminarDelJuego();
+}
+void Fuego ::eliminarDelJuego() {
+    if(!tieneVida())
+        cambiarFYC(-3000,-3000);
 }
 
 int Fuego ::danoAtaque(Personaje *personajeAtacar) {
@@ -71,7 +76,7 @@ void Fuego :: atacar (Personaje** personajeAtacado) {
     restarEnergia(5);
 
     for(int i = 0; i < MAXRIVALES ; i++){
-        if(personajeAtacado[i] != nullptr){
+        if(personajeAtacado[i]->tieneVida()){
             if(comprobarFilas(fila,personajeAtacado[i]->getFila())){
                 int dano = danoAtaque(personajeAtacado[i]);
                 quitarVidaPersonaje(personajeAtacado[i],dano);

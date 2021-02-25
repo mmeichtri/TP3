@@ -38,7 +38,12 @@ bool Agua ::energiaAtaque() {
 }
 
 bool Agua ::energiaDefensa() {
-    return energia >= 12;
+    bool tieneEnergia = energia >= 12;
+    if(tieneEnergia ){
+        restarEnergia(12);
+    }
+    return tieneEnergia;
+
 }
 
 int Agua ::danoAtaque(Personaje* personajeAtacar) {
@@ -53,14 +58,14 @@ int Agua ::danoAtaque(Personaje* personajeAtacar) {
 }
 
 void Agua :: atacar(Personaje** victima) {
-
+   restarEnergia(5);
     bool encontrado = false;
     do{
         int fila =  vista.leerFilaOColumna(" FILA ");
         int columna = vista.leerFilaOColumna(" COLUMNA ");
 
         for(int i = 0; i < MAXRIVALES; i++){
-            if(victima[i] != nullptr){
+            if(victima[i]->tieneVida()){
                 if(victima[i]->getFila() == fila && victima[i]->getColumna() == columna){
                     atacarPersonaje(victima[i]);
                     encontrado = true;

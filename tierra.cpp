@@ -32,7 +32,11 @@ bool Tierra :: energiaAtaque() {
 
 bool Tierra ::energiaDefensa() {
 
-    return energia >= 5;
+    bool tieneEnergia = energia >= 5;
+    if(tieneEnergia ){
+        restarEnergia(5);
+    }
+    return tieneEnergia;
 }
 
 int Tierra ::danoAtaque(int valorAtaque, Personaje *personajeAtacar) {
@@ -76,9 +80,9 @@ int Tierra ::condicionRangoCuatro(int diferenciaCol) {
 }
 
 void Tierra :: atacar(Personaje** personajeAtacado ){
-
+   restarEnergia(6);
     for(int i = 0; i < MAXRIVALES ; i++){
-        if(personajeAtacado[i] != nullptr){
+        if(personajeAtacado[i]->tieneVida()){
             int danoRango = danoPorRango(fila,columna,personajeAtacado[i]->getFila(),personajeAtacado[i]->getColumna());
             int dano = danoAtaque(danoRango,personajeAtacado[i]);
             quitarVidaPersonaje(personajeAtacado[i],dano);

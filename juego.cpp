@@ -1,8 +1,10 @@
 
 #include "juego.h"
 
-Juego :: Juego(Grafo* graf) {
+Juego :: Juego(Grafo* graf,Matriz* matriz,Diccionario* diccionario) {
     this -> graf = graf;
+    this -> matriz = matriz;
+    this -> diccionario = diccionario;
 inicializarJugadores();
 }
 
@@ -12,41 +14,77 @@ void Juego ::inicializarJugadores() {
         jugadorUno[i] = nullptr;
     }
 }
+
+void Juego ::iniciarJuego() {
+    vista.imprimirLinea( " Bienvenido al juego ");
+    turnosSeleccion();
+    seleccionarPosiciones();
+    jugar();
+}
 void Juego::menuElegirPersonaje(Personaje** jugador, int posicion) {
-    vista.menuJugadores();
-    int opcion = vista.comprobarOpcion(1,3);
+
+    int opcion;
     do {
+        vista.menuJugadores();
+        opcion = vista.comprobarOpcion(1,3);
         switch (opcion) {
             case 1 :
-                //especificacion de personaje
+                mostrarPersonajeEspecifico();
                 break;
             case 2:
-                //mostrar nombres personaje
+                mostrarPersonajes();
                 break;
             case 3:
-                //elegir personaje
+                elegirPersonaje(jugador,posicion);
                 break;
 
         }
     }while(opcion < 3);
 }
 
+void Juego ::mostrarPersonajes() {
+    diccionario->mostrar();
+}
+
+void Juego ::mostrarPersonajeEspecifico() {
+
+    vista.imprimirLinea(" Estos son los personajes disponibles : ");
+    diccionario->mostrar();
+    string nombre = vista.ingresarString("nombre");
+    Personaje* personajeMostrar = diccionario->buscar(nombre);
+    if(personajeMostrar != nullptr)
+        personajeMostrar->mostrarPersonaje();
+    else
+        vista.noEncontro("nombre");
+}
+
 void Juego::turnosSeleccion() {
     //falta pre y post condiciones
     for(int i = 0; i < MAXPERSONAJES;i++){
+        vista.imprimirLinea(" Es el turno del jugador uno ");
         menuElegirPersonaje(jugadorUno, i);
+        vista.imprimirLinea( " Es el turno del jugador dos ");
         menuElegirPersonaje(jugadorDos,i);
     }
 }
 
-void Juego::elegirPersonaje() {
-    // falta pre y post condicion
- Personaje* hola = new Fuego("el dodo",0,30);
-  Personaje* hello = new  Tierra("la rock", 2, 20);
-   hola->cambiarFYC(1,7);
-    hello->cambiarFYC(0,0);
-    jugadorUno[0] = hola;
-    jugadorDos[0] = hello;
+void Juego::elegirPersonaje(Personaje** seleccionJugador , int posicion) {
+
+    bool nombreCorrecto = false;
+    string nombre;
+    vista.imprimirLinea(" esta es la lista de personajes para seleccionar ");
+    diccionario->mostrar();
+     do{
+          nombre = vista.ingresarString("nombre");
+          Personaje* personajeElegir = diccionario->buscar(nombre);
+          if(personajeElegir != nullptr){
+              seleccionJugador[posicion] = personajeElegir;
+              nombreCorrecto = true;
+          }
+           else
+                 vista.noEncontro("nombre");
+     }while(!nombreCorrecto);
+
 }
 
 void Juego ::seleccionarPosiciones() {
@@ -55,19 +93,28 @@ void Juego ::seleccionarPosiciones() {
     Personaje** segundoTurno = perdedorTurno(primerTurno);
 
     for(int i = 0; i < MAXPERSONAJES; i++){
+        vista.imprimirLinea(" es el turno del jugador uno ");
         asignarCasilla(primerTurno[i]);
+        vista.imprimirLinea( " Es el turno del jugador dos");
         asignarCasilla(segundoTurno[i]);
     }
 }
 
 void Juego :: asignarCasilla(Personaje *personajeTurno) {
-    bool estaVacia;
+    bool estaVacia = false;
     do{
+        vista.imprimirLinea(personajeTurno->getNombre());
         vista.imprimirLinea("Escoja la posicion donde quiera que este el personaje: ");
         int fila = vista.leerFilaOColumna("fila");
         int columna = vista.leerFilaOColumna("columna");
-        personajeTurno->cambiarFYC(fila,columna);
         estaVacia = casillaVacia(fila,columna);
+        if(estaVacia){
+            personajeTurno->cambiarFYC(fila,columna);
+            estaVacia = true;
+        }
+        else
+            vista.imprimirLinea(" Error esa casilla esta ocupada");
+
     }while(!estaVacia);
 
 }
@@ -91,7 +138,7 @@ Personaje** Juego ::perdedorTurno( Personaje **seleccionado) {
 
 void Juego ::jugar() {
 //falta pre y post condicion.
-   elegirPersonaje();
+
 
     Personaje** primerTurno = turnoRandom();
     Personaje** segundoTurno = perdedorTurno(primerTurno);
@@ -121,8 +168,7 @@ bool Juego :: equipoSinVida(Personaje** equipo) {
 void Juego ::turno(Personaje** aliados, Personaje** enemigos) {
 
     for(int i = 0; i < MAXPERSONAJES; i++){
-        vidaPersonaje(aliados[i],i,aliados);
-        if(aliados[i] != nullptr) {
+        if(aliados[i]->tieneVida()) {
             condicionEspecialPersonaje(aliados[i]);
             vista.imprimirLinea("Es el turno de: ");
             aliados[i]->mostrarPersonaje();
@@ -131,12 +177,8 @@ void Juego ::turno(Personaje** aliados, Personaje** enemigos) {
         }
     }
 }
-void Juego ::vidaPersonaje(Personaje *personajeTurno ,int posicion , Personaje** equipoPersonaje) {
-    if(!(personajeTurno->tieneVida())){
-        delete personajeTurno;
-        equipoPersonaje[posicion] = nullptr;
-    }
-}
+
+
 
 void Juego ::condicionEspecialPersonaje(Personaje *personajeTurno) {
     personajeTurno->modificarPorTurno();
@@ -230,7 +272,7 @@ void Juego ::defensaAgua(Personaje *personajeTurno, Personaje** aliados) {
 
     personajeTurno->sumarVida(40);
     for(int i = 0; i < MAXPERSONAJES ; i++){
-        if(personajeTurno != nullptr)
+        if(personajeTurno->tieneVida())
             aliados[i]->sumarVida(10);
     }
 }
@@ -280,10 +322,11 @@ int  Juego ::condicionMoverse(Personaje *personajeTurno, int caminoMinimo, int f
 
 void Juego ::moverPersonaje(Personaje *personajeTurno, int fila, int columna, int caminoMinimo) {
     int posicionFinal = graf->buscarPosicion(fila,columna);
-    vista.imprimirLinea("el personaje paso por las siguientes casillas ");
     vista.caminoInicialFinal(personajeTurno->getFila(),personajeTurno->getColumna(),fila,columna);
+    vista.imprimirLinea("el personaje paso por las siguientes casillas intermedias : ");
     graf->recorridoMinimo(posicionFinal);
     vista.saltarLinea();
+    cout<< caminoMinimo << endl; // prueba
     personajeTurno->cambiarFYC(fila, columna);
     personajeTurno->restarEnergia(caminoMinimo);
 }
@@ -297,9 +340,7 @@ int Juego::errorMoverse() {
 
 Juego ::~Juego() {
     for(int i = 0; i < MAXPERSONAJES ; i++){
-        if(jugadorUno[i] != nullptr)
              delete jugadorUno[i];
-        if(jugadorDos[i] != nullptr)
             delete jugadorDos[i];
     }
 }

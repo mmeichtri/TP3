@@ -143,7 +143,6 @@ void Bst <T>::erase(string key, T &data){
 		//Then, erases that leaf.
 		BinTreeNode<T>* leaf = node->right()->findMin();
 		leaf->flipPrev(NULL);
-//		cout << "la hoja que va a reemplazarlo es " << (*leaf->getData())->nombre() << endl;
 		node->setKey(leaf->getKey());
 		node->setData(*leaf->getData());
 		leaf->setData(NULL);

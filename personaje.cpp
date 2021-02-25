@@ -87,7 +87,13 @@ int Personaje ::getEscudo() {
 void Personaje ::quitarVidaPersonaje(Personaje *personaAtacado , int ataque) {
 
     personaAtacado->restarVida( personaAtacado->defensaEscudo(ataque));
+    eliminarPersonajeDelJuego(personaAtacado);
 }
+void Personaje::eliminarPersonajeDelJuego(Personaje *personajeAtacado) {
+    if(!personajeAtacado->tieneVida())
+        personajeAtacado->cambiarFYC(-10000,-10000);
+}
+
 
 bool Personaje ::tieneVida() {
     return vida > 0;
