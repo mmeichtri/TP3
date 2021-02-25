@@ -14,9 +14,22 @@ Por ejemplo: "\e[0;32m" imprime texto normal (también se puede escribir como "\
 #define BLU "\e[30;44m"
 #define PUR "\e[30;45m"
 #define CYN "\e[30;46m"
+#define GRY "\e[30;47m"
+#define LBL "\e[30;104m"
 #define REDB "\e[41m"
 
 using namespace std;
+
+static const string color_keys[8] = {
+	LBL,
+	RED,
+	GRN,
+	YLW,
+	BLU,
+	PUR,
+	CYN,
+	GRY
+};
 
 static const string cuadro[] =
 {
@@ -41,21 +54,13 @@ public:
 
 int main(int argc, char const *argv[]){
 	Imagen im;
-	/*
+	
 	for (size_t fil = 0; fil < 8; fil++){
 		for (size_t i = 0; i < 8; i++){
-			cout << YLW << im.filaArriba() << NC << ' ' ;
+			cout << color_keys[fil] << im.filaArriba() << NC << ' ' ;
 		}
 		cout << endl;
-		for (size_t i = 0; i < 8; i++){
-			cout << GRN << im.filaMedio() << NC << ' ';
-		}
-		cout << endl;
-		for (size_t i = 0; i < 8; i++){
-			cout << CYN << im.filaAbajo() << NC << ' ';
-		}
-		cout << endl;
-	}*/
+	}
 
 	return 0;
 }
