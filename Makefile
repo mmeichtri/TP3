@@ -6,9 +6,12 @@ LDFLAGS=-lm
 
 all:$(PROGRAM)
 
-$(PROGRAM): main.o lecturaCsvCasilleros.o menuPrincipal.o matriz.o grafo.o diccionario.o\
-parser.o personaje.o agua.o fuego.o tierra.o aire.o
-	$(CC) $(CFLAGS) -o $(PROGRAM) main.o diccionario.o parser.o personaje.o agua.o fuego.o tierra.o aire.o $(LDFLAGS) 
+$(PROGRAM): main.o lecturaCsvCasilleros.o menuPrincipal.o matriz.o grafo.o diccionario.o \
+archivoPersonaje.o juego.o interfazUsuario.o casillero.o \
+parser.o personaje.o agua.o fuego.o tierra.o aire.o camino.o lago.o montania.o vacio.o volcan.o precipicio.o
+	$(CC) $(CFLAGS) -o $(PROGRAM) main.o lecturaCsvCasilleros.o menuPrincipal.o matriz.o grafo.o diccionario.o \
+	archivoPersonaje.o juego.o interfazUsuario.o casillero.o \
+	parser.o personaje.o agua.o fuego.o tierra.o aire.o camino.o lago.o montania.o vacio.o volcan.o precipicio.o $(LDFLAGS) 
 
 main.o: main.cpp lecturaCsvCasilleros.h menuPrincipal.h matriz.h grafo.h diccionario.h
 	$(CC) $(CFLAGS) -c main.cpp
@@ -28,26 +31,17 @@ grafo.o: grafo.cpp grafo.h casillero.h
 diccionario.o: diccionario.cpp personaje.h bin_tree_node.h bin_search_tree.h
 	$(CC) $(CFLAGS) -c diccionario.cpp
 
-juego.o: juego.cpp juego.h interfazUsuario.h lectorCsv.h lista.h listaJugador.h
+archivoPersonaje.o: archivoPersonaje.cpp archivoPersonaje.h diccionario.h agua.h fuego.h tierra.h aire.h personaje.h
+	$(CC) $(CFLAGS) -c archivoPersonaje.cpp
+
+juego.o: juego.cpp juego.h interfazUsuario.h agua.h fuego.h aire.h tierra.h diccionario.h grafo.h matriz.h
 	$(CC) $(CFLAGS) -c juego.cpp
 
 interfazUsuario.o: interfazUsuario.cpp agua.h fuego.h tierra.h aire.h interfazUsuario.h
 	$(CC) $(CFLAGS) -c interfazUsuario.cpp
 
-jugador.o: jugador.cpp jugador.h listaJugador.h nodoJugador.h
-	$(CC) $(CFLAGS) -c jugador.cpp
-
 casillero.o: casillero.cpp casillero.h
 	$(CC) $(CFLAGS) -c casillero.cpp
-
-camino.o: camino.cpp camino.h personaje.h
-	$(CC) $(CFLAGS) -c camino.cpp
-
-nodoJugador.o: nodoJugador.cpp nodoJugador.h
-	$(CC) $(CFLAGS) -c nodoJugador.cpp
-
-listaJugador.o: listaJugador.cpp listaJugador.h jugador.h nodoJugador.h
-	$(CC) $(CFLAGS) -c listaJugador.cpp
 
 parser.o: parser.cpp parser.h utils.h
 	$(CC) $(CFLAGS) -c parser.cpp
@@ -67,8 +61,23 @@ tierra.o: tierra.cpp tierra.h personaje.h
 aire.o: aire.cpp aire.h personaje.h
 	$(CC) $(CFLAGS) -c aire.cpp
 
+camino.o: camino.cpp camino.h personaje.h
+	$(CC) $(CFLAGS) -c camino.cpp
 
+lago.o: lago.cpp lago.h casillero.h
+	$(CC) $(CFLAGS) -c lago.cpp
 
+montania.o: montania.cpp montania.h casillero.h
+	$(CC) $(CFLAGS) -c montania.cpp
+
+vacio.o: vacio.cpp vacio.h casillero.h
+	$(CC) $(CFLAGS) -c vacio.cpp
+
+volcan.o: volcan.cpp volcan.h casillero.h
+	$(CC) $(CFLAGS) -c volcan.cpp
+
+precipicio.o: precipicio.cpp precipicio.h casillero.h
+	$(CC) $(CFLAGS) -c precipicio.cpp
 	
 clean:
 	rm -vf  *.o $(PROGRAM)
