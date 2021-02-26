@@ -14,13 +14,17 @@ class Bst{
 private:
 	BinTreeNode<T> *_root;
 	size_t _size;
-	size_t _levels;
 
 public:
 	Bst();
+	//Constructor
+	//
 	Bst(T data, string key);
+	//Constructor con el dato inicial (raíz)
+	//
 	~Bst();
-	
+	//Destructor
+	//
 	void add(T data, string key);
 	//Agrega <data> al árbol en caso de que no esté incluido previamente.
 	//POST: agrega un dato nuevo e incrementa el tamaño.
