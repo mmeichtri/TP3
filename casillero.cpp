@@ -24,5 +24,12 @@ int Casillero::getColumna(){
 Casillero::~Casillero(){
 }
 
+void Casillero ::setHayPersonaje(bool nuevaCondicion) {
+    hayPersonaje = nuevaCondicion;
+}
+bool Casillero::hayPersonajeEnCasillero() {
+   return hayPersonaje;
+}
+
 
 

@@ -18,6 +18,8 @@ public:
     */
     int restarGastoDeEnergia(Personaje* );
 
+  //  void ImprimirCasilla(string nombre);
+
     ~Camino();
 };
 

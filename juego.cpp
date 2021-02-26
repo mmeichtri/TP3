@@ -24,25 +24,43 @@ void Juego ::iniciarJuegoCargado() {
 void Juego ::setPersonajeGuardo(int personajeGuardo) {
     this -> personajeGuardo = personajeGuardo;
 }
+
+
+
 bool Juego ::guardarPartida(int jugadorQueGuardo) {
     bool guardoPartida = false ;
     vista.imprimirLinea( " Desea guardar la partida, ingrese 1 si o 2 no ");
     int comprobarOpcion =  vista.comprobarOpcion(1,2);
     if(comprobarOpcion == 1){
-        cargarPartidaEnArchivo(jugadorQueGuardo);
+        ArchivoTexto(jugadorQueGuardo);
         guardoPartida = true;
     }
     return guardoPartida;
 }
 
-void Juego ::cargarPartidaEnArchivo(int jugadorQueGuardo) {
+void Juego ::ArchivoTexto(int jugadorQueGuardo) {
+    ofstream archivo;
+    archivo.open("partida.csv");
+    archivo << jugadorQueGuardo;
+    int escudoInicial;
+    int cantidadComida;
+
+    for(int i = 0; i < MAXPERSONAJES ; i++){
+        archivo << jugadorUno[i]->getElemento()<<","<<jugadorUno[i]->getNombre()<<","<<jugadorUno[i]->getEscudo()<<","<<jugadorUno[i]->getVida()<<","<<jugadorUno[i]->getEnergia()<<","<<jugadorUno[i]->getFila()<<","<<jugadorUno[i]->getColumna()<<","<<jugadorUno[i]->devolverCondicionEspecial()<<endl;
+    }
+    for(int i = 0; i < MAXPERSONAJES ; i++){
+        archivo << jugadorDos[i]->getElemento()<<","<<jugadorDos[i]->getNombre()<<","<<jugadorDos[i]->getEscudo()<<","<<jugadorDos[i]->getVida()<<","<<jugadorDos[i]->getEnergia()<<","<<jugadorDos[i]->getFila()<<","<<jugadorDos[i]->getColumna()<<","<<jugadorDos[i]->devolverCondicionEspecial()<<endl;
+    }
 
 }
 
-void Juego ::eliminarArchivoLog(bool guardoPartida) {
-    if(guardoPartida = false)
-        remove("partida.csv");
+void Juego ::ContinuarPartida() {
+    remove("partida.csv");
+    Personaje** primerTurno = leerJugadorGuardado(personajeGuardo);
+    Personaje** turnoDos = segundoTurno(primerTurno);
+    jugar(primerTurno,turnoDos);
 }
+
 
 Personaje** Juego ::leerJugadorGuardado(int jugador) {
     if(jugador == 1 )
@@ -161,6 +179,7 @@ void Juego :: asignarCasilla(Personaje *personajeTurno) {
         estaVacia = casillaVacia(fila,columna);
         if(estaVacia){
             personajeTurno->cambiarFYC(fila,columna);
+            matriz->setHayPersonaje(fila,columna,true);
             estaVacia = true;
         }
         else
@@ -199,8 +218,6 @@ void Juego ::jugar(Personaje** primerTurno , Personaje** segundoTurno) {
         equipo1 = equipoSinVida(jugadorUno);
         equipo2 = equipoSinVida(jugadorDos);
     }while((!equipo1  &&  !equipo2) && !juegoGuardado);
-
-    eliminarArchivoLog(juegoGuardado);
 
 }
 
@@ -376,9 +393,9 @@ void Juego ::moverPersonaje(Personaje *personajeTurno, int fila, int columna, in
     vista.caminoInicialFinal(personajeTurno->getFila(),personajeTurno->getColumna(),fila,columna);
     vista.imprimirLinea("el personaje paso por las siguientes casillas intermedias : ");
     graf->recorridoMinimo(posicionFinal);
-    vista.saltarLinea();
-    cout<< caminoMinimo << endl; // prueba
+    matriz->setHayPersonaje(personajeTurno->getFila(),personajeTurno->getColumna(),false);
     personajeTurno->cambiarFYC(fila, columna);
+    matriz->setHayPersonaje(fila,columna,true);
     personajeTurno->restarEnergia(caminoMinimo);
 }
 

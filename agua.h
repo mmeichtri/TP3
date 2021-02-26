@@ -18,7 +18,7 @@ public:
      * ATRIBUTO contarComida EN CERO*/
     Agua(string nombre,int escudo,int vida);
 
-    Agua(string nombre,int escudo,int vida,int energia,int fila,int columna);
+    Agua(string nombre,int escudo,int vida,int energia,int fila,int columna,int condicion);
 
     //PRE :
     /*POST: SI verificarEnergia() && contarComida < 3 DEVUELVE TRUE, INCREMENTA EN UNO contarComida Y EN DIEZ
@@ -72,6 +72,10 @@ private:
     //pre: variable bool personaje valida,
     //post: si personaje bool es false , lo indica por pantalla
     void noEncontroPersonaje(bool personaje);
+
+    //pre:
+    //post:
+    int devolverCondicionEspecial();
 
 
 };

@@ -2,7 +2,7 @@
 Fuego :: Fuego(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
 
 }
-Fuego :: Fuego(string nombre,int escudo,int vida,int energia, int fila , int columna) : Personaje(nombre,escudo,vida,energia,fila,columna){
+Fuego :: Fuego(string nombre,int escudo,int vida,int energia, int fila , int columna,int condicion) : Personaje(nombre,escudo,vida,energia,fila,columna,condicion){
 
 }
 
@@ -90,6 +90,9 @@ void Fuego :: atacar (Personaje** personajeAtacado) {
     }
 }
 
+int Fuego ::devolverCondicionEspecial() {
+    return 0;
+}
 Fuego ::~Fuego() {
 
 }

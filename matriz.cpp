@@ -34,3 +34,9 @@ void Matriz::pasarAdyacencia(Grafo *grafo) {
         }
     }
 }
+
+
+void Matriz ::setHayPersonaje(int fila, int columna, bool nuevoEstado) {
+    tablero[fila][columna]->setHayPersonaje(nuevoEstado);
+}
+

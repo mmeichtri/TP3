@@ -19,5 +19,6 @@ int Precipicio::restarGastoDeEnergia(Personaje* personajeJugador){
     return 0;
 }
 
+
 Precipicio::~Precipicio(){
 }

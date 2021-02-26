@@ -20,7 +20,7 @@ public:
     // POST: CONTRUYE UN OBJETO Aire, QUE HEREDA DE LA CLASE PERSONAJE.
     Aire(string nombre,int escudo,int vida);
 
-    Aire(string nombre,int escudo,int vida,int energia,int fila,int columna);
+    Aire(string nombre,int escudo,int vida,int energia,int fila,int columna,int condicion);
 
     //PRE:
     //POST: retorna el nombre del elemento
@@ -47,6 +47,10 @@ public:
     //pre:
     //post: le suma 5 de energia.
     void modificarPorTurno();
+
+    //pre:
+    //post:
+    int devolverCondicionEspecial();
 
     //PRE:
     //POST : DESTRUYE UN PERSONAJE DE TIPO AIRE.

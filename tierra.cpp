@@ -2,8 +2,8 @@
 Tierra :: Tierra(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
     escudoInicial = escudo;
 }
-Tierra :: Tierra(string nombre,int escudo,int vida,int energia, int fila , int columna) : Personaje(nombre,escudo,vida,energia,fila,columna){
-
+Tierra :: Tierra(string nombre,int escudo,int vida,int energia, int fila , int columna,int condicion) : Personaje(nombre,escudo,vida,energia,fila,columna,condicion){
+escudoInicial = condicion;
 }
 
 string Tierra ::getElemento() {
@@ -94,7 +94,9 @@ void Tierra :: atacar(Personaje** personajeAtacado ){
 
     }
 }
-
+int Tierra::devolverCondicionEspecial() {
+    return escudoInicial;
+}
 
 void Tierra ::modificarPorTurno() {
     if(escudoInicial != escudo)

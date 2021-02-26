@@ -21,6 +21,7 @@ protected:
     int energia;
     int fila = -1;
     int columna = -1;
+    int condicionEspecial = 0;
 
 public:
     /* PRE : NOMBRE VALIDO DE TIPO ALFANUMERICO, ESCUDO CON VALOR DE TIPO ENTERO ENTRE 0 A 2
@@ -29,7 +30,7 @@ public:
  * DENTRO DEL RANGO ESTABLECIDO.*/
 Personaje(string nombre,int escudo,int vida);
 
-Personaje(string nombre,int escudo , int vida, int energia, int fila, int columna);
+Personaje(string nombre,int escudo , int vida, int energia, int fila, int columna,int condicionEspecial);
 
 
 // PRE:
@@ -135,6 +136,10 @@ void eliminarPersonajeDelJuego(Personaje* personajeAtacado);
 //pre:
 //post: retorna el nombre del personaje
 string getNombre();
+
+//pre:
+//post:
+virtual int devolverCondicionEspecial() = 0;
 
 
 

@@ -3,8 +3,8 @@
 Agua :: Agua(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
     contarComida = 0;
 }
-Agua :: Agua(string nombre,int escudo,int vida,int energia, int fila , int columna) : Personaje(nombre,escudo,vida,energia,fila,columna){
-
+Agua :: Agua(string nombre,int escudo,int vida,int energia, int fila , int columna,int condicion) : Personaje(nombre,escudo,vida,energia,fila,columna,condicion){
+  contarComida = condicion;
 }
 
 string Agua :: getElemento() {
@@ -92,6 +92,10 @@ void Agua ::atacarPersonaje(Personaje *personajeAtacar) {
 
 void Agua ::modificarPorTurno() {
     return;
+}
+
+int Agua ::devolverCondicionEspecial() {
+    return contarComida;
 }
 
 Agua::~Agua() {

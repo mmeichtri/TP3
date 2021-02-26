@@ -6,7 +6,7 @@
 Aire :: Aire(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
 
 }
-Aire :: Aire(string nombre,int escudo,int vida,int energia, int fila , int columna) : Personaje(nombre,escudo,vida,energia,fila,columna){
+Aire :: Aire(string nombre,int escudo,int vida,int energia, int fila , int columna,int condicion) : Personaje(nombre,escudo,vida,energia,fila,columna,condicion){
 
 }
 
@@ -55,6 +55,9 @@ void Aire ::atacar(Personaje** personajeAtacado) {
         }
     }
 
+}
+int  Aire ::devolverCondicionEspecial() {
+    return 0;
 }
 
 

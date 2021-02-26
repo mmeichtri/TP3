@@ -19,5 +19,6 @@ int Volcan::restarGastoDeEnergia(Personaje* personajeJugador){
     return 0;
 }
 
+
 Volcan::~Volcan(){
 }

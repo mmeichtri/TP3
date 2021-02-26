@@ -20,5 +20,7 @@ int Lago::restarGastoDeEnergia(Personaje* personajeJugador){
     return 0;
 }
 
+
+
 Lago::~Lago(){
 }

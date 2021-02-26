@@ -14,7 +14,7 @@ public:
     // POST: CONSTRUYE UN OBJETO Fuego.
     Fuego(string nombre,int escudo,int vida);
 
-    Fuego(string nombre,int escudo,int vida,int energia,int fila,int columna);
+    Fuego(string nombre,int escudo,int vida,int energia,int fila,int columna,int condicion);
 
     //PRE :
     /* POST: SI verificarVida ES VERDADERO, INCREMENTA 15 PUNTOS LA VIDA DEL PERSONAJE
@@ -72,6 +72,9 @@ private:
     //post: si no tiene vida le cambia la fila y la columna al personaje de fuego.
     void eliminarDelJuego();
 
+    //pre:
+    //post:
+    int devolverCondicionEspecial();
 };
 
 

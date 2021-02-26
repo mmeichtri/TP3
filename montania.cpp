@@ -19,5 +19,7 @@ int Montania::restarGastoDeEnergia(Personaje* personajeJugador){
     return 0;
 }
 
+
+
 Montania::~Montania(){
 }

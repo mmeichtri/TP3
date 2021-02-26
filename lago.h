@@ -17,6 +17,7 @@ public:
   post: valida el elemento del personaje, y retorna lo que cuesta pasar por esa casilla , segun corresponda
   */
     int restarGastoDeEnergia(Personaje* );
+//    void ImprimirCasilla(string nombre);
 
     ~Lago();
 };

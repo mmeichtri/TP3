@@ -12,6 +12,7 @@
 #include "aire.h"
 #include "tierra.h"
 #include "stdlib.h"
+#include "fstream"
 #include "diccionario.h"
 #include "grafo.h"
 #include "matriz.h"
@@ -50,6 +51,8 @@ public:
     //post:
     void leerPersonajesArchivo(Personaje* , int);
 
+
+
     //pre:
     //post:
     Personaje** leerJugadorGuardado(int jugador);
@@ -62,6 +65,16 @@ private:
 
     //pre:
     //post:
+    void actualizarPantalla();
+
+   //pre:
+   //post:
+   void ContinuarPartida();
+
+
+
+    //pre:
+    //post:
     void jugar(Personaje** primerTurno , Personaje** SegundoTurno);
 
     //pre:
@@ -71,13 +84,8 @@ private:
 
     //pre:
     //post:
-   void cargarPartidaEnArchivo(int jugadorQueGuardo);
+   void ArchivoTexto(int jugadorQueGuardo);
 
-
-
-   //pre:
-   //post:
-    void eliminarArchivoLog(bool guardoPartida);
 
 
     //pre:

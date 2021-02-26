@@ -12,5 +12,6 @@ int Camino::restarGastoDeEnergia(Personaje* personajeJugador){
     return 1;
 }
 
+
 Camino::~Camino(){
 }

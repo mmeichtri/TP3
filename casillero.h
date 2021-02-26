@@ -2,11 +2,20 @@
 #define CASILLERO_H_INCLUDED
 #include <string.h>
 #include "personaje.h"
+#define NC "\e[0m"
+#define RED "\e[30;41m"
+#define GRN "\e[30;42m"
+#define YLW "\e[1;30;43m"
+#define BLU "\e[30;44m"
+#define PUR "\e[30;45m"
+#define CYN "\e[30;46m"
+#define REDB "\e[41m"
 
 class Casillero{
 protected:
     int fila;
     int columna;
+    bool hayPersonaje = false ;
     std::string tipo;
 
 public:
@@ -47,7 +56,15 @@ public:
     */
     virtual int restarGastoDeEnergia(Personaje* ) = 0;
 
+    void setHayPersonaje(bool nuevaCondicion);
+
+    bool hayPersonajeEnCasillero();
+
+  //  virtual void ImprimirCasilla(string nombre) = 0;
+
     virtual ~Casillero();
+
+
 
 };
 

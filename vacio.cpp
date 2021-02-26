@@ -12,5 +12,6 @@ int Vacio::restarGastoDeEnergia(Personaje* personajeJugador){
     return 15;
 }
 
+
 Vacio::~Vacio(){
 }

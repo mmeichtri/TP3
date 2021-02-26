@@ -7,7 +7,7 @@ Personaje :: Personaje(string nombre,int escudo,int vida){
     energia = rand() % (EMAX+1);
 }
 
-Personaje ::Personaje(string nombre, int escudo, int vida, int energia, int fila, int columna) {
+Personaje ::Personaje(string nombre, int escudo, int vida, int energia, int fila, int columna, int condicionEspecial) {
     this -> nombre = nombre;
     this -> escudo = escudo;
     this -> vida =vida;
