@@ -80,7 +80,6 @@ template <typename T>
 Bst <T>::Bst(){
 	_root = NULL;
 	_size = 0;
-	_levels = 0;
 }
 
 
@@ -88,7 +87,6 @@ template <typename T>
 Bst <T>::Bst(T data, string key){
 	_root = new BinTreeNode<T>(data, key);
 	_size = 1;
-	_levels = 1;
 }
 
 
@@ -104,7 +102,6 @@ void Bst <T>::add(T data, string key){
 	if(empty()){
 		_root = new BinTreeNode<T>(data, key);
 		_size = 1;
-		_levels = 1;
 	}
 	else if (_root->addBst(data, key))
 		_size++;
@@ -160,12 +157,6 @@ void Bst <T>::erase(string key, T &data){
 template <typename T>
 size_t Bst <T>::size(){
 	return _size;
-}
-
-
-template <typename T>
-size_t Bst <T>::lvls(){
-	return _levels;
 }
 
 
@@ -252,7 +243,7 @@ void Bst <T>::showPostOrder(){
 
 
 template <typename T>
-T *Bst <T>::search(string key){
+T* Bst <T>::search(string key){
 	//
 	//Primero chequeo que el árbol no esté vacío.
 	//Si lo está, devuelvo NULL; si no, ejecuto el método de búsqueda

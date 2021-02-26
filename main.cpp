@@ -6,7 +6,6 @@
 #include "lecturaCsvCasilleros.h"
 #include "fstream"
 #include "juego.h"
-#include "archivoCarga.h"
 
 
 void iniciarTablero(Grafo* grafo , Matriz* matriz){

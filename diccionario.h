@@ -22,6 +22,10 @@ public:
 	Personaje* buscar(string nombre);
 	//POST: devuelve puntero al personaje buscado por <nombre>. Si no lo encuentra devuelve NULL.
 	//
+	Personaje* buscarBorrar(string nombre);
+	//POST: devuelve puntero al personaje buscado por <nombre> y lo borra del diccionario.
+	//Si no lo encuentra devuelve NULL.
+	//
 	bool incluye(string nombre);
 	//POST: devuelve true si el personaje está en el diccionario y false en caso contrario
 	//
