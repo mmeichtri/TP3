@@ -11,7 +11,12 @@ Camino::Camino(int fila, int columna):Casillero(fila, columna ){
 int Camino::restarGastoDeEnergia(Personaje* personajeJugador){
     return 1;
 }
-
+void Camino::ImprimirCasilla(string nombre) {
+    if(hayPersonajeEnCasillero())
+        cout << GRY <<"["<<nombre << "]";
+    else
+        cout << GRY << "[___]";
+}
 
 Camino::~Camino(){
 }

@@ -59,12 +59,12 @@ string VInterfazUsuario ::ingresarString(string str) {
 
 int VInterfazUsuario :: comprobarOpcion(int rangMinimo , int rangMaximo){
 
-    int opcion;
+   int opcion;
     do{
         cout << "Ingrese una opcion valida : " << endl;
         cin >> opcion;
     }while( opcion < rangMinimo || opcion > rangMaximo );
-   cout << opcion << endl;
+
     return opcion;
 
 }

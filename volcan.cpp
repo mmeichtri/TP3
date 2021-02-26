@@ -19,6 +19,11 @@ int Volcan::restarGastoDeEnergia(Personaje* personajeJugador){
     return 0;
 }
 
-
+void Volcan ::ImprimirCasilla(string nombre) {
+    if(hayPersonajeEnCasillero())
+        cout << RED <<"["<<nombre << "]";
+    else
+        cout << RED << "[___]";
+}
 Volcan::~Volcan(){
 }
