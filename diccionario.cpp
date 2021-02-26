@@ -6,8 +6,20 @@ Diccionario::Diccionario(){
 	tamanio = 0;
 }
 
-
 Personaje* Diccionario::buscar(string nombre){
+	if (conjunto->empty())
+		return NULL;
+	//
+	//Bst::search(...) devuelve un puntero al tipo de dato guardado.
+	//Como en esta implementación el diccionario guarda como valores
+	//PUNTEROS a personaje, al obtener el resultado de search() es
+	//necesario desreferenciar el objeto para no devolver un puntero doble.
+	Personaje** hallado = conjunto->search(nombre);
+	return hallado == NULL ? NULL : *hallado;
+}
+
+
+Personaje* Diccionario::buscarBorrar(string nombre){
 	if (conjunto->empty())
 		return NULL;
 	return borrarPersonaje(nombre);

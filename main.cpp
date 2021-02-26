@@ -6,21 +6,7 @@
 #include "lecturaCsvCasilleros.h"
 #include "fstream"
 #include "juego.h"
-#include "ArchivoPartidaGuardada.h"
 
-void iniciarPrograma(Juego* juego,Grafo* grafo,Matriz* tablero,Diccionario* diccionario){
-
-    ifstream archivo;
-    archivo.open("partida.csv");
-   if(archivo.is_open()) {
-     MenuPrincipal menuPrincipal(diccionario);
-     menuPrincipal.menu(grafo,tablero);
-   }else{
-       ArchivoPartidaGuardada archivo;
-       archivo.cargarPartida(juego);
-       juego->iniciarJuegoCargado();
-   }
-}
 
 void iniciarTablero(Grafo* grafo , Matriz* matriz){
     string csv = "mapa.csv";
