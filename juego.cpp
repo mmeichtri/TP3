@@ -29,7 +29,7 @@ void Juego ::setPersonajeGuardo(int personajeGuardo) {
 
 bool Juego ::guardarPartida(int jugadorQueGuardo) {
     bool guardoPartida = false ;
-    vista.imprimirLinea( " Desea guardar la partida, ingrese 1 si o 2 no ");
+    vista.imprimirLinea( "¿Desea guardar la partida? \n1) sí \n2) no \n");
     int comprobarOpcion =  vista.comprobarOpcion(1,2);
     if(comprobarOpcion == 1){
         ArchivoTexto(jugadorQueGuardo);
@@ -82,7 +82,7 @@ void Juego ::leerPersonajesArchivo(Personaje * personaje , int contador) {
 }
 
 void Juego ::iniciarJuego() {
-    vista.imprimirLinea( " Bienvenido al juego ");
+    vista.imprimirLinea( " \n\nBienvenido al juego ", TEXT_GRN);
     turnosSeleccion();
     seleccionarPosiciones();
     Personaje** primerTurno = turnoRandom();
@@ -117,7 +117,7 @@ void Juego ::mostrarPersonajes() {
 
 void Juego ::mostrarPersonajeEspecifico() {
 
-    vista.imprimirLinea(" Estos son los personajes disponibles : ");
+    vista.imprimirLinea("\nEstos son los personajes disponibles: ");
     diccionario->mostrar();
     string nombre = vista.ingresarString("nombre");
     Personaje* personajeMostrar = diccionario->buscar(nombre);
@@ -130,9 +130,9 @@ void Juego ::mostrarPersonajeEspecifico() {
 void Juego::turnosSeleccion() {
     //falta pre y post condiciones
     for(int i = 0; i < MAXPERSONAJES;i++){
-        vista.imprimirLinea(" Es el turno del jugador uno ");
+        vista.imprimirLinea("\nEs el turno del jugador 1", TEXT_BG_BLU);
         menuElegirPersonaje(jugadorUno, i);
-        vista.imprimirLinea( " Es el turno del jugador dos ");
+        vista.imprimirLinea( "\nEs el turno del jugador 2", TEXT_BG_GRN);
         menuElegirPersonaje(jugadorDos,i);
     }
 }
@@ -141,7 +141,7 @@ void Juego::elegirPersonaje(Personaje** seleccionJugador , int posicion) {
 
     bool nombreCorrecto = false;
     string nombre;
-    vista.imprimirLinea(" esta es la lista de personajes para seleccionar ");
+    vista.imprimirLinea("\nEsta es la lista de personajes para seleccionar: ");
     diccionario->mostrar();
      do{
           nombre = vista.ingresarString("nombre");
@@ -162,9 +162,9 @@ void Juego ::seleccionarPosiciones() {
     Personaje** turnoDos = segundoTurno(primerTurno);
 
     for(int i = 0; i < MAXPERSONAJES; i++){
-        vista.imprimirLinea(" es el turno del jugador uno ");
+        vista.imprimirLinea("\nEs el turno del jugador 1 ", TEXT_BG_BLU);
         asignarCasilla(primerTurno[i]);
-        vista.imprimirLinea( " Es el turno del jugador dos");
+        vista.imprimirLinea( "\nEs el turno del jugador 2", TEXT_BG_GRN);
         asignarCasilla(turnoDos[i]);
     }
 }
@@ -173,7 +173,7 @@ void Juego :: asignarCasilla(Personaje *personajeTurno) {
     bool estaVacia = false;
     do{
         vista.imprimirLinea(personajeTurno->getNombre());
-        vista.imprimirLinea("Escoja la posicion donde quiera que este el personaje: ");
+        vista.imprimirLinea("\nEscoja la posicion donde quiera que este el personaje: ");
         int fila = vista.leerFilaOColumna("fila");
         int columna = vista.leerFilaOColumna("columna");
         estaVacia = casillaVacia(fila,columna);
@@ -183,13 +183,13 @@ void Juego :: asignarCasilla(Personaje *personajeTurno) {
             estaVacia = true;
         }
         else
-            vista.imprimirLinea(" Error esa casilla esta ocupada");
+            vista.imprimirLinea("\nERROR: esa casilla esta ocupada", TEXT_YLW);
 
     }while(!estaVacia);
 
 }
 
-Personaje** Juego ::turnoRandom() {
+Personaje** Juego::turnoRandom() {
 
     int personajeRandom = rand()%2 + 1;
 
@@ -199,14 +199,14 @@ Personaje** Juego ::turnoRandom() {
         return jugadorDos;
 }
 
-Personaje** Juego :: segundoTurno( Personaje **seleccionado) {
+Personaje** Juego::segundoTurno( Personaje **seleccionado) {
     if(seleccionado[0] == jugadorUno[0])
         return jugadorDos;
     else
         return jugadorUno;
 }
 
-void Juego ::jugar(Personaje** primerTurno , Personaje** segundoTurno) {
+void Juego::jugar(Personaje** primerTurno , Personaje** segundoTurno) {
     bool equipo1;
     bool equipo2;
     bool juegoGuardado = false;
@@ -222,7 +222,7 @@ void Juego ::jugar(Personaje** primerTurno , Personaje** segundoTurno) {
 }
 
 
-bool Juego :: equipoSinVida(Personaje** equipo) {
+bool Juego::equipoSinVida(Personaje** equipo) {
     int pos = 0;
     bool sinVida = true;
     while(pos < MAXPERSONAJES && sinVida){
@@ -233,15 +233,17 @@ bool Juego :: equipoSinVida(Personaje** equipo) {
     return sinVida;
 }
 
-void Juego ::turno(Personaje** aliados, Personaje** enemigos) {
+void Juego::turno(Personaje** aliados, Personaje** enemigos) {
 
     for(int i = 0; i < MAXPERSONAJES; i++){
         if(aliados[i]->tieneVida()) {
             condicionEspecialPersonaje(aliados[i]);
-            vista.imprimirLinea("Es el turno de: ");
+            vista.imprimirLinea("\nEs el turno de: \n\t");
             aliados[i]->mostrarPersonaje();
+            vista.saltarLinea();
             menuMoverAlimentarse(aliados[i]);
             menuJuegoAccion(aliados, enemigos, aliados[i]);
+            vista.saltarLinea();
         }
     }
 }
@@ -287,22 +289,22 @@ void Juego :: menuMoverAlimentarse(Personaje *personajeTurno) {
 }
 
 void Juego ::ataque(Personaje* atacante, Personaje** victima) {
-
+    vista.saltarLinea();
     if(atacante -> energiaAtaque()){
         atacante->atacar(victima);
     }else{
-        vista.imprimirLinea("El personaje no tiene suficiente energia para atacar ");
+        vista.imprimirLinea("El personaje no tiene suficiente energia para atacar.", TEXT_YLW);
     }
 
 }
 
 
 void Juego :: defenderse(Personaje* personajeTurno,Personaje** aliados) {
-
+    vista.saltarLinea();
     if (personajeTurno->energiaDefensa())
         condicionDefensa(personajeTurno, aliados);
     else{
-        vista.imprimirLinea("error el personaje no tiene energia para defenderse");
+        vista.imprimirLinea("ERROR: el personaje no tiene energia para defenderse.", TEXT_YLW);
         vista.saltarLinea();
     }
 
@@ -331,7 +333,7 @@ void Juego ::defensaAire(Personaje *personajeTurno) {
         cambioUbicacion = true;
         }
          else
-             vista.imprimirLinea(" error ese casillero ya esta ocupado");
+             vista.imprimirLinea("ERROR: ese casillero ya esta ocupado", TEXT_YLW);
     }while(!cambioUbicacion);
 
 }
@@ -378,37 +380,38 @@ int  Juego ::condicionMoverse(Personaje *personajeTurno, int caminoMinimo, int f
      if (personajeTurno->tieneEnergia(caminoMinimo) && casillaVacia(fila,col))
          moverPersonaje(personajeTurno,fila,col,caminoMinimo);
      else if(personajeTurno->tieneEnergia(caminoMinimo) && !casillaVacia(fila,col)){
-         vista.imprimirLinea(" Error la casilla donde se quiere mover al personaje esta ocupada ");
+         vista.imprimirLinea("Error: la casilla donde se quiere mover al personaje esta ocupada", TEXT_YLW);
          opcionUsuario = errorMoverse();
      }
      else{
-         vista.imprimirLinea(" Error el personaje no tiene energia para moverse");
+         vista.imprimirLinea("Error: el personaje no tiene energia para moverse", TEXT_YLW);
          opcionUsuario = errorMoverse();
      }
      return opcionUsuario;
 }
 
 void Juego ::moverPersonaje(Personaje *personajeTurno, int fila, int columna, int caminoMinimo) {
-    int posicionFinal = graf->buscarPosicion(fila,columna);
-    vista.caminoInicialFinal(personajeTurno->getFila(),personajeTurno->getColumna(),fila,columna);
-    vista.imprimirLinea("el personaje paso por las siguientes casillas intermedias : ");
-    graf->recorridoMinimo(posicionFinal);
-    matriz->setHayPersonaje(personajeTurno->getFila(),personajeTurno->getColumna(),false);
-    personajeTurno->cambiarFYC(fila, columna);
-    matriz->setHayPersonaje(fila,columna,true);
-    personajeTurno->restarEnergia(caminoMinimo);
+	int posicionFinal = graf->buscarPosicion(fila,columna);
+	vista.caminoInicialFinal(personajeTurno->getFila(),personajeTurno->getColumna(),fila,columna);
+	vista.imprimirLinea("El personaje paso por las siguientes casillas intermedias : ");
+	graf->recorridoMinimo(posicionFinal);
+	matriz->setHayPersonaje(personajeTurno->getFila(),personajeTurno->getColumna(),false);
+	personajeTurno->cambiarFYC(fila, columna);
+	matriz->setHayPersonaje(fila,columna,true);
+	personajeTurno->restarEnergia(caminoMinimo);
 }
 
 int Juego::errorMoverse() {
-    int opcionUsuario;
-    vista.imprimirLinea("desea intentar mover el personaje nuevamente 1 para si 2 para no ");
-    opcionUsuario = vista.comprobarOpcion(1,2);
-    return opcionUsuario;
+	int opcionUsuario;
+	vista.imprimirLinea("¿Desea intentar mover el personaje nuevamente?\n1) sí \n2) no");
+	vista.saltarLinea();
+	opcionUsuario = vista.comprobarOpcion(1,2);
+	return opcionUsuario;
 }
 
 Juego ::~Juego() {
-    for(int i = 0; i < MAXPERSONAJES ; i++){
-             delete jugadorUno[i];
-            delete jugadorDos[i];
+	for(int i = 0; i < MAXPERSONAJES ; i++){
+		delete jugadorUno[i];
+		delete jugadorDos[i];
     }
 }

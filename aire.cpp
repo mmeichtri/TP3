@@ -15,7 +15,7 @@ string Aire ::getElemento() {
     return "aire";
 }
 void Aire:: alimentarse() {
-    vista.imprimirLinea(" los personajes de aire no se alimentan");
+    vista.imprimirLinea("\nLos personajes de aire no se alimentan.\n");
 }
 
 bool Aire ::energiaAtaque() {

@@ -6,6 +6,23 @@
 #define ATAQUE_VINTERFAZUSUARIO_H
 #include <iostream>
 #include <string>
+
+#ifndef COLORS
+#define COLORS
+    #define TEXT_NC "\e[0m"
+    #define TEXT_RED "\e[1;31m"
+    #define TEXT_GRN "\e[1;32m"
+    #define TEXT_YLW "\e[1;33m"
+    #define TEXT_BLU "\e[1;34m"
+    #define TEXT_PUR "\e[1;35m"
+    #define TEXT_CYN "\e[1;36m"
+    #define TEXT_ERROR "\e[1;5;31m"
+    #define TEXT_BG_GRN "\e[1;42m"
+    #define TEXT_BG_BLU "\e[1;44m"
+    #define TEXT_BG_REDB "\e[33;41m"
+#endif
+
+
 using namespace std;
 
 class VInterfazUsuario {
@@ -50,7 +67,7 @@ public:
 
     //PRE: VARIABLE LINEA VALIDA
     //POST: IMPRIME LA LINEA PASADA POR PARAMETRO.
-    void imprimirLinea(string linea);
+    void imprimirLinea(string linea, const string formato = "\e[0m");
 
     //PRE:
     //POST:LIMPIA LA PANTALLA.

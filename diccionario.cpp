@@ -56,7 +56,7 @@ void Diccionario::mostrar(){
 		cout << "El conjunto está vacío" << endl;
 	}
 	else{
-		cout << "Personajes: \n\n";
+		cout << endl;
 		for (size_t i = 0; i < tamanio; i++)
 			cout << list->dequeue()->getNombre() << (i != -tamanio - 1 ? "\n" : " >");
 		cout << endl;
