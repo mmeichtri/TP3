@@ -16,6 +16,8 @@ public:
     // POST: CONSTRUYE UN OBJETO Tierra CON DATOS VALIDOS.
     Tierra(string nombre,int escudo,int vida);
 
+    Tierra(string nombre,int escudo,int vida,int energia,int fila,int columna);
+
     // PRE:
     /* POST:  SI verificarEnergia() ES VERDADERO, AUMENTA LA ENERGIA EN 8 PUNTOS
      * Y LLAMA A imprimirALimentos, SI ES FALSO SE LO INDICA AL USUARIO.*/

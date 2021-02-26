@@ -28,6 +28,7 @@ private:
     Diccionario*  diccionario;
     Personaje* jugadorUno[MAXPERSONAJES];
     Personaje* jugadorDos[MAXPERSONAJES];
+    int personajeGuardo = 0;
 public:
 
     //pre: puntero a grafo valido y puntero a matri valido.
@@ -38,6 +39,21 @@ public:
    //post:
    void iniciarJuego();
 
+   //pre:
+   //post:
+   void iniciarJuegoCargado();
+
+   void setPersonajeGuardo(int personajeGuardo);
+
+
+    //pre:
+    //post:
+    void leerPersonajesArchivo(Personaje* , int);
+
+    //pre:
+    //post:
+    Personaje** leerJugadorGuardado(int jugador);
+
     //PRE:
     //POST: si existe algun personaje en los vectores jugadorUno y jugadorDos, los elimina,¡.
     ~Juego();
@@ -46,7 +62,23 @@ private:
 
     //pre:
     //post:
-    void jugar();
+    void jugar(Personaje** primerTurno , Personaje** SegundoTurno);
+
+    //pre:
+    //post:
+
+    bool guardarPartida(int jugadorQueGuardo);
+
+    //pre:
+    //post:
+   void cargarPartidaEnArchivo(int jugadorQueGuardo);
+
+
+
+   //pre:
+   //post:
+    void eliminarArchivoLog(bool guardoPartida);
+
 
     //pre:
     //post: coloca los dos vectores atributos de la clase en cada una de sus posiciones en null
@@ -125,7 +157,8 @@ private:
    /*POST: si jugadoUno en la posicion cero es igual al vector seleccionado en la posicion cero,retorna
     jugadorDos , sino retorna jugadorUno
     */
-   Personaje** perdedorTurno( Personaje** seleccionado);
+   Personaje** segundoTurno( Personaje** seleccionado);
+
 
 
    void seleccionarPosiciones();

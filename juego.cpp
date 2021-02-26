@@ -15,12 +15,63 @@ void Juego ::inicializarJugadores() {
     }
 }
 
+void Juego ::iniciarJuegoCargado() {
+    Personaje** primerTurno = leerJugadorGuardado(personajeGuardo);
+    Personaje**  turnoDos = segundoTurno(primerTurno);
+    jugar(primerTurno, turnoDos);
+}
+
+void Juego ::setPersonajeGuardo(int personajeGuardo) {
+    this -> personajeGuardo = personajeGuardo;
+}
+bool Juego ::guardarPartida(int jugadorQueGuardo) {
+    bool guardoPartida = false ;
+    vista.imprimirLinea( " Desea guardar la partida, ingrese 1 si o 2 no ");
+    int comprobarOpcion =  vista.comprobarOpcion(1,2);
+    if(comprobarOpcion == 1){
+        cargarPartidaEnArchivo(jugadorQueGuardo);
+        guardoPartida = true;
+    }
+    return guardoPartida;
+}
+
+void Juego ::cargarPartidaEnArchivo(int jugadorQueGuardo) {
+
+}
+
+void Juego ::eliminarArchivoLog(bool guardoPartida) {
+    if(guardoPartida = false)
+        remove("partida.csv");
+}
+
+Personaje** Juego ::leerJugadorGuardado(int jugador) {
+    if(jugador == 1 )
+        return jugadorUno;
+    else
+        return jugadorDos;
+}
+
+
+void Juego ::leerPersonajesArchivo(Personaje * personaje , int contador) {
+
+    if(contador < 3)
+        jugadorUno[contador] = personaje;
+    else{
+        contador = contador-3 ;
+        jugadorDos[contador] = personaje;
+    }
+
+}
+
 void Juego ::iniciarJuego() {
     vista.imprimirLinea( " Bienvenido al juego ");
     turnosSeleccion();
     seleccionarPosiciones();
-    jugar();
+    Personaje** primerTurno = turnoRandom();
+    Personaje** turnoDos = segundoTurno(primerTurno);
+    jugar(primerTurno,turnoDos);
 }
+
 void Juego::menuElegirPersonaje(Personaje** jugador, int posicion) {
 
     int opcion;
@@ -90,13 +141,13 @@ void Juego::elegirPersonaje(Personaje** seleccionJugador , int posicion) {
 void Juego ::seleccionarPosiciones() {
 
     Personaje** primerTurno = turnoRandom();
-    Personaje** segundoTurno = perdedorTurno(primerTurno);
+    Personaje** turnoDos = segundoTurno(primerTurno);
 
     for(int i = 0; i < MAXPERSONAJES; i++){
         vista.imprimirLinea(" es el turno del jugador uno ");
         asignarCasilla(primerTurno[i]);
         vista.imprimirLinea( " Es el turno del jugador dos");
-        asignarCasilla(segundoTurno[i]);
+        asignarCasilla(turnoDos[i]);
     }
 }
 
@@ -129,30 +180,30 @@ Personaje** Juego ::turnoRandom() {
         return jugadorDos;
 }
 
-Personaje** Juego ::perdedorTurno( Personaje **seleccionado) {
+Personaje** Juego :: segundoTurno( Personaje **seleccionado) {
     if(seleccionado[0] == jugadorUno[0])
         return jugadorDos;
     else
         return jugadorUno;
 }
 
-void Juego ::jugar() {
-//falta pre y post condicion.
-
-
-    Personaje** primerTurno = turnoRandom();
-    Personaje** segundoTurno = perdedorTurno(primerTurno);
-
+void Juego ::jugar(Personaje** primerTurno , Personaje** segundoTurno) {
     bool equipo1;
     bool equipo2;
-
+    bool juegoGuardado = false;
     do{
+        juegoGuardado = guardarPartida(1);
         turno(primerTurno,segundoTurno);
+        juegoGuardado = guardarPartida(1);
         turno(segundoTurno,primerTurno);
         equipo1 = equipoSinVida(jugadorUno);
         equipo2 = equipoSinVida(jugadorDos);
-    }while(!equipo1  &&  !equipo2);
+    }while((!equipo1  &&  !equipo2) && !juegoGuardado);
+
+    eliminarArchivoLog(juegoGuardado);
+
 }
+
 
 bool Juego :: equipoSinVida(Personaje** equipo) {
     int pos = 0;

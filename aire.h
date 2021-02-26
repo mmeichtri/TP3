@@ -20,6 +20,8 @@ public:
     // POST: CONTRUYE UN OBJETO Aire, QUE HEREDA DE LA CLASE PERSONAJE.
     Aire(string nombre,int escudo,int vida);
 
+    Aire(string nombre,int escudo,int vida,int energia,int fila,int columna);
+
     //PRE:
     //POST: retorna el nombre del elemento
     string getElemento();

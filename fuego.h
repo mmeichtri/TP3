@@ -14,6 +14,8 @@ public:
     // POST: CONSTRUYE UN OBJETO Fuego.
     Fuego(string nombre,int escudo,int vida);
 
+    Fuego(string nombre,int escudo,int vida,int energia,int fila,int columna);
+
     //PRE :
     /* POST: SI verificarVida ES VERDADERO, INCREMENTA 15 PUNTOS LA VIDA DEL PERSONAJE
      * Y LLAMA A imprimirPersonaje. SI ES FALSO, SE INDICA AL USUARIO A TRAVES DE UN MENSAJE.*/

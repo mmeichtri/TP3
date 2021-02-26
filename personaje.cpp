@@ -7,6 +7,15 @@ Personaje :: Personaje(string nombre,int escudo,int vida){
     energia = rand() % (EMAX+1);
 }
 
+Personaje ::Personaje(string nombre, int escudo, int vida, int energia, int fila, int columna) {
+    this -> nombre = nombre;
+    this -> escudo = escudo;
+    this -> vida =vida;
+    this -> energia = energia;
+    this -> fila = fila;
+    this -> columna = columna;
+}
+
 void Personaje ::mostrarPersonaje() {
     vista.mostrarPersonaje(getNombre(),getElemento(),getEscudo(),getEnergia(),getVida(),getFila(),getColumna());
 }

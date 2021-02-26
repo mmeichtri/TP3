@@ -3,6 +3,9 @@
 Agua :: Agua(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
     contarComida = 0;
 }
+Agua :: Agua(string nombre,int escudo,int vida,int energia, int fila , int columna) : Personaje(nombre,escudo,vida,energia,fila,columna){
+
+}
 
 string Agua :: getElemento() {
 

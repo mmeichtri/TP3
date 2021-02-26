@@ -29,6 +29,8 @@ public:
  * DENTRO DEL RANGO ESTABLECIDO.*/
 Personaje(string nombre,int escudo,int vida);
 
+Personaje(string nombre,int escudo , int vida, int energia, int fila, int columna);
+
 
 // PRE:
 // POST:

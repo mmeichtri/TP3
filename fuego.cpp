@@ -2,6 +2,9 @@
 Fuego :: Fuego(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
 
 }
+Fuego :: Fuego(string nombre,int escudo,int vida,int energia, int fila , int columna) : Personaje(nombre,escudo,vida,energia,fila,columna){
+
+}
 
 string Fuego ::getElemento(){
 
@@ -44,10 +47,12 @@ bool Fuego :: energiaDefensa() {
 }
 
 void Fuego::modificarPorTurno() {
-    if(energia == 0)
+    if(energia == 0){
         restarVida(5);
-    eliminarDelJuego();
+        eliminarDelJuego();
+    }
 }
+
 void Fuego ::eliminarDelJuego() {
     if(!tieneVida())
         cambiarFYC(-3000,-3000);

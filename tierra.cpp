@@ -2,6 +2,10 @@
 Tierra :: Tierra(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
     escudoInicial = escudo;
 }
+Tierra :: Tierra(string nombre,int escudo,int vida,int energia, int fila , int columna) : Personaje(nombre,escudo,vida,energia,fila,columna){
+
+}
+
 string Tierra ::getElemento() {
    return "tierra";
 }

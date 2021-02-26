@@ -18,6 +18,8 @@ public:
      * ATRIBUTO contarComida EN CERO*/
     Agua(string nombre,int escudo,int vida);
 
+    Agua(string nombre,int escudo,int vida,int energia,int fila,int columna);
+
     //PRE :
     /*POST: SI verificarEnergia() && contarComida < 3 DEVUELVE TRUE, INCREMENTA EN UNO contarComida Y EN DIEZ
      * LA energia DEL PERSONAJE. EN FALSEDAD, SI CONTAR COMIDA < 3 INDICA AL USUARIO QUE NO HAY ENERGIA

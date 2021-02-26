@@ -6,6 +6,10 @@
 Aire :: Aire(string nombre,int escudo,int vida) : Personaje(nombre,escudo,vida){
 
 }
+Aire :: Aire(string nombre,int escudo,int vida,int energia, int fila , int columna) : Personaje(nombre,escudo,vida,energia,fila,columna){
+
+}
+
 
 string Aire ::getElemento() {
     return "aire";
