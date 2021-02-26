@@ -46,7 +46,8 @@ void Matriz ::recorrerMatriz(Personaje **jugadorUno, Personaje **jugadorDos) {
             else
                 tablero[fila][col]->ImprimirCasilla("");
         }
-        cout << NC << endl;
+        //ACÁ HABÍA UN NC PERO LO BORRÉ PORQUE NO ESTÁ DECLARADO EN ESTE ARCHIVO. LUCIANO
+        cout << endl;
     }
 }
 

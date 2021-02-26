@@ -2,15 +2,15 @@
 #define CASILLERO_H_INCLUDED
 #include <string.h>
 #include "personaje.h"
-#define NC "\e[0m"
-#define RED "\e[30;41m"
-#define GRN "\e[30;42m"
-#define YLW "\e[1;30;43m"
-#define BLU "\e[30;44m"
-#define PUR "\e[30;45m"
-#define CYN "\e[30;46m"
-#define REDB "\e[41m"
-#define GRY "\e[30;47m"
+#define __NC__ "\033[0m"
+#define __RED__ "\033[30;41m"
+#define __GRN__ "\033[30;42m"
+#define __YLW__ "\033[1;30;43m"
+#define __BLU__ "\033[30;44m"
+#define __PUR__ "\033[30;45m"
+#define __CYN__ "\033[30;46m"
+#define __GRY__ "\033[30;47m"
+#define __REDB__ "\033[41m"
 
 class Casillero{
 protected:

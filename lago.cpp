@@ -22,9 +22,9 @@ int Lago::restarGastoDeEnergia(Personaje* personajeJugador){
 
 void Lago :: ImprimirCasilla(string nombre) {
      if(hayPersonajeEnCasillero())
-         cout << BLU <<"["<<nombre << "]";
+         cout << __BLU__ <<"["<<nombre << "]";
      else
-         cout << BLU << "[___]";
+         cout << __BLU__ << "[___]";
 }
 
 Lago::~Lago(){

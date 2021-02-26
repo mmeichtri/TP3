@@ -13,9 +13,9 @@ int Camino::restarGastoDeEnergia(Personaje* personajeJugador){
 }
 void Camino::ImprimirCasilla(string nombre) {
     if(hayPersonajeEnCasillero())
-        cout << GRY <<"["<<nombre << "]";
+        cout << __GRY__ <<"["<<nombre << "]";
     else
-        cout << GRY << "[___]";
+        cout << __GRY__ << "[___]";
 }
 
 Camino::~Camino(){

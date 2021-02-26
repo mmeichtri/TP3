@@ -21,9 +21,9 @@ int Montania::restarGastoDeEnergia(Personaje* personajeJugador){
 
 void Montania::ImprimirCasilla(string nombre) {
     if(hayPersonajeEnCasillero())
-        cout << GRN <<"["<<nombre << "]";
+        cout << __GRN__ <<"["<<nombre << "]";
     else
-        cout << GRN << "[___]";
+        cout << __GRN__ << "[___]";
 }
 
 Montania::~Montania(){
