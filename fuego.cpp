@@ -28,7 +28,7 @@ bool Fuego::verificarVida() {
 
 void Fuego :: imprimirAlimentos(){
     vista.alimentado(getElemento(),"madera",10);
-    vista.imprimirLinea(" recupero 5 puntos de vida el personaje ");
+    vista.imprimirLinea(" recuperó 5 puntos de vida el personaje ");
 }
 
 bool Fuego ::energiaAtaque() {

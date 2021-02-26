@@ -6,24 +6,37 @@
 #define ATAQUE_VINTERFAZUSUARIO_H
 #include <iostream>
 #include <string>
+#include <vector>
 
 #ifndef COLORS
 #define COLORS
-    #define TEXT_NC "\e[0m"
-    #define TEXT_RED "\e[1;31m"
-    #define TEXT_GRN "\e[1;32m"
-    #define TEXT_YLW "\e[1;33m"
-    #define TEXT_BLU "\e[1;34m"
-    #define TEXT_PUR "\e[1;35m"
-    #define TEXT_CYN "\e[1;36m"
-    #define TEXT_ERROR "\e[1;5;31m"
-    #define TEXT_BG_GRN "\e[1;42m"
-    #define TEXT_BG_BLU "\e[1;44m"
-    #define TEXT_BG_REDB "\e[33;41m"
+    #define __TEXT_NC__ "\033[0m"
+    #define __TEXT_RED__ "\033[1;31m"
+    #define __TEXT_GRN__ "\033[1;32m"
+    #define __TEXT_YLW__ "\033[1;33m"
+    #define __TEXT_BLU__ "\033[1;34m"
+    #define __TEXT_PUR__ "\033[1;35m"
+    #define __TEXT_CYN__ "\033[1;36m"
+    #define __TEXT_ERROR__ "\033[1;5;31m"
+    #define __TEXT_BG_GRN__ "\033[1;42m"
+    #define __TEXT_BG_BLU__ "\033[1;44m"
+    #define __TEXT_BG_REDB__ "\033[33;41m"
 #endif
 
-
 using namespace std;
+
+
+typedef enum {MENU, JUGADOR, MATRIZ, SI_NO} instancias_t;
+
+const vector<vector<string>> opcionesValidas = 
+{
+    {"1","2","3","4","5","6"},
+    {"1","2","3"},
+    {"0","1","2","3","4","5","6","7"},
+    {"1","2"}
+};
+
+
 
 class VInterfazUsuario {
 public:
@@ -58,7 +71,7 @@ public:
 
     //PRE: RECIBE DOS VARIABLES ENTERAS VALIDAS..
     //POST: RETORNA LA OPCION VALIDA DENTRO DEL RANGO DE LAS VARIABLES PASADAS POR PARAMETRO.
-    int comprobarOpcion(int rangMinimo , int rangMaximo);
+    int comprobarOpcion(int rangMinimo , int rangMaximo, instancias_t instancia);
 
     //PRE: RECIBE UN STRING ALFANUMERICO VALIDO.
     //POST: IMPRIME QUE NO SE ENCONTRO UN ELEMENTO DE ESE TIPO.
@@ -67,7 +80,7 @@ public:
 
     //PRE: VARIABLE LINEA VALIDA
     //POST: IMPRIME LA LINEA PASADA POR PARAMETRO.
-    void imprimirLinea(string linea, const string formato = "\e[0m");
+    void imprimirLinea(string linea, const string formato = __TEXT_NC__);
 
     //PRE:
     //POST:LIMPIA LA PANTALLA.

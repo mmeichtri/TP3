@@ -53,10 +53,10 @@ Personaje* Diccionario::borrarPersonaje(string nombre){
 void Diccionario::mostrar(){
 	Queue<Personaje*> * list = conjunto->inOrder();
 	if (list == NULL){
-		cout << "El conjunto está vacío" << endl;
+		cout << "No hay personajes..." << endl;
 	}
 	else{
-		cout << endl;
+		cout << "Personajes: " << endl;
 		for (size_t i = 0; i < tamanio; i++)
 			cout << list->dequeue()->getNombre() << (i != -tamanio - 1 ? "\n" : " >");
 		cout << endl;

@@ -3,13 +3,34 @@
 //
 
 #include "interfazUsuario.h"
+#include <vector>
+
+
+static int pedirOpcion(instancias_t instancia){
+    string entrada;
+    cin >> entrada;
+    const size_t cantidadOpciones = opcionesValidas[instancia].size();
+    cout << "cantidadOpciones = " << cantidadOpciones << endl;
+
+    for (size_t i = 0; i < cantidadOpciones; i++){
+        if (entrada == opcionesValidas[instancia][i]){
+            cout << opcionesValidas[instancia][i] << endl;
+            int opcion = stoi(entrada);
+            return opcion;
+        }
+    }
+    cout << __TEXT_RED__ << "Ingrese una opción válida." << __TEXT_NC__ << endl;
+    return -1;     
+}
+
+
 
 int VInterfazUsuario::leerFilaOColumna(string dato) {
 
     int  filaColumna;
     do{
         cout << "Ingrese numero de "<< dato << " (entre 0-7): ";
-        cin >> filaColumna;
+        filaColumna = pedirOpcion(MATRIZ);
     }while(filaColumna < 0  || filaColumna > 7);
 
     return filaColumna;
@@ -17,7 +38,7 @@ int VInterfazUsuario::leerFilaOColumna(string dato) {
 
 void VInterfazUsuario::menuPrincipal(){
 
-    cout << endl << TEXT_YLW <<  "     Batalla de los elementos        " << TEXT_NC << endl << endl;
+    cout << endl << __TEXT_YLW__ <<  "     Batalla de los elementos        " << __TEXT_NC__ << endl << endl;
     cout << "1) Agregar nuevo personaje   " << endl;
     cout << "2) Eliminar un personaje  "<< endl;
     cout << "3) Mostrar todos los nombres de los personajes " << endl;
@@ -28,24 +49,26 @@ void VInterfazUsuario::menuPrincipal(){
 
 void VInterfazUsuario::menuJugadores() {
 
-    cout << "1) Buscar por nombre los detalles de un personaje en particular : "<< endl;
-    cout << "2) Mostrar los nombres de todos los personajes : " << endl;
-    cout << "3) Seleccionar personaje : " << endl;
+    cout << endl\
+    << "1) Buscar por nombre los detalles de un personaje en particular : "<< endl\
+    << "2) Mostrar los nombres de todos los personajes : " << endl\
+    << "3) Seleccionar personaje : " << endl;
 
 }
 
 void VInterfazUsuario::primerMenuTurno() {
-
-    cout << "1) Alimentarse" << endl;
-    cout << "2) Moverse" << endl;
-    cout << "3) Pasar Opcion" << endl;
+    cout\
+    << "1) Alimentarse" << endl\
+    << "2) Moverse" << endl\
+    << "3) Pasar Opcion" << endl;
 }
 
 void VInterfazUsuario::segundoMenuTurno() {
 
-    cout << "1) Defenderse" << endl;
-    cout << "2) Atacar"<< endl;
-    cout << "3) Pasar Opcion : " << endl;
+    cout\
+    << "1) Defenderse" << endl\
+    << "2) Atacar"<< endl\
+    << "3) Pasar Opcion : " << endl;
 }
 
 
@@ -58,39 +81,33 @@ string VInterfazUsuario::ingresarString(string str) {
     return aux;
 }
 
-int VInterfazUsuario::comprobarOpcion(int rangMinimo , int rangMaximo){
+int VInterfazUsuario::comprobarOpcion(int rangMinimo , int rangMaximo, instancias_t instancia){
+    int opcion;
 
-   int opcion;
-    do{
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
-    }while( opcion < rangMinimo || opcion > rangMaximo );
-<<<<<<< HEAD
-//   cout << opcion << endl;
-=======
+    do
+        opcion = pedirOpcion(instancia);
+    while( opcion < rangMinimo || opcion > rangMaximo );
 
->>>>>>> b991cb3ed1281e7dfa223517cfa5f64589e654d8
     return opcion;
-
 }
 
 void VInterfazUsuario::noEncontro(string str ) {
 
-    cout << TEXT_RED << "ERROR: ese " << str << " no existe..." << TEXT_NC << endl << endl;
+    cout << __TEXT_RED__ << "ERROR: ese " << str << " no existe..." << __TEXT_NC__ << endl << endl;
 }
 
 
 void VInterfazUsuario::limpiarPantalla() {
 
 #ifdef WINDOWS
-    std :: system("cls");
+    std::system("cls");
 #else
     std::system("clear");
 #endif
 }
 
 void VInterfazUsuario::imprimirLinea(string linea, string formato) {
-    cout << formato << linea << TEXT_NC << endl;
+    cout << formato << linea << __TEXT_NC__ << endl;
 }
 
 void VInterfazUsuario ::saltarLinea() {
@@ -107,8 +124,8 @@ void VInterfazUsuario ::mostrarPersonaje(string nombre, string elemento, int esc
 }
 
 void VInterfazUsuario ::noSeAlimento() {
-    cout << TEXT_YLW << "ERROR: " << "el personaje ya tiene energia suficiente."\
-    << TEXT_NC << endl << endl << endl;
+    cout << __TEXT_YLW__ << "ERROR: " << "el personaje ya tiene energia suficiente."\
+    << __TEXT_NC__ << endl << endl << endl;
 }
 
 void VInterfazUsuario ::alimentado(string elemento, string comida, int energiaRecuperada) {

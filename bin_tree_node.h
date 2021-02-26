@@ -282,11 +282,6 @@ void BinTreeNode <T>::flipPrev(BinTreeNode<T> *node){
 		this->_prev->setRight(node);
 	else if (_prev->_left == this)
 		this->_prev->setLeft(node);
-<<<<<<< HEAD
-=======
-	else if (_prev == NULL);
-
->>>>>>> b991cb3ed1281e7dfa223517cfa5f64589e654d8
 }
 
 template <typename T>

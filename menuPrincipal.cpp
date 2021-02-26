@@ -8,13 +8,13 @@ MenuPrincipal ::MenuPrincipal(Diccionario *diccionario) {
 void MenuPrincipal ::menu(Grafo* grafo , Matriz* matriz) {
 
     cargarDiccionario();
-    int desicionUsuario;
+    int decisionUsuario;
 
     do{
         vistaUsuario.menuPrincipal();
-        desicionUsuario = vistaUsuario.comprobarOpcion(1,6);
+        decisionUsuario = vistaUsuario.comprobarOpcion(1, 6, MENU);
 
-        switch(desicionUsuario){
+        switch(decisionUsuario){
             case 1:
                 agregarPersonaje();
                 break;
@@ -32,7 +32,7 @@ void MenuPrincipal ::menu(Grafo* grafo , Matriz* matriz) {
                 break;
         }
 
-    }while(desicionUsuario < 6);
+    }while(decisionUsuario < 6);
 }
 
 void MenuPrincipal::cargarDiccionario() {
