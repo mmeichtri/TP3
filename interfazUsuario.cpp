@@ -60,12 +60,16 @@ string VInterfazUsuario::ingresarString(string str) {
 
 int VInterfazUsuario::comprobarOpcion(int rangMinimo , int rangMaximo){
 
-    int opcion;
+   int opcion;
     do{
         cout << "Ingrese una opcion: ";
         cin >> opcion;
     }while( opcion < rangMinimo || opcion > rangMaximo );
+<<<<<<< HEAD
 //   cout << opcion << endl;
+=======
+
+>>>>>>> b991cb3ed1281e7dfa223517cfa5f64589e654d8
     return opcion;
 
 }

@@ -67,6 +67,14 @@ private:
     //post:
     void actualizarPantalla();
 
+    //pre:
+    //post:
+    void chequearTurno(Personaje** turno);
+
+    //pre:
+    //post:
+    void mostrarGanador(bool equipo1 , bool equipo2);
+
    //pre:
    //post:
    void ContinuarPartida();
@@ -203,8 +211,9 @@ private:
   //pre:
   //post:muestra los nombres de los personajes
   void mostrarPersonajes();
-
-
+  //pre:
+  //post:
+  void imprimirTablero();
 };
 
 #endif //ATAQUE_JUEGO_H

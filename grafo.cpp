@@ -112,7 +112,7 @@ void Grafo::condicionCaminoMinimo(int *distancia , int vertice , Personaje *pers
     }
 }
 
-void Grafo ::recorridoMinimo( int final) {
+void Grafo ::recorridoMinimo(int final) {
 
     if(padre[final] == -1)
       return;

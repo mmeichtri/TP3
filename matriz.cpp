@@ -35,6 +35,38 @@ void Matriz::pasarAdyacencia(Grafo *grafo) {
     }
 }
 
+void Matriz ::recorrerMatriz(Personaje **jugadorUno, Personaje **jugadorDos) {
+    string nombre;
+    for(int fila = 0; fila < 8; fila++){
+        for(int col = 0; col < 8 ; col++){
+            if(tablero[fila][col]->hayPersonajeEnCasillero()){
+               nombre =  retornarNombrePersonaje(jugadorUno,jugadorDos,fila,col);
+                tablero[fila][col]->ImprimirCasilla(nombre);
+            }
+            else
+                tablero[fila][col]->ImprimirCasilla("");
+        }
+        cout << NC << endl;
+    }
+}
+
+string Matriz::retornarNombrePersonaje(Personaje** jugadorUno, Personaje** jugadorDos,int fila , int columna) {
+    bool encontrado = false;
+    string nombre;
+    int cont = 0;
+    while(cont < 3 && !encontrado){
+        if(jugadorUno[cont]->getFila() == fila && jugadorUno[cont]->getColumna() == columna){
+            nombre = jugadorUno[cont]->getNombre();
+            encontrado = true;
+        }
+        if(jugadorDos[cont]->getFila() == fila && jugadorDos[cont]->getColumna() == columna){
+            nombre = jugadorDos[cont]->getNombre();
+            encontrado = true;
+        }
+       cont++;
+    }
+    return nombre.substr(0,3);
+}
 
 void Matriz ::setHayPersonaje(int fila, int columna, bool nuevoEstado) {
     tablero[fila][columna]->setHayPersonaje(nuevoEstado);

@@ -15,16 +15,10 @@ void Juego ::inicializarJugadores() {
     }
 }
 
-void Juego ::iniciarJuegoCargado() {
-    Personaje** primerTurno = leerJugadorGuardado(personajeGuardo);
-    Personaje**  turnoDos = segundoTurno(primerTurno);
-    jugar(primerTurno, turnoDos);
-}
 
 void Juego ::setPersonajeGuardo(int personajeGuardo) {
     this -> personajeGuardo = personajeGuardo;
 }
-
 
 
 bool Juego ::guardarPartida(int jugadorQueGuardo) {
@@ -54,19 +48,18 @@ void Juego ::ArchivoTexto(int jugadorQueGuardo) {
 
 }
 
-void Juego ::ContinuarPartida() {
-    remove("partida.csv");
-    Personaje** primerTurno = leerJugadorGuardado(personajeGuardo);
-    Personaje** turnoDos = segundoTurno(primerTurno);
-    jugar(primerTurno,turnoDos);
-}
-
-
 Personaje** Juego ::leerJugadorGuardado(int jugador) {
     if(jugador == 1 )
         return jugadorUno;
     else
         return jugadorDos;
+}
+
+void Juego ::ContinuarPartida() {
+    remove("partida.csv");
+    Personaje** primerTurno = leerJugadorGuardado(personajeGuardo);
+    Personaje** turnoDos = segundoTurno(primerTurno);
+    jugar(primerTurno,turnoDos);
 }
 
 
@@ -145,7 +138,7 @@ void Juego::elegirPersonaje(Personaje** seleccionJugador , int posicion) {
     diccionario->mostrar();
      do{
           nombre = vista.ingresarString("nombre");
-          Personaje* personajeElegir = diccionario->buscar(nombre);
+          Personaje* personajeElegir = diccionario->buscarBorrar(nombre);
           if(personajeElegir != nullptr){
               seleccionJugador[posicion] = personajeElegir;
               nombreCorrecto = true;
@@ -206,21 +199,42 @@ Personaje** Juego::segundoTurno( Personaje **seleccionado) {
         return jugadorUno;
 }
 
+<<<<<<< HEAD
 void Juego::jugar(Personaje** primerTurno , Personaje** segundoTurno) {
+=======
+void Juego ::chequearTurno(Personaje **turno) {
+    if(jugadorUno[0] == turno[0])
+        vista.imprimirLinea(" Es el turno del jugador uno");
+    else
+        vista.imprimirLinea(" Es el turno del jugador dos");
+}
+
+void Juego ::jugar(Personaje** primerTurno , Personaje** segundoTurno) {
+    matriz->recorrerMatriz(jugadorUno,jugadorDos);
+>>>>>>> b991cb3ed1281e7dfa223517cfa5f64589e654d8
     bool equipo1;
     bool equipo2;
     bool juegoGuardado = false;
     do{
         juegoGuardado = guardarPartida(1);
+        chequearTurno(primerTurno);
         turno(primerTurno,segundoTurno);
         juegoGuardado = guardarPartida(1);
+        chequearTurno(segundoTurno);
         turno(segundoTurno,primerTurno);
         equipo1 = equipoSinVida(jugadorUno);
         equipo2 = equipoSinVida(jugadorDos);
     }while((!equipo1  &&  !equipo2) && !juegoGuardado);
 
+mostrarGanador(equipo1,equipo2);
 }
 
+void Juego ::mostrarGanador(bool equipo1, bool equipo2) {
+    if(!equipo1)
+        vista.imprimirLinea(" El ganador es el jugador uno");
+    else if(!equipo2)
+        vista.imprimirLinea(" El ganador es el jugador dos");
+}
 
 bool Juego::equipoSinVida(Personaje** equipo) {
     int pos = 0;
@@ -329,8 +343,10 @@ void Juego ::defensaAire(Personaje *personajeTurno) {
         int fila = vista.leerFilaOColumna("fila");
         int columna = vista.leerFilaOColumna("columna");
         if(casillaVacia(fila,columna)){
-        personajeTurno->cambiarFYC(fila,columna);
-        cambioUbicacion = true;
+            matriz->setHayPersonaje(personajeTurno->getFila(),personajeTurno->getColumna(),false);
+             personajeTurno->cambiarFYC(fila,columna);
+             matriz->setHayPersonaje(fila,columna,true);
+             cambioUbicacion = true;
         }
          else
              vista.imprimirLinea("ERROR: ese casillero ya esta ocupado", TEXT_YLW);
@@ -389,8 +405,11 @@ int  Juego ::condicionMoverse(Personaje *personajeTurno, int caminoMinimo, int f
      }
      return opcionUsuario;
 }
-
+void Juego::imprimirTablero(){
+   matriz->recorrerMatriz(jugadorUno,jugadorDos);
+}
 void Juego ::moverPersonaje(Personaje *personajeTurno, int fila, int columna, int caminoMinimo) {
+<<<<<<< HEAD
 	int posicionFinal = graf->buscarPosicion(fila,columna);
 	vista.caminoInicialFinal(personajeTurno->getFila(),personajeTurno->getColumna(),fila,columna);
 	vista.imprimirLinea("El personaje paso por las siguientes casillas intermedias : ");
@@ -399,6 +418,19 @@ void Juego ::moverPersonaje(Personaje *personajeTurno, int fila, int columna, in
 	personajeTurno->cambiarFYC(fila, columna);
 	matriz->setHayPersonaje(fila,columna,true);
 	personajeTurno->restarEnergia(caminoMinimo);
+=======
+    int posicionFinal = graf->buscarPosicion(fila,columna);
+    imprimirTablero();
+    vista.caminoInicialFinal(personajeTurno->getFila(),personajeTurno->getColumna(),fila,columna);
+    vista.imprimirLinea("el personaje paso por las siguientes casillas intermedias : ");
+    graf->recorridoMinimo(posicionFinal);
+    vista.saltarLinea();
+    matriz->setHayPersonaje(personajeTurno->getFila(),personajeTurno->getColumna(),false);
+    personajeTurno->cambiarFYC(fila, columna);
+    matriz->setHayPersonaje(fila,columna,true);
+    imprimirTablero();
+    personajeTurno->restarEnergia(caminoMinimo);
+>>>>>>> b991cb3ed1281e7dfa223517cfa5f64589e654d8
 }
 
 int Juego::errorMoverse() {

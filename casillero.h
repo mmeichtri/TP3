@@ -10,6 +10,7 @@
 #define PUR "\e[30;45m"
 #define CYN "\e[30;46m"
 #define REDB "\e[41m"
+#define GRY "\e[30;47m"
 
 class Casillero{
 protected:
@@ -60,7 +61,7 @@ public:
 
     bool hayPersonajeEnCasillero();
 
-  //  virtual void ImprimirCasilla(string nombre) = 0;
+    virtual void ImprimirCasilla(string nombre) = 0;
 
     virtual ~Casillero();
 

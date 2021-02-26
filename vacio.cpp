@@ -11,7 +11,12 @@ Vacio::Vacio(int fila, int columna ):Casillero(fila, columna ){
 int Vacio::restarGastoDeEnergia(Personaje* personajeJugador){
     return 15;
 }
-
+void Vacio::ImprimirCasilla(string nombre) {
+    if(hayPersonajeEnCasillero())
+        cout << PUR <<"["<<nombre << "]";
+    else
+        cout << PUR << "[___]";
+}
 
 Vacio::~Vacio(){
 }
