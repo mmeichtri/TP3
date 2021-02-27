@@ -42,8 +42,6 @@ void Juego ::ArchivoTexto(int jugadorQueGuardo) {
     ofstream archivo;
     archivo.open("partida.csv");
     archivo << jugadorQueGuardo;
-    int escudoInicial;
-    int cantidadComida;
 
     for(int i = 0; i < MAXPERSONAJES ; i++){
         archivo << jugadorUno[i]->getElemento()<<","<<jugadorUno[i]->getNombre()<<","<<jugadorUno[i]->getEscudo()<<","<<jugadorUno[i]->getVida()<<","<<jugadorUno[i]->getEnergia()<<","<<jugadorUno[i]->getFila()<<","<<jugadorUno[i]->getColumna()<<","<<jugadorUno[i]->devolverCondicionEspecial()<<endl;
@@ -145,7 +143,7 @@ void Juego::elegirPersonaje(Personaje** seleccionJugador , int posicion) {
 	diccionario->mostrar();
 	 do{
 		nombre = vista.ingresarString("nombre");
-		Personaje* personajeElegir = diccionario->buscar(nombre);
+		Personaje* personajeElegir = diccionario->buscarBorrar(nombre);
 		if(personajeElegir != nullptr){
 			seleccionJugador[posicion] = personajeElegir;
 			nombreCorrecto = true;

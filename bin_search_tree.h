@@ -25,6 +25,9 @@ public:
 	~Bst();
 	//Destructor
 	//
+	T* getData();
+	//PRE: El árbol no está vacío.
+	//POST: devuelve un puntero al dato que guarda la raíz.
 	void add(T data, string key);
 	//Agrega <data> al árbol en caso de que no esté incluido previamente.
 	//POST: agrega un dato nuevo e incrementa el tamaño.
@@ -90,6 +93,11 @@ Bst <T>::Bst(T data, string key){
 }
 
 
+template <typename T>
+T* Bst <T>::getData(){
+	return _root->getData();
+}
+
 
 template <typename T>
 bool Bst<T> ::empty(){
@@ -112,6 +120,12 @@ template <typename T>
 void Bst <T>::erase(string key, T &data){
 	if(_root == NULL) 
 		return;
+	else if (_size == 1){
+		T *aux = _root->getData();
+		data = *aux;
+		delete _root;
+		_root = NULL;
+	}
 
 	BinTreeNode<T> *node = _root->search(key);
 	if (node == NULL)
@@ -127,13 +141,19 @@ void Bst <T>::erase(string key, T &data){
 		delete node;
 	}
 
-	//case node has ONE child (right branch)
-	else if(node->left() == 0){
-		node->erasingFlip("right");
+	//case node has ONE child
+	else if(node->left() == 0){//(right branch)
+		if (node == _root)
+			_root = node->right();
+		else
+			node->erasingFlip("right");
 		delete node;
 	}
 	else if(node->right() == 0){//(left branch)
-		node->erasingFlip("left");
+		if (node == _root)
+			_root = node->left();
+		else
+			node->erasingFlip("left");
 		delete node;
 	}
 	//case node has 2 childrens
@@ -142,12 +162,15 @@ void Bst <T>::erase(string key, T &data){
 		//Looks for the middle value (a leaf) between this node and right sub-root (min from this->right())
 		//and copies its key and value in this node.
 		//Then, erases that leaf.
-		BinTreeNode<T>* leaf = node->right()->findMin();
-		leaf->flipPrev(NULL);
-		node->setKey(leaf->getKey());
-		node->setData(*leaf->getData());
-		leaf->setData(NULL);
-		delete leaf;
+		BinTreeNode<T>* n = node->right()->findMin();
+		node->setKey(n->getKey());
+		node->setData(*n->getData());
+		if (n->isLeaf())
+			n->flipPrev(NULL);
+		else
+			n->erasingFlip("right");
+		n->setData(NULL);
+		delete n;
 	}
 	_size--;
 }

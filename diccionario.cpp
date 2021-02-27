@@ -32,10 +32,6 @@ bool Diccionario::incluye(string nombre){
 
 
 void Diccionario::agregar(Personaje *p){
-	//Está línea podría omitirse y ejecutarse
-	// |  por fuera antes de llamar a agregar()
-	// |
-	// V
 	if (!incluye(p->getNombre())) 
 		conjunto->add(p, p->getNombre());
 	tamanio++;
@@ -43,22 +39,32 @@ void Diccionario::agregar(Personaje *p){
 
 
 Personaje* Diccionario::borrarPersonaje(string nombre){
+	if (tamanio == 0)
+		return NULL;
+
 	Personaje *aBorrar;
-	conjunto->erase(nombre, aBorrar);
+	if (tamanio == 1){
+		Personaje** aux = conjunto->getData();
+		aBorrar = *aux;
+		delete conjunto;
+		conjunto = NULL;
+	}
+	else
+		conjunto->erase(nombre, aBorrar);
 	tamanio--;
 	return aBorrar;
 }
 
 
 void Diccionario::mostrar(){
-	Queue<Personaje*> * list = conjunto->inOrder();
+	Queue<Personaje*> * list = conjunto->preOrder();
 	if (list == NULL){
 		cout << "No hay personajes..." << endl;
 	}
 	else{
-		cout << "Personajes: " << endl;
+		cout << "Personajes: " << endl << endl;
 		for (size_t i = 0; i < tamanio; i++)
-			cout << list->dequeue()->getNombre() << (i != -tamanio - 1 ? "\n" : " >");
+			cout <<  __TEXT_YLW__ << list->dequeue()->getNombre() << (i != -tamanio - 1 ? "\n" : " ") << __TEXT_NC__;
 		cout << endl;
 		delete list;
 	}

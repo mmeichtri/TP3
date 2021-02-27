@@ -10,11 +10,8 @@ static int pedirOpcion(instancias_t instancia){
     string entrada;
     cin >> entrada;
     const size_t cantidadOpciones = opcionesValidas[instancia].size();
-    cout << "cantidadOpciones = " << cantidadOpciones << endl;
-
     for (size_t i = 0; i < cantidadOpciones; i++){
         if (entrada == opcionesValidas[instancia][i]){
-            cout << opcionesValidas[instancia][i] << endl;
             int opcion = stoi(entrada);
             return opcion;
         }
@@ -50,9 +47,9 @@ void VInterfazUsuario::menuPrincipal(){
 void VInterfazUsuario::menuJugadores() {
 
     cout << endl\
-    << "1) Buscar por nombre los detalles de un personaje en particular : "<< endl\
-    << "2) Mostrar los nombres de todos los personajes : " << endl\
-    << "3) Seleccionar personaje : " << endl;
+    << "1) Buscar por nombre los detalles de un personaje en particular "<< endl\
+    << "2) Mostrar los nombres de todos los personajes " << endl\
+    << "3) Seleccionar personaje " << endl;
 
 }
 
@@ -68,7 +65,7 @@ void VInterfazUsuario::segundoMenuTurno() {
     cout\
     << "1) Defenderse" << endl\
     << "2) Atacar"<< endl\
-    << "3) Pasar Opcion : " << endl;
+    << "3) Pasar Opcion " << endl;
 }
 
 

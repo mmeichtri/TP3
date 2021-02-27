@@ -1,4 +1,5 @@
 
+
 #include "menuPrincipal.h"
 #include "grafo.h"
 #include "matriz.h"
@@ -21,7 +22,6 @@ int main() {
     srand(time(nullptr));
     Diccionario diccionario;
     Grafo grafo;
-    Juego* juego;
     Matriz tablero;
     iniciarTablero(&grafo,&tablero);
     MenuPrincipal menuPrincipal(&diccionario);
