@@ -8,12 +8,14 @@ all:$(PROGRAM)
 
 $(PROGRAM): main.o lecturaCsvCasilleros.o menuPrincipal.o matriz.o grafo.o diccionario.o \
 archivoPersonaje.o juego.o interfazUsuario.o casillero.o \
-parser.o personaje.o agua.o fuego.o tierra.o aire.o camino.o lago.o montania.o vacio.o volcan.o precipicio.o
+parser.o personaje.o agua.o fuego.o tierra.o aire.o camino.o lago.o montania.o vacio.o volcan.o precipicio.o \
+argumentos.o
 	$(CC) $(CFLAGS) -o $(PROGRAM) main.o lecturaCsvCasilleros.o menuPrincipal.o matriz.o grafo.o diccionario.o \
 	archivoPersonaje.o juego.o interfazUsuario.o casillero.o parser.o \
-	personaje.o agua.o fuego.o tierra.o aire.o camino.o lago.o montania.o vacio.o volcan.o precipicio.o $(LDFLAGS) 
+	personaje.o agua.o fuego.o tierra.o aire.o camino.o lago.o montania.o vacio.o volcan.o precipicio.o \
+	argumentos.o $(LDFLAGS) 
 
-main.o: main.cpp lecturaCsvCasilleros.h menuPrincipal.h matriz.h grafo.h diccionario.h
+main.o: main.cpp lecturaCsvCasilleros.h menuPrincipal.h matriz.h grafo.h diccionario.h argumentos.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 lecturaCsvCasilleros.o: lecturaCsvCasilleros.cpp lecturaCsvCasilleros.h grafo.h lago.h montania.h precipicio.h vacio.h camino.h volcan.h matriz.h
@@ -79,5 +81,8 @@ volcan.o: volcan.cpp volcan.h casillero.h
 precipicio.o: precipicio.cpp precipicio.h casillero.h
 	$(CC) $(CFLAGS) -c precipicio.cpp
 	
+argumentos.o: argumentos.cpp argumentos.h
+	$(CC) $(CFLAGS) -c argumentos.cpp
+
 clean:
 	rm -vf  *.o $(PROGRAM)

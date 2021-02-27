@@ -5,9 +5,9 @@ MenuPrincipal ::MenuPrincipal(Diccionario *diccionario) {
     this->_diccionario = diccionario;
 }
 
-void MenuPrincipal ::menu(Grafo* grafo , Matriz* matriz) {
+void MenuPrincipal ::menu(Grafo* grafo , Matriz* matriz, const char* argv) {
 
-    cargarDiccionario();
+    cargarDiccionario(argv);
     int decisionUsuario;
 
     do{
@@ -35,10 +35,9 @@ void MenuPrincipal ::menu(Grafo* grafo , Matriz* matriz) {
     }while(decisionUsuario < 6);
 }
 
-void MenuPrincipal::cargarDiccionario() {
+void MenuPrincipal::cargarDiccionario(const char *path) {
    ArchivoPersonaje archivo;
-   string csv = "personaje.csv";
-   archivo.lecturaCsv(_diccionario,csv);
+   archivo.lecturaCsv(_diccionario, path);
 }
 
 void MenuPrincipal::comenzarJuego(Grafo* grafo , Matriz* matriz) {

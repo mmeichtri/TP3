@@ -52,14 +52,14 @@ private:
 
     //pre:
     //post:
-    void cargarDiccionario();
+    void cargarDiccionario(const char* path);
 public:
     //pre:
     //post:
     MenuPrincipal(Diccionario* diccionario);
     //pre:
     //post:
-    void menu(Grafo* grafo , Matriz* matriz);
+    void menu(Grafo* grafo , Matriz* matriz, const char *argv);
 
     //pre:
     //post:
