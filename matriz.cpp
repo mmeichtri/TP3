@@ -35,7 +35,7 @@ void Matriz::pasarAdyacencia(Grafo *grafo) {
     }
 }
 
-void Matriz ::recorrerMatriz(Personaje **jugadorUno, Personaje **jugadorDos) {
+void Matriz::mostrar(Personaje **jugadorUno, Personaje **jugadorDos) {
     string nombre;
     for(int fila = 0; fila < 8; fila++){
         for(int col = 0; col < 8 ; col++){

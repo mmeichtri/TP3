@@ -28,14 +28,14 @@ void Juego ::setPersonajeGuardo(int personajeGuardo) {
 
 
 bool Juego ::guardarPartida(int jugadorQueGuardo) {
-    bool guardoPartida = false ;
     vista.imprimirLinea( "¿Desea guardar la partida? \n1) sí \n2) no \n");
     int comprobarOpcion =  vista.comprobarOpcion(1, 2, SI_NO);
+    
     if(comprobarOpcion == 1){
         ArchivoTexto(jugadorQueGuardo);
-        guardoPartida = true;
+        return true;
     }
-    return guardoPartida;
+    return false;
 }
 
 void Juego ::ArchivoTexto(int jugadorQueGuardo) {
@@ -44,10 +44,24 @@ void Juego ::ArchivoTexto(int jugadorQueGuardo) {
     archivo << jugadorQueGuardo;
 
     for(int i = 0; i < MAXPERSONAJES ; i++){
-        archivo << jugadorUno[i]->getElemento()<<","<<jugadorUno[i]->getNombre()<<","<<jugadorUno[i]->getEscudo()<<","<<jugadorUno[i]->getVida()<<","<<jugadorUno[i]->getEnergia()<<","<<jugadorUno[i]->getFila()<<","<<jugadorUno[i]->getColumna()<<","<<jugadorUno[i]->devolverCondicionEspecial()<<endl;
+        archivo << jugadorUno[i]->getElemento()<<","\
+        <<jugadorUno[i]->getNombre()<<","\
+        <<jugadorUno[i]->getEscudo()<<","\
+        <<jugadorUno[i]->getVida()<<","\
+        <<jugadorUno[i]->getEnergia()<<","\
+        <<jugadorUno[i]->getFila()<<","\
+        <<jugadorUno[i]->getColumna()<<","\
+        <<jugadorUno[i]->devolverCondicionEspecial()<<endl;
     }
     for(int i = 0; i < MAXPERSONAJES ; i++){
-        archivo << jugadorDos[i]->getElemento()<<","<<jugadorDos[i]->getNombre()<<","<<jugadorDos[i]->getEscudo()<<","<<jugadorDos[i]->getVida()<<","<<jugadorDos[i]->getEnergia()<<","<<jugadorDos[i]->getFila()<<","<<jugadorDos[i]->getColumna()<<","<<jugadorDos[i]->devolverCondicionEspecial()<<endl;
+        archivo << jugadorDos[i]->getElemento()<<","\
+        <<jugadorDos[i]->getNombre()<<","\
+        <<jugadorDos[i]->getEscudo()<<","\
+        <<jugadorDos[i]->getVida()<<","\
+        <<jugadorDos[i]->getEnergia()<<","\
+        <<jugadorDos[i]->getFila()<<","\
+        <<jugadorDos[i]->getColumna()<<","\
+        <<jugadorDos[i]->devolverCondicionEspecial()<<endl;
     }
 
 }
@@ -79,13 +93,12 @@ void Juego::leerPersonajesArchivo(Personaje * personaje , int contador) {
 
 }
 
-void Juego ::iniciarJuego() {
+void Juego ::iniciarJuego(Personaje** &primero, Personaje** &segundo) {
     vista.imprimirLinea( " \n\nBienvenido al juego ", __TEXT_GRN__);
     turnosSeleccion();
     seleccionarPosiciones();
-    Personaje** primerTurno = turnoRandom();
-    Personaje** turnoDos = segundoTurno(primerTurno);
-    jugar(primerTurno,turnoDos);
+    primero = turnoRandom();
+    segundo = segundoTurno(primero);
 }
 
 void Juego::menuElegirPersonaje(Personaje** jugador, int posicion) {
@@ -167,7 +180,7 @@ void Juego ::seleccionarPosiciones() {
     }
 }
 
-void Juego :: asignarCasilla(Personaje *personajeTurno) {
+void Juego::asignarCasilla(Personaje *personajeTurno) {
     bool estaVacia = false;
     do{
         vista.imprimirLinea(personajeTurno->getNombre());
@@ -204,19 +217,21 @@ Personaje** Juego::segundoTurno( Personaje **seleccionado) {
         return jugadorUno;
 }
 
-void Juego::jugar(Personaje** primerTurno , Personaje** segundoTurno) {
+void Juego::jugar(Personaje** primero , Personaje** segundo) {
     bool equipo1;
     bool equipo2;
-    bool juegoGuardado = false;
     do{
-        juegoGuardado = guardarPartida(1);
-        turno(primerTurno,segundoTurno);
-        juegoGuardado = guardarPartida(1);
-        turno(segundoTurno,primerTurno);
+        if (guardarPartida(1))
+        	break;
+        turno(primero, segundo, 1);
+        matriz->mostrar(primero, segundo);
+        if(guardarPartida(2))
+        	break;
+        turno(segundo, primero, 2);
+        matriz->mostrar(primero, segundo);
         equipo1 = equipoSinVida(jugadorUno);
         equipo2 = equipoSinVida(jugadorDos);
-    }while((!equipo1  &&  !equipo2) && !juegoGuardado);
-
+    }while(!equipo1  ||  !equipo2);
 }
 
 
@@ -226,18 +241,18 @@ bool Juego::equipoSinVida(Personaje** equipo) {
     while(pos < MAXPERSONAJES && sinVida){
         if(equipo[pos] != nullptr)
             sinVida = false;
-    pos++;
+    	pos++;
     }
     return sinVida;
 }
 
-void Juego::turno(Personaje** aliados, Personaje** enemigos) {
+void Juego::turno(Personaje** aliados, Personaje** enemigos, int jugador) {
 
     for(int i = 0; i < MAXPERSONAJES; i++){
         if(aliados[i]->tieneVida()) {
             condicionEspecialPersonaje(aliados[i]);
             vista.imprimirLinea("\nEs el turno de: \n\t");
-            aliados[i]->mostrarPersonaje();
+            aliados[i]->mostrarPersonaje(jugador);
             vista.saltarLinea();
             menuMoverAlimentarse(aliados[i]);
             menuJuegoAccion(aliados, enemigos, aliados[i]);
@@ -409,7 +424,9 @@ int Juego::errorMoverse() {
 
 Juego ::~Juego() {
     for(int i = 0; i < MAXPERSONAJES ; i++){
-        delete jugadorUno[i];
-        delete jugadorDos[i];
+    	cout << "jugador 1: ";
+        if (jugadorUno[i] != NULL) delete jugadorUno[i];
+	    cout << "jugador 2: ";
+	    if (jugadorDos[i] != NULL) delete jugadorDos[i];
     }
 }

@@ -2,7 +2,7 @@
 #include "menuPrincipal.h"
 
 MenuPrincipal ::MenuPrincipal(Diccionario *diccionario) {
-    this -> diccionario = diccionario;
+    this->_diccionario = diccionario;
 }
 
 void MenuPrincipal ::menu(Grafo* grafo , Matriz* matriz) {
@@ -29,7 +29,7 @@ void MenuPrincipal ::menu(Grafo* grafo , Matriz* matriz) {
                 break;
             case 5:
                 comenzarJuego(grafo,matriz);
-                break;
+                return;
         }
 
     }while(decisionUsuario < 6);
@@ -38,27 +38,32 @@ void MenuPrincipal ::menu(Grafo* grafo , Matriz* matriz) {
 void MenuPrincipal::cargarDiccionario() {
    ArchivoPersonaje archivo;
    string csv = "personaje.csv";
-   archivo.lecturaCsv(diccionario,csv);
+   archivo.lecturaCsv(_diccionario,csv);
 }
 
 void MenuPrincipal::comenzarJuego(Grafo* grafo , Matriz* matriz) {
-   Juego jugar(grafo,matriz,diccionario);
-   jugar.iniciarJuego();
+   Juego *j = new Juego(grafo, matriz, _diccionario);
+   Personaje **primerTurno;
+   Personaje **segundoTurno;
+   j->iniciarJuego(primerTurno, segundoTurno);
+   j->jugar(primerTurno, segundoTurno);
+   delete j;
+   _diccionario = NULL;
 }
 
 void MenuPrincipal :: mostrarNombrePersonajes() {
-    diccionario->mostrar();
+    _diccionario->mostrar();
 }
 
 void MenuPrincipal ::mostrarPersonajeEspecifico() {
 
    vistaUsuario.imprimirLinea(" Estos son los personajes :");
-   diccionario->mostrar();
+   _diccionario->mostrar();
    string nombreSeleccionado = vistaUsuario.ingresarString("nombre");
-   Personaje* personajeBuscado = diccionario->buscar(nombreSeleccionado);
+   Personaje* personajeBuscado = _diccionario->buscar(nombreSeleccionado);
 
    if (personajeBuscado != nullptr)
-       personajeBuscado->mostrarPersonaje();
+       personajeBuscado->mostrarPersonaje(0);
    else
        vistaUsuario.noEncontro("nombre");
 }
@@ -66,11 +71,11 @@ void MenuPrincipal ::mostrarPersonajeEspecifico() {
 void MenuPrincipal ::eliminarPersonaje() {
 
     vistaUsuario.imprimirLinea(" Estos son los personajes :");
-    diccionario->mostrar();
+    _diccionario->mostrar();
     string nombreSeleccionado = vistaUsuario.ingresarString("nombre");
 
-    if (diccionario->buscar(nombreSeleccionado) != nullptr)
-        diccionario->borrarPersonaje(nombreSeleccionado);
+    if (_diccionario->buscar(nombreSeleccionado) != nullptr)
+        _diccionario->borrarPersonaje(nombreSeleccionado);
     else
         vistaUsuario.noEncontro("nombre");
 
@@ -80,10 +85,10 @@ string MenuPrincipal::validarNombre() {
     bool nuevoNombre = false;
     string nombre;
     vistaUsuario.imprimirLinea(" Estos son los nombres de los personajes que existen,ingrese uno distinto ");
-    diccionario->mostrar();
+    _diccionario->mostrar();
     do{
         nombre = vistaUsuario.ingresarString("nombre");
-        if(diccionario->buscar(nombre) != nullptr)
+        if(!_diccionario->incluye(nombre))
             nuevoNombre = true;
         else
             vistaUsuario.imprimirLinea(" Ese nombre que ingreso ya existe ");
@@ -118,7 +123,7 @@ Personaje* MenuPrincipal ::crearPersonaje() {
 }
 
 void MenuPrincipal ::agregarPersonaje() {
-    diccionario->agregar(crearPersonaje());
+    _diccionario->agregar(crearPersonaje());
 }
 
 Personaje* MenuPrincipal ::crearPersonajeUsuario(string elemento, string nombre,int escudo, int vida) {

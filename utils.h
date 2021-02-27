@@ -14,6 +14,8 @@
     #define __TEXT_ERROR__ "\033[1;5;31m"
     #define __TEXT_BG_GRN__ "\033[1;42m"
     #define __TEXT_BG_BLU__ "\033[1;44m"
+    #define __TEXT_BLU_TWINK__ "\033[1;5;94m"
+    #define __TEXT_GRN_TWINK__ "\033[1;5;92m"
     #define __TEXT_BG_REDB__ "\033[33;41m"
 #endif	//TEXT_COLORS
 

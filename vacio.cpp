@@ -13,9 +13,9 @@ int Vacio::restarGastoDeEnergia(Personaje* personajeJugador){
 }
 void Vacio::ImprimirCasilla(string nombre) {
     if(hayPersonajeEnCasillero())
-        cout << __PUR__ <<"["<<nombre << "]";
+        cout << __PUR__ << "[" << nombre << "]" << __NC__;
     else
-        cout << __PUR__ << "[___]";
+        cout << __PUR__ << "[___]" << __NC__;
 }
 
 Vacio::~Vacio(){

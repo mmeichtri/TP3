@@ -12,7 +12,7 @@
 class MenuPrincipal {
 private:
     VInterfazUsuario vistaUsuario;
-    Diccionario* diccionario;
+    Diccionario* _diccionario;
 
     //pre:
     //post:

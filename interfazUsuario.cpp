@@ -8,7 +8,9 @@
 
 static int pedirOpcion(instancias_t instancia){
     string entrada;
+    cout << "Ingrese una opción: ";
     cin >> entrada;
+    cout << endl;
     const size_t cantidadOpciones = opcionesValidas[instancia].size();
     for (size_t i = 0; i < cantidadOpciones; i++){
         if (entrada == opcionesValidas[instancia][i]){
@@ -26,7 +28,7 @@ int VInterfazUsuario::leerFilaOColumna(string dato) {
 
     int  filaColumna;
     do{
-        cout << "Ingrese numero de "<< dato << " (entre 0-7): ";
+        cout << "Debe seleccionar una "<< dato << " (entre 0-7). ";
         filaColumna = pedirOpcion(MATRIZ);
     }while(filaColumna < 0  || filaColumna > 7);
 
@@ -57,7 +59,7 @@ void VInterfazUsuario::primerMenuTurno() {
     cout\
     << "1) Alimentarse" << endl\
     << "2) Moverse" << endl\
-    << "3) Pasar Opcion" << endl;
+    << "3) Pasar Opcion" << endl << endl;
 }
 
 void VInterfazUsuario::segundoMenuTurno() {
@@ -65,7 +67,7 @@ void VInterfazUsuario::segundoMenuTurno() {
     cout\
     << "1) Defenderse" << endl\
     << "2) Atacar"<< endl\
-    << "3) Pasar Opcion " << endl;
+    << "3) Pasar Opcion " << endl << endl;
 }
 
 
@@ -111,8 +113,24 @@ void VInterfazUsuario ::saltarLinea() {
     cout << endl;
 }
 
-void VInterfazUsuario ::mostrarPersonaje(string nombre, string elemento, int escudo, int energia, int vida, int fila, int col) {
-	cout << "Nombre:" << nombre << endl;
+void VInterfazUsuario::mostrarPersonaje(
+    string nombre, 
+    string elemento,
+    int escudo,
+    int energia,
+    int vida,
+    int fila,
+    int col,
+    int jugador) 
+{
+    string colorNom;
+    switch(jugador){
+        case 0: colorNom = __TEXT_NC__; break;
+        case 1: colorNom = __TEXT_BLU_TWINK__; break;
+        case 2: colorNom = __TEXT_GRN_TWINK__; break;
+        default: colorNom = __TEXT_NC__; break;
+    }
+	cout << "Nombre: " << colorNom << nombre << __TEXT_NC__ << endl;
 	cout << "Elemento: " << elemento << endl;
 	cout << "Escudo : " << escudo << endl;
 	cout << "Vida : " << vida << endl;

@@ -21,9 +21,9 @@ int Precipicio::restarGastoDeEnergia(Personaje* personajeJugador){
 
 void Precipicio::ImprimirCasilla(string nombre) {
     if(hayPersonajeEnCasillero())
-        cout << __YLW__ <<"["<<nombre << "]";
+        cout << __YLW__ << "[" << nombre << "]" << __NC__;
     else
-        cout << __YLW__ << "[___]";
+        cout << __YLW__ << "[___]" << __NC__;
 }
 Precipicio::~Precipicio(){
 }

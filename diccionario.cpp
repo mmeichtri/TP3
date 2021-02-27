@@ -20,8 +20,6 @@ Personaje* Diccionario::buscar(string nombre){
 
 
 Personaje* Diccionario::buscarBorrar(string nombre){
-	if (conjunto->empty())
-		return NULL;
 	return borrarPersonaje(nombre);
 }
 
@@ -31,15 +29,18 @@ bool Diccionario::incluye(string nombre){
 }
 
 
-void Diccionario::agregar(Personaje *p){
-	if (!incluye(p->getNombre())) 
+bool Diccionario::agregar(Personaje *p){
+	if (!incluye(p->getNombre())) {
 		conjunto->add(p, p->getNombre());
-	tamanio++;
+		tamanio++;
+		return true;
+	}
+	return false;
 }
 
 
 Personaje* Diccionario::borrarPersonaje(string nombre){
-	if (tamanio == 0)
+	if (tamanio == 0 || conjunto->empty())
 		return NULL;
 
 	Personaje *aBorrar;
@@ -57,7 +58,7 @@ Personaje* Diccionario::borrarPersonaje(string nombre){
 
 
 void Diccionario::mostrar(){
-	Queue<Personaje*> * list = conjunto->preOrder();
+	Queue<Personaje*> * list = conjunto->inOrder();
 	if (list == NULL){
 		cout << "No hay personajes..." << endl;
 	}
@@ -72,5 +73,5 @@ void Diccionario::mostrar(){
 
 
 Diccionario::~Diccionario(){
-	delete conjunto;
+	if (conjunto != NULL || tamanio > 0) delete conjunto;
 }

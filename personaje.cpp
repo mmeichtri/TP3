@@ -16,8 +16,8 @@ Personaje ::Personaje(string nombre, int escudo, int vida, int energia, int fila
     this -> columna = columna;
 }
 
-void Personaje ::mostrarPersonaje() {
-    vista.mostrarPersonaje(getNombre(),getElemento(),getEscudo(),getEnergia(),getVida(),getFila(),getColumna());
+void Personaje ::mostrarPersonaje(int jugador) {
+    vista.mostrarPersonaje(getNombre(),getElemento(),getEscudo(),getEnergia(),getVida(),getFila(),getColumna(), jugador);
 }
 
 

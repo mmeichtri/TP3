@@ -41,7 +41,7 @@ virtual void alimentarse() = 0;
 //PRE:
 //POST: IMPRIME EL NOMBRE,ESCUDO,VIDA Y ENERGIA DE UN PERSONAJE.
 
-void mostrarPersonaje();
+void mostrarPersonaje(int jugador = 0);
 
 
 // PRE :valorDano valido
@@ -145,7 +145,7 @@ virtual int devolverCondicionEspecial() = 0;
 
 //PRE:
 //POST:
-virtual ~Personaje() {;}
+virtual ~Personaje() {}
 
 };
 

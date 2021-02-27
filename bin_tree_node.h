@@ -1,8 +1,9 @@
 #ifndef BINARY_TREE_NODE_H
 #define BINARY_TREE_NODE_H
 
-#include "queue.h"
 #include <string>
+#include "queue.h"
+#include "utils.h"
 
 
 using namespace std;

@@ -57,7 +57,7 @@ public:
 
     //PRE: RECIBE DOS VARIABLES ENTERAS VALIDAS..
     //POST: RETORNA LA OPCION VALIDA DENTRO DEL RANGO DE LAS VARIABLES PASADAS POR PARAMETRO.
-    int comprobarOpcion(int rangMinimo , int rangMaximo, instancias_t instancia);
+    int comprobarOpcion(int rangMinimo, int rangMaximo, instancias_t instancia);
 
     //PRE: RECIBE UN STRING ALFANUMERICO VALIDO.
     //POST: IMPRIME QUE NO SE ENCONTRO UN ELEMENTO DE ESE TIPO.
@@ -78,7 +78,7 @@ public:
 
     //pre: atributos del personaje valido
     //post:Imprime los atributos de los personaje
-    void mostrarPersonaje(string nombre , string elemento , int escudo ,int energia, int vida , int fila , int col );
+    void mostrarPersonaje(string nombre, string elemento, int escudo ,int energia, int vida, int fila, int col, int jugador);
 
     //pre:
     //post: imprime que no se pudo alimentar el personaje.
@@ -86,11 +86,11 @@ public:
 
     //pre:string elemento, comia e int energiaRecuperada validos.
     //post: imprime que se alimento el personaje.
-    void alimentado(string elemento , string comida , int energiaRecuperada);
+    void alimentado(string elemento, string comida, int energiaRecuperada);
 
     //pre: variables int validas
     //post: imprime la casilla inicial y final del recorrido
-    void caminoInicialFinal(int filaI , int colI , int filaF , int colF);
+    void caminoInicialFinal(int filaI, int colI, int filaF, int colF);
 };
 
 

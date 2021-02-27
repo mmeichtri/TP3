@@ -39,7 +39,11 @@ public:
 
    //pre:
    //post:
-   void iniciarJuego();
+   void iniciarJuego(Personaje** &primero, Personaje** &segundo);
+
+  //pre:
+  //post: 
+  void jugar(Personaje** primero , Personaje** Segundo);
 
    //pre:
    //post:
@@ -80,11 +84,6 @@ private:
    //post:
    void ContinuarPartida();
 
-
-
-    //pre:
-    //post:
-    void jugar(Personaje** primerTurno , Personaje** SegundoTurno);
 
     //pre:
     //post:
@@ -150,7 +149,7 @@ private:
 
    //PRE: vectores de punteros aliados y enemigos validos.
    // POST: recorre el vector de aliados, llamando a condicionEspecialPersonajes, menuMoverAlimentarse y menuJuegoAccion.
-   void turno(Personaje** aliados, Personaje** enemigos);
+   void turno(Personaje** aliados, Personaje** enemigos, int jugador);
 
 
    //PRE: vector de personaje* jugador y posicion valida.

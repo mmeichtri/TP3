@@ -29,7 +29,7 @@ public:
 	bool incluye(string nombre);
 	//POST: devuelve true si el personaje está en el diccionario y false en caso contrario
 	//
-	void agregar(Personaje *p);
+	bool agregar(Personaje *p);
 	//POST: Agrega al personaje apuntado por <p> al diccionario en caso de que no esté ya incluido.
 	//
 	Personaje* borrarPersonaje(string nombre);

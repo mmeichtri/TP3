@@ -34,7 +34,7 @@ public:
 
     void setHayPersonaje(int fila , int columna ,bool nuevoEstado );
 
-    void recorrerMatriz(Personaje** jugadorUno , Personaje** jugadorDos);
+    void mostrar(Personaje** jugadorUno , Personaje** jugadorDos);
 
 
     string retornarNombrePersonaje(Personaje** jugadorUno , Personaje** jugadorDos, int fila ,int columna);
