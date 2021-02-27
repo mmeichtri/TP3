@@ -39,19 +39,19 @@ bool Juego ::guardarPartida(int jugadorQueGuardo) {
 }
 
 void Juego ::ArchivoTexto(int jugadorQueGuardo) {
-    ofstream archivo;
-    archivo.open("partida.csv");
-    archivo << jugadorQueGuardo;
+	ofstream archivo;
+	archivo.open("partida.csv");
+	archivo << jugadorQueGuardo << endl;
 
     for(int i = 0; i < MAXPERSONAJES ; i++){
-        archivo << jugadorUno[i]->getElemento()<<","\
-        <<jugadorUno[i]->getNombre()<<","\
-        <<jugadorUno[i]->getEscudo()<<","\
-        <<jugadorUno[i]->getVida()<<","\
-        <<jugadorUno[i]->getEnergia()<<","\
-        <<jugadorUno[i]->getFila()<<","\
-        <<jugadorUno[i]->getColumna()<<","\
-        <<jugadorUno[i]->devolverCondicionEspecial()<<endl;
+		archivo << jugadorUno[i]->getElemento()<<","\
+		<<jugadorUno[i]->getNombre()<<","\
+		<<jugadorUno[i]->getEscudo()<<","\
+		<<jugadorUno[i]->getVida()<<","\
+		<<jugadorUno[i]->getEnergia()<<","\
+		<<jugadorUno[i]->getFila()<<","\
+		<<jugadorUno[i]->getColumna()<<","\
+		<<jugadorUno[i]->devolverCondicionEspecial()<<endl;
     }
     for(int i = 0; i < MAXPERSONAJES ; i++){
         archivo << jugadorDos[i]->getElemento()<<","\
@@ -424,9 +424,7 @@ int Juego::errorMoverse() {
 
 Juego ::~Juego() {
     for(int i = 0; i < MAXPERSONAJES ; i++){
-    	cout << "jugador 1: ";
         if (jugadorUno[i] != NULL) delete jugadorUno[i];
-	    cout << "jugador 2: ";
 	    if (jugadorDos[i] != NULL) delete jugadorDos[i];
     }
 }

@@ -40,13 +40,12 @@ void Matriz::mostrar(Personaje **jugadorUno, Personaje **jugadorDos) {
     for(int fila = 0; fila < 8; fila++){
         for(int col = 0; col < 8 ; col++){
             if(tablero[fila][col]->hayPersonajeEnCasillero()){
-               nombre =  retornarNombrePersonaje(jugadorUno,jugadorDos,fila,col);
+                nombre =  retornarNombrePersonaje(jugadorUno,jugadorDos,fila,col);
                 tablero[fila][col]->ImprimirCasilla(nombre);
             }
             else
                 tablero[fila][col]->ImprimirCasilla("");
         }
-        //ACÁ HABÍA UN NC PERO LO BORRÉ PORQUE NO ESTÁ DECLARADO EN ESTE ARCHIVO. LUCIANO
         cout << endl;
     }
 }

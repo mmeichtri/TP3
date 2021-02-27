@@ -22,7 +22,7 @@
 #ifndef BACKGORUND_COLORS
 #define BACKGORUND_COLORS
 	#define __NC__ "\033[0m"
-	#define __RED__ "\033[30;41m"
+	#define __RED__ "\033[1;30;101m"
 	#define __GRN__ "\033[30;42m"
 	#define __YLW__ "\033[1;30;43m"
 	#define __BLU__ "\033[30;44m"

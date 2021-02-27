@@ -49,10 +49,17 @@ public:
     */
     virtual int restarGastoDeEnergia(Personaje* ) = 0;
 
+    //pre: bool nuevaCondicion valida
+    //post:le asigna a hayPersonaje el valor nuevaCondicion
+
     void setHayPersonaje(bool nuevaCondicion);
 
+    //pre:
+    //post:retorna el valor de hay personaje
     bool hayPersonajeEnCasillero();
 
+     //pre: string de nombre valido
+     //post: depende de la casilla si hayPersonaje es true imprime un color y nombre, sino imprime el color y _
     virtual void ImprimirCasilla(string nombre) = 0;
 
     virtual ~Casillero();

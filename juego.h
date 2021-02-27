@@ -22,6 +22,7 @@
 #define PRIMERO 1
 
 
+
 class Juego {
 private:
     VInterfazUsuario vista;
@@ -37,29 +38,33 @@ public:
     //post: crea un objeto juego correctamente.
     Juego(Grafo* graf, Matriz* matriz, Diccionario* diccionario);
 
-   //pre:
-   //post:
+   //pre: vector de punteros a personaje validos
+   //post: llama a las funciones turno y seleccion, asigna turnos rand
    void iniciarJuego(Personaje** &primero, Personaje** &segundo);
 
-  //pre:
-  //post: 
+  //pre:vectores de personajes validos
+  //post: llama a los menus del juego hasta que los personajes se queden sin vida o se guarde el juego
   void jugar(Personaje** primero , Personaje** Segundo);
 
    //pre:
-   //post:
+   //post: si el juego fue guardado busca el primer y segundo turno y va a jugar
    void iniciarJuegoCargado();
 
+   //pre: valor int valido
+   //post: le asigna al atributo personajeGuardo el valor int pasado por parametro
    void setPersonajeGuardo(int personajeGuardo);
 
+   void ContinuarPartida();
 
-    //pre:
-    //post:
+   
+    //pre: puntero a personaje y variable int valifa
+    //post: si el contador es menor a tres guarda el personaje en jugadorUno, sino guarda en jugadorDos
     void leerPersonajesArchivo(Personaje* , int);
 
 
 
-    //pre:
-    //post:
+    //pre: int jugador validos
+    //post: si lo pasado por parametro es 1 devuelve el jugadorUno , sino devuelve jugadorDos
     Personaje** leerJugadorGuardado(int jugador);
 
     //PRE:
@@ -68,30 +73,13 @@ public:
 
 private:
 
-    //pre:
-    //post:
-    void actualizarPantalla();
-
-    //pre:
-    //post:
-    void chequearTurno(Personaje** turno);
-
-    //pre:
-    //post:
-    void mostrarGanador(bool equipo1 , bool equipo2);
-
-   //pre:
-   //post:
-   void ContinuarPartida();
-
-
-    //pre:
-    //post:
+    //pre: valor int valido
+    //post: pregunta si quiere guardar partida si es si llama a archivo de texto.
 
     bool guardarPartida(int jugadorQueGuardo);
 
-    //pre:
-    //post:
+    //pre: valor int valido
+    //post: Escribe en el archivo cada uno de los vectores de personajes
    void ArchivoTexto(int jugadorQueGuardo);
 
 
@@ -113,10 +101,6 @@ private:
     //post: dependiendo de lo que elija el usuario, el personaje se movera, alimentara o pasara opcion.
     void menuMoverAlimentarse(Personaje* personajeTurno);
 
-  //pre: puntero a personaje personajeTurno valido.
-  /*post: pide una fila y columna al usuario, busca el camino minimo en el grafo y llama a condicion moverse
-   * la cual devuelve una variable int mientras esta sea distinta a la constante SALIR, se repetira el ciclo
-  */  void moverse( Personaje* personajeTurno);
 
     //pre: puntero a personaje personajeTurno , variables caminoMinimo , fila , col validas.
     /*post: si el personaje tiene energia y la casilla esta vacia , se mueve el personaje a la fila y col
@@ -157,12 +141,12 @@ private:
    */
    void menuElegirPersonaje(Personaje** jugador , int posicion);
 
-   //PRE:
-   //POST:
+   //PRE: vector de puntero a personaje y valor int posicion.
+   //POST: pide al usuario un nombre de un personaje hasta que escriba uno correcto y lo carga en el array
    void elegirPersonaje(Personaje** seleccionJugador , int posicion);
 
  //pre:
- //post:
+ //post: realiza los turnos para seleccionar personajes
    void turnosSeleccion();
 
    //PRE:
@@ -175,8 +159,8 @@ private:
     */
    Personaje** segundoTurno( Personaje** seleccionado);
 
-
-
+   //pre:
+   //post:elige arbitrariamente que jugador eligira primero y llama a asignar casilla por cada posicion
    void seleccionarPosiciones();
 
 
@@ -200,10 +184,6 @@ private:
    //POST: pide una fila y columna hasta que el usuario ingrese alguna que no este ocupada y mueve el personaje a esa fila y col.
    void defensaAire(Personaje* personajeTurno);
 
-   //pre: vector de punteros a personaje validos.
-   //post: recorre 3 posiciones ,si el personaje no tiene vida, lo elimina y coloca al vector del personaje en null
-  void vidaPersonaje( Personaje** equipoEnturno);
-
   //pre:
   //post: si el personaje existe, muestra un personaje especifico
   void mostrarPersonajeEspecifico();
@@ -211,9 +191,15 @@ private:
   //pre:
   //post:muestra los nombres de los personajes
   void mostrarPersonajes();
-  //pre:
-  //post:
-  void imprimirTablero();
+
+  void moverse( Personaje* personajeTurno);
+
+    //pre: puntero a personaje personajeTurno , variables caminoMinimo , fila , col validas.
+    /*post: si el personaje tiene energia y la casilla esta vacia , se mueve el personaje a la fila y col
+     * pasadas por parametro, en caso contrario llama a la funcion error moverse e indica al usuario.
+    */
+
 };
 
 #endif //ATAQUE_JUEGO_H
+

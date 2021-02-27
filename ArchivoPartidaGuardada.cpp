@@ -4,14 +4,16 @@
 
 #include "ArchivoPartidaGuardada.h"
 
-void ArchivoPartidaGuardada ::cargarPartida(Juego *juego) {
+void ArchivoPartidaGuardada::cargarPartida(Juego *juego, Matriz* &tablero) {
     ifstream archivo;
     archivo.open("partida.csv");
     string linea, aux, elemento, nombre;
     int contador = 0;
-    int vida, escudo,energia,fila,columna,condicionEspecial;
-    archivo>>aux;
+    int vida, escudo, energia, fila, columna, condicionEspecial;
+    archivo >> aux;
+    cout << aux << endl;
     juego->setPersonajeGuardo(stoi(aux));
+    getline(archivo, aux, '\n');
     while (!archivo.eof()) {
         if (getline(archivo, aux, ',')) {
             elemento = aux;
@@ -19,17 +21,18 @@ void ArchivoPartidaGuardada ::cargarPartida(Juego *juego) {
             nombre = aux;
             getline(archivo, aux, ',');
             escudo = std::stoi(aux);
-            getline(archivo, aux, '\n');
+            getline(archivo, aux, ',');
             vida = std::stoi(aux);
-            getline(archivo, aux, '\n');
+            getline(archivo, aux, ',');
             energia = std::stoi(aux);
             getline(archivo, aux, ',');
             fila = std::stoi(aux);
             getline(archivo, aux, ',');
             columna = std::stoi(aux);
-            getline(archivo, aux, ',');
+            getline(archivo, aux, '\n');
             condicionEspecial = std::stoi(aux);
             Personaje* auxPersonaje = crearPersonaje(elemento,nombre,escudo,vida,energia,fila,columna,condicionEspecial);
+            tablero->setHayPersonaje(fila, columna, true);
             juego->leerPersonajesArchivo(auxPersonaje,contador);
             contador++;
         }
@@ -37,8 +40,16 @@ void ArchivoPartidaGuardada ::cargarPartida(Juego *juego) {
     archivo.close();
 }
 
-Personaje* ArchivoPartidaGuardada ::crearPersonaje(string elemento, string nombre, int escudo, int vida, int energia, int fila,
-                                           int columna, int condicionEspecial) {
+Personaje* ArchivoPartidaGuardada ::crearPersonaje(
+    string elemento,
+    string nombre,
+    int escudo,
+    int vida,
+    int energia,
+    int fila,
+    int columna,
+    int condicionEspecial) 
+{
         Personaje* p;
         if(elemento == "agua")
             p = new Agua(nombre, escudo, vida,energia,fila,columna,condicionEspecial);
