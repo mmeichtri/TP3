@@ -10,8 +10,8 @@ $(PROGRAM): main.o lecturaCsvCasilleros.o menuPrincipal.o matriz.o grafo.o dicci
 archivoPersonaje.o juego.o interfazUsuario.o casillero.o \
 parser.o personaje.o agua.o fuego.o tierra.o aire.o camino.o lago.o montania.o vacio.o volcan.o precipicio.o
 	$(CC) $(CFLAGS) -o $(PROGRAM) main.o lecturaCsvCasilleros.o menuPrincipal.o matriz.o grafo.o diccionario.o \
-	archivoPersonaje.o juego.o interfazUsuario.o casillero.o \
-	parser.o personaje.o agua.o fuego.o tierra.o aire.o camino.o lago.o montania.o vacio.o volcan.o precipicio.o $(LDFLAGS) 
+	archivoPersonaje.o juego.o interfazUsuario.o casillero.o parser.o \
+	personaje.o agua.o fuego.o tierra.o aire.o camino.o lago.o montania.o vacio.o volcan.o precipicio.o $(LDFLAGS) 
 
 main.o: main.cpp lecturaCsvCasilleros.h menuPrincipal.h matriz.h grafo.h diccionario.h
 	$(CC) $(CFLAGS) -c main.cpp

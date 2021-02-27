@@ -21,7 +21,7 @@ void Agua :: alimentarse() {
     } else if(contarComida < 3)
         vista.noSeAlimento();
     else
-        vista.imprimirLinea("ERROR: el personaje no tiene mas oportunidades para alimentarse", __TEXT_YLW__);
+        vista.imprimirLinea("ERROR: el personaje no tiene mas oportunidades para alimentarse", __TEXT_YLW__s);
 }
 
 bool Agua ::verificarEnergia() {

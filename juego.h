@@ -16,6 +16,7 @@
 #include "diccionario.h"
 #include "grafo.h"
 #include "matriz.h"
+
 #define MAXPERSONAJES 3
 #define SALIR 2
 #define PRIMERO 1

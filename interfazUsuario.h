@@ -7,21 +7,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-#ifndef COLORS
-#define COLORS
-    #define __TEXT_NC__ "\033[0m"
-    #define __TEXT_RED__ "\033[1;31m"
-    #define __TEXT_GRN__ "\033[1;32m"
-    #define __TEXT_YLW__ "\033[1;33m"
-    #define __TEXT_BLU__ "\033[1;34m"
-    #define __TEXT_PUR__ "\033[1;35m"
-    #define __TEXT_CYN__ "\033[1;36m"
-    #define __TEXT_ERROR__ "\033[1;5;31m"
-    #define __TEXT_BG_GRN__ "\033[1;42m"
-    #define __TEXT_BG_BLU__ "\033[1;44m"
-    #define __TEXT_BG_REDB__ "\033[33;41m"
-#endif
+#include "utils.h"
 
 using namespace std;
 
