@@ -13,10 +13,10 @@ protected:
 
 public:
 	Node(T d);
-	
+
 	void setNext(Node *next);
 	//Points the self point to the node <next>.
-	//Hace apuntar al nodo que la llama al nodo recibido por parÃ¡metro.
+	//Hace apuntar al nodo que la llama al nodo recibido por parámetro.
 	//
 	T getData();
 	//Returns the element saved in the node.
@@ -32,7 +32,7 @@ public:
 
 
 
-//MÃ‰TODOS NODO
+//MÉTODOS NODO
 
 template <typename T>
 Node <T>::Node(T d){

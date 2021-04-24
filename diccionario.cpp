@@ -1,23 +1,26 @@
 #include "diccionario.h"
 
+
 Diccionario::Diccionario(){
-	conjunto = NULL;
+	conjunto = new Bst<Personaje*>;
 	tamanio = 0;
 }
 
-
 Personaje* Diccionario::buscar(string nombre){
-	Par *aux = new Par(nombre);
+	if (conjunto->empty())
+		return NULL;
 	//
-	//primero, Bst::search(string) llama a Bstnodo::search(string)
-	//y ésta última compara el argumento con el objeto guardado en el nodo
-	//OJO: los search() devuelven puntero al dato guardado en el nodo.
-	//Como los nodos guardan PUNTERO A PAR, hay que desreferenciar lo que devuelva search (puntero a puntero a par)
-	//
-	//Una vez hallado el par, se deuelve el valor (puntero a personaje) que guarda.
-	Par* hallado = *(conjunto->search(aux));	//Bst::search()
-	delete aux;
-	return hallado->obtenerValor();
+	//Bst::search(...) devuelve un puntero al tipo de dato guardado.
+	//Como en esta implementaci�n el diccionario guarda como valores
+	//PUNTEROS a personaje, al obtener el resultado de search() es
+	//necesario desreferenciar el objeto para no devolver un puntero doble.
+	Personaje** hallado = conjunto->search(nombre);
+	return hallado == NULL ? NULL : *hallado;
+}
+
+
+Personaje* Diccionario::buscarBorrar(string nombre){
+	return borrarPersonaje(nombre);
 }
 
 
@@ -26,17 +29,49 @@ bool Diccionario::incluye(string nombre){
 }
 
 
-void Diccionario::agregar(Personaje *p){
-	//Está línea podría omitirse y ejecutarse
-	// |  por fuera antes de llamar a agregar()
-	// |
-	// V
-	if (!incluye(p->getNombre())) 
-		conjunto->add(p);
-	tamanio++;
+bool Diccionario::agregar(Personaje *p){
+	if (!incluye(p->getNombre())) {
+		conjunto->add(p, p->getNombre());
+		tamanio++;
+		return true;
+	}
+	return false;
+}
+
+
+Personaje* Diccionario::borrarPersonaje(string nombre){
+	if (tamanio == 0 || conjunto->empty())
+		return NULL;
+
+	Personaje *aBorrar;
+	if (tamanio == 1){
+		Personaje** aux = conjunto->getData();
+		aBorrar = *aux;
+		delete conjunto;
+		conjunto = NULL;
+	}
+	else
+		conjunto->erase(nombre, aBorrar);
+	tamanio--;
+	return aBorrar;
+}
+
+
+void Diccionario::mostrar(){
+	Queue<Personaje*> * list = conjunto->preOrder();
+	if (list == NULL){
+		cout << "No hay personajes..." << endl;
+	}
+	else{
+		cout << "Personajes: " << endl << endl;
+		for (size_t i = 0; i < tamanio; i++)
+			cout <<  __TEXT_YLW__ << list->dequeue()->getNombre() << (i != -tamanio - 1 ? "\n" : " ") << __TEXT_NC__;
+		cout << endl;
+		delete list;
+	}
 }
 
 
 Diccionario::~Diccionario(){
-	delete conjunto;
+	if (conjunto != NULL || tamanio > 0) delete conjunto;
 }

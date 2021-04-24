@@ -17,7 +17,7 @@ public:
 	//
 	void setPrev(NodeD<T> *prev);
 	//Points the previous node to the node <prev> passed as parameter.
-	//Apunta retrospectivamente el nodo al nodo <prev> pasado por par√°metro.  
+	//Apunta retrospectivamente el nodo al nodo <prev> pasado por par·metro.
 	//
 	NodeD<T> *getPrev();
 	//Returns a pointer to the previous node.

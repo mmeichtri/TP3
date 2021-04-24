@@ -1,5 +1,3 @@
-/*Luciano Jadur - 2020 */
-
 #ifndef QUEUE_H
 #define QUEUE_H
 
@@ -20,8 +18,8 @@ class Queue{
 	//First element in the queue, due to be the first one must point foward to NULL, while
 	//so must the last element in backward.
 	//
-	//Tanto el primer como el Ãºltimo elemento de la cola deben apuntar a NULL en el sentido a
-	//sus respectivos extremos. SÃ³lo los nodos intermedios deben apuntar en ambos sentidos hacia
+	//Tanto el primer como el último elemento de la cola deben apuntar a NULL en el sentido a
+	//sus respectivos extremos. Sólo los nodos intermedios deben apuntar en ambos sentidos hacia
 	//sus correspondientes antecesores y sucesores.
 	//
 	private:
@@ -35,18 +33,18 @@ class Queue{
 		~Queue();
 
 		//Getters
-		
+
 		T first();
 		//Shows the first element in the queue.
-		//Muestra el primer elemento de la cola (el que serÃ­a devuelto en caso de usar dequeue).
+		//Muestra el primer elemento de la cola (el que sería devuelto en caso de usar dequeue).
 		//
 		T last();
 		//Shows the last element in the queue.
-		//Muestra el Ãºltimo elemento de la cola.
+		//Muestra el último elemento de la cola.
 		//
 		bool empty();
 		//Returns true if the queue is empty and false otherwise.
-		//Devuelve true si la cola estÃ¡ vacÃ­a y false en caso contrario.
+		//Devuelve true si la cola está vacía y false en caso contrario.
 		//
 		size_t length();
 		//Returns the amount of elements in the queue.
@@ -61,7 +59,7 @@ class Queue{
 		//Pops the first element in the queue and returns it.
 		//Saca de la cola el primer elemento y lo devuevle
 		//
-	
+
 };
 
 
@@ -105,7 +103,7 @@ size_t Queue <T>::length(){
 template <typename T>
 void Queue <T>::enqueue(T data){
 	NodeD<T> *newNode = new NodeD<T>(data);
-	
+
 	if (empty()){
 		_first = newNode;
 	}
@@ -113,8 +111,8 @@ void Queue <T>::enqueue(T data){
 		//The previous and next pointers of last two nodes must be set because
 		//every instance of double node initializes both to NULL.
 		//
-		//Hay que setear para el par de Ãºltimos nodos de la lista (el inicialmente Ãºltimo y el nuevo)
-		//sus respectivos punteros a previo y siguiente, ya que se construyen inicialmente 
+		//Hay que setear para el par de últimos nodos de la lista (el inicialmente último y el nuevo)
+		//sus respectivos punteros a previo y siguiente, ya que se construyen inicialmente
 		//apuntando a NULL.
 		//
 		_last->setPrev(newNode);

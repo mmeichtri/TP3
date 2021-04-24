@@ -19,12 +19,12 @@ string ParserElementos::elemento(){
 string ParserElementos::nombre(){
 	return _nombre;
 }
-	
-uint ParserElementos::escudo(){
+
+int ParserElementos::escudo(){
 	return _escudo;
 }
 
-uint ParserElementos::vida(){
+int ParserElementos::vida(){
 	return _vida;
 }
 
